@@ -6,7 +6,7 @@ import styles from './starfield.module.css';
 const SPEED = 1.5;
 const ACCELERATION = 0.25;
 const STAR_COLOR = '#fff';
-const BACKGROUND_COLOR = '#000';
+const BACKGROUND_COLOR = '#3f525d';
 
 interface Star {
 	x: number;
@@ -39,8 +39,8 @@ export default function Starfield() {
 			const start = canvasWidth > canvasHeight ? canvasWidth : canvasHeight;
 
 			const star: Star = {
-				x: x + (sx * start) / 1.5,
-				y: y + (sy * start) / 1.5,
+				x: x + (sx * start) / SPEED,
+				y: y + (sy * start) / SPEED,
 				sx,
 				sy,
 				w: 1,

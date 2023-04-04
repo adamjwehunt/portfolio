@@ -1,0 +1,104 @@
+.backArrow {
+	position: absolute;
+	top: -1.5rem;
+	left: 1rem;
+	cursor: pointer;
+	width: 7rem;
+	height: 8rem;
+	padding: 2rem 0;
+}
+
+.backArrowAccent {
+	fill: black;
+}
+
+.name {
+	position: absolute;
+	top: 1rem;
+	font-size: 1.5rem;
+}
+
+.frame {
+	position: absolute;
+	inset: 0;
+	margin: 1rem;
+	border: 3px black solid;
+}
+
+.innerFrame {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+
+.contentWrapper {
+	border-top: 3px black solid;
+	position: absolute;
+	inset: 0;
+	margin-top: 5rem;
+	background-color: var(--frame-border-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 9rem;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	grid-template-columns: 1fr 1fr;
+	border-top: 3px solid black;
+}
+
+.fullFooterRow,
+.halfFooterRow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fullFooterRow {
+	grid-column: 1 / span 2;
+	background-color: white;
+}
+
+.socialLinks {
+	height: 6rem;
+}
+
+.socialLinks svg {
+	fill: #303030;
+}
+
+.halfFooterRow {
+	height: 3rem;
+	padding: 1rem;
+	border-top: 3px solid black;
+	flex-direction: column;
+}
+
+.left {
+	background-color: #d8d3c7;
+	align-items: flex-start;
+}
+
+.left:hover {
+	background-color: inherit;
+	color: var(--home-item-foreground);
+}
+
+.right {
+	color: white;
+	background-color: black;
+	align-items: flex-end;
+}
+
+.right:hover {
+	background-color: #1c8df0;
+}

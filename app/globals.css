@@ -4,11 +4,13 @@
 	--accent-3: #9d0b0e;
 	--accent-4: #7b0002;
 
-	--home-item-foreground: #fefff9;
+	--home-item-foreground: #e8e6e0;
 	--home-item-height: 3rem;
 	--home-item-max-width: 24rem;
 	--home-item-gap: 1.5rem;
 	--home-item-accent-offset: 0.3rem;
+
+	--frame-border-color: var(--home-item-foreground);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,7 +46,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	background-color: #000;
 }

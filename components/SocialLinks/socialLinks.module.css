@@ -8,47 +8,6 @@
 	gap: 1rem;
 }
 
-.link {
-	position: relative;
-	width: var(--home-item-height);
-	height: var(--home-item-height);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.svg {
-	position: absolute;
-	inset: 0;
-	height: 100%;
-	width: 100%;
-	fill: var(--home-item-foreground);
-	z-index: 2;
-}
-
-.svg:hover {
-	transform: translate(
-		calc(var(--home-item-accent-offset) / 2.5),
-		calc(var(--home-item-accent-offset) / 2.5)
-	);
-}
-
-.svg:active {
-	transform: translate(
-		calc(var(--home-item-accent-offset)),
-		calc(var(--home-item-accent-offset))
-	);
-}
-
-.accent {
-	transform: translate(
-		var(--home-item-accent-offset),
-		var(--home-item-accent-offset)
-	);
-	fill: var(--accent-4);
-	z-index: 1;
-}
-
 .accent1 {
 	fill: var(--accent-1);
 }

@@ -11,16 +11,16 @@ export const metadata = {
 		'Adam Wehunt is a software engineer, web developer, and tinkerer. He is currently looking for fulltime employment.',
 };
 
-export default function RootLayout({
-	children,
-}: {
+interface RootLayoutProps {
 	children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en">
 			<body className={shareTechMono.className}>
 				<StarField />
-				<main className={styles.main}>{children}</main>
+				{children}
 			</body>
 		</html>
 	);
