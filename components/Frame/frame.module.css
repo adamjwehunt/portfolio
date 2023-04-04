@@ -22,7 +22,7 @@
 	position: absolute;
 	inset: 0;
 	margin: 1rem;
-	border: 3px black solid;
+	border: var(--frame-border);
 }
 
 .innerFrame {
@@ -34,7 +34,7 @@
 }
 
 .contentWrapper {
-	border-top: 3px black solid;
+	border-top: var(--frame-border);
 	position: absolute;
 	inset: 0;
 	margin-top: 5rem;
@@ -42,7 +42,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 9rem;
+	margin-bottom: 10rem;
 }
 
 .footer {
@@ -53,7 +53,7 @@
 	display: grid;
 	grid-template-rows: auto 1fr;
 	grid-template-columns: 1fr 1fr;
-	border-top: 3px solid black;
+	border-top: var(--frame-border);
 }
 
 .fullFooterRow,
@@ -65,7 +65,7 @@
 
 .fullFooterRow {
 	grid-column: 1 / span 2;
-	background-color: white;
+	background-color: var(--frame-social-link-background-color);
 }
 
 .socialLinks {
@@ -73,18 +73,18 @@
 }
 
 .socialLinks svg {
-	fill: #303030;
+	fill: var(--frame-social-link-icon-color);
 }
 
 .halfFooterRow {
-	height: 3rem;
+	height: 4rem;
 	padding: 1rem;
 	border-top: 3px solid black;
 	flex-direction: column;
 }
 
 .left {
-	background-color: #d8d3c7;
+	background-color: var(--frame-footer-left-background-color);
 	align-items: flex-start;
 }
 
@@ -95,7 +95,7 @@
 
 .right {
 	color: white;
-	background-color: black;
+	background-color: var(--frame-footer-right-background-color);
 	align-items: flex-end;
 }
 
