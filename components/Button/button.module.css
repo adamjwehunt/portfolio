@@ -1,0 +1,28 @@
+.link {
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--home-item-height);
+}
+
+.accent,
+.text {
+	position: absolute;
+	inset: 0;
+	border: 2px solid #000;
+}
+
+.text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--home-item-foreground);
+	z-index: 2;
+}
+
+.accent {
+	transform: var(--home-item-offset-transform);
+	z-index: 1;
+}

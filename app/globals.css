@@ -1,3 +1,33 @@
+:root {
+	--accent-1: #ffa200;
+	--accent-2: #e3500a;
+	--accent-3: #9d0b0e;
+	--accent-4: #7b0002;
+
+	--home-item-foreground: #fefff9;
+	--home-item-height: 3rem;
+	--home-item-max-width: 24rem;
+	--home-item-gap: 1.5rem;
+	--home-item-offset-transform: translate(0.3rem, 0.3rem);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--accent-1: #c6377c;
+		--accent-2: #f6262e;
+		--accent-3: #f67c15;
+		--accent-4: #382076;
+
+		--home-item-foreground: #93979a;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -8,6 +38,15 @@ html,
 body {
 	max-width: 100vw;
 	overflow-x: hidden;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	inset: 0;
+	background-color: #000;
 }
 
 a {

@@ -1,0 +1,33 @@
+.container {
+	height: var(--home-item-height);
+	width: 100%;
+	max-width: var(--home-item-max-width);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+.link {
+	position: relative;
+	width: var(--home-item-height);
+	height: var(--home-item-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.svg {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+	fill: var(--home-item-foreground);
+	z-index: 2;
+}
+
+.accent {
+	transform: var(--home-item-offset-transform);
+	fill: var(--accent-4);
+	z-index: 1;
+}
