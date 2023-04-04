@@ -26,8 +26,37 @@
 	z-index: 2;
 }
 
+.svg:hover {
+	transform: translate(
+		calc(var(--home-item-accent-offset) / 2.5),
+		calc(var(--home-item-accent-offset) / 2.5)
+	);
+}
+
+.svg:active {
+	transform: translate(
+		calc(var(--home-item-accent-offset)),
+		calc(var(--home-item-accent-offset))
+	);
+}
+
 .accent {
-	transform: var(--home-item-offset-transform);
+	transform: translate(
+		var(--home-item-accent-offset),
+		var(--home-item-accent-offset)
+	);
 	fill: var(--accent-4);
 	z-index: 1;
+}
+
+.accent1 {
+	fill: var(--accent-1);
+}
+
+.accent2 {
+	fill: var(--accent-2);
+}
+
+.accent3 {
+	fill: var(--accent-3);
 }

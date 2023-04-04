@@ -22,7 +22,24 @@
 	z-index: 2;
 }
 
+.text:hover {
+	transform: translate(
+		calc(var(--home-item-accent-offset) / 2.5),
+		calc(var(--home-item-accent-offset) / 2.5)
+	);
+}
+
+.text:active {
+	transform: translate(
+		calc(var(--home-item-accent-offset)),
+		calc(var(--home-item-accent-offset))
+	);
+}
+
 .accent {
-	transform: var(--home-item-offset-transform);
+	transform: translate(
+		var(--home-item-accent-offset),
+		var(--home-item-accent-offset)
+	);
 	z-index: 1;
 }

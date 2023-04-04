@@ -8,7 +8,7 @@
 	--home-item-height: 3rem;
 	--home-item-max-width: 24rem;
 	--home-item-gap: 1.5rem;
-	--home-item-offset-transform: translate(0.3rem, 0.3rem);
+	--home-item-accent-offset: 0.3rem;
 }
 
 @media (prefers-color-scheme: dark) {

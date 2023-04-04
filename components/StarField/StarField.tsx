@@ -39,8 +39,8 @@ export default function Starfield() {
 			const start = canvasWidth > canvasHeight ? canvasWidth : canvasHeight;
 
 			const star: Star = {
-				x: x + (sx * start) / SPEED,
-				y: y + (sy * start) / SPEED,
+				x: x + (sx * start) / 1.5,
+				y: y + (sy * start) / 1.5,
 				sx,
 				sy,
 				w: 1,

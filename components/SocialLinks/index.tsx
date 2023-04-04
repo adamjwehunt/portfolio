@@ -6,15 +6,21 @@ import MailIcon from '@/public/mail.svg';
 import classnames from 'classnames';
 import styles from './socialLinks.module.css';
 
-export const SocialLinks = () => {
+export const SocialLinks = ({ multicolor = false }) => {
 	return (
 		<div className={styles.container}>
-			<SocialLink href={'https://github.com/adamjwehunt'} icon={GithubIcon} />
 			<SocialLink
+				className={multicolor ? styles.accent1 : ''}
+				href={'https://github.com/adamjwehunt'}
+				icon={GithubIcon}
+			/>
+			<SocialLink
+				className={multicolor ? styles.accent2 : ''}
 				href={'https://www.linkedin.com/in/ajwehunt'}
 				icon={LinkedinIcon}
 			/>
 			<SocialLink
+				className={multicolor ? styles.accent3 : ''}
 				href={'https://twitter.com/codetiquette'}
 				icon={TwitterIcon}
 			/>
@@ -26,11 +32,12 @@ export const SocialLinks = () => {
 interface LinkProps {
 	href: string;
 	icon: any;
+	className?: string;
 }
 
-const SocialLink = ({ href, icon: Icon }: LinkProps) => (
+const SocialLink = ({ href, icon: Icon, className }: LinkProps) => (
 	<Link href={href} className={styles.link} target={'_blank'}>
 		<Icon className={styles.svg} />
-		<Icon className={classnames(styles.svg, styles.accent)} />
+		<Icon className={classnames(styles.svg, styles.accent, className)} />
 	</Link>
 );
