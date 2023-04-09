@@ -10,11 +10,12 @@
 	--home-item-gap: 1.5rem;
 	--home-item-accent-offset: 0.3rem;
 
-	--frame-border: 3px black solid;
+	--frame-border: 3px #000 solid;
 	--frame-border-color: var(--home-item-foreground);
 	--frame-social-link-background-color: #fff;
 	--frame-social-link-icon-color: #303030;
 	--frame-footer-left-background-color: #d8d3c7;
+	--frame-footer-left-background-color-hover: #1c8df0;
 	--frame-footer-right-background-color: #000;
 }
 

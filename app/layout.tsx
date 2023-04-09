@@ -1,6 +1,5 @@
 import StarField from '../components/StarField/StarField';
 import { Share_Tech_Mono } from 'next/font/google';
-import styles from './layout.module.css';
 import './globals.css';
 
 const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'] });

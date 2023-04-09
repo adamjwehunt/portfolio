@@ -1,85 +1,90 @@
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: auto;
+	overflow: hidden;
+	height: 6rem;
+	margin: 0 1rem;
+	display: flex;
+	justify-content: center;
+}
+
 .backArrow {
 	position: absolute;
-	top: -1.5rem;
 	left: 1rem;
 	cursor: pointer;
 	width: 7rem;
-	height: 8rem;
-	padding: 2rem 0;
+	height: 6rem;
 }
 
 .backArrowAccent {
-	fill: black;
+	fill: #000;
 }
 
 .name {
 	position: absolute;
-	top: 1rem;
+	top: 1.25rem;
 	font-size: 1.5rem;
 }
 
 .frame {
+	overflow: scroll;
 	position: absolute;
-	inset: 0;
-	margin: 1rem;
-	border: var(--frame-border);
-}
-
-.innerFrame {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	height: 100%;
-	width: 100%;
+	top: 6rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 0;
+	border-top: var(--frame-border);
 }
 
 .contentWrapper {
-	border-top: var(--frame-border);
-	position: absolute;
-	inset: 0;
-	margin-top: 5rem;
+	border: var(--frame-border);
+	border-top: none;
 	background-color: var(--frame-border-color);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 10rem;
+	overflow: visible;
+	min-height: calc(100% - 11.25rem);
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	width: 100%;
 	display: grid;
 	grid-template-rows: auto 1fr;
 	grid-template-columns: 1fr 1fr;
-	border-top: var(--frame-border);
+	border: var(--frame-border);
+	border-top: none;
+	margin-bottom: 1rem;
 }
 
-.fullFooterRow,
-.halfFooterRow {
+.fullRow,
+.halfRow {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.fullFooterRow {
+.fullRow {
 	grid-column: 1 / span 2;
 	background-color: var(--frame-social-link-background-color);
 }
 
 .socialLinks {
-	height: 6rem;
+	min-height: 6rem;
+	height: calc(5dvw + 2rem);
 }
 
 .socialLinks svg {
 	fill: var(--frame-social-link-icon-color);
 }
 
-.halfFooterRow {
+.halfRow {
 	height: 4rem;
 	padding: 1rem;
-	border-top: 3px solid black;
+	border-top: var(--frame-border);
 	flex-direction: column;
 }
 
@@ -100,5 +105,5 @@
 }
 
 .right:hover {
-	background-color: #1c8df0;
+	background-color: var(--frame-footer-left-background-color-hover);
 }
