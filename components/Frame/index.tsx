@@ -7,6 +7,10 @@ import { SocialLinks } from '../SocialLinks';
 import Link from 'next/link';
 import styles from './frame.module.css';
 
+const FLAGSTAFF_AZ = 'Flagstaff, AZ';
+const EMAIL = 'adamjwehunt@gmail.com';
+const COPYRIGHT = '© Wehunt 2023';
+
 const roboto = Roboto({
 	weight: ['100', '300', '400', '700'],
 	subsets: ['latin'],
@@ -38,13 +42,11 @@ export default function Frame({ children }: FrameProps) {
 						<SocialLinks className={styles.socialLinks} />
 					</div>
 					<div className={classnames(styles.halfRow, styles.left)}>
-						<div>{'Flagstaff, AZ'}</div>
-						<Link href={'mailto:adamjwehunt@gmail.com'}>
-							{'adamjwehunt@gmail.com'}
-						</Link>
+						<div>{FLAGSTAFF_AZ}</div>
+						<Link href={`mailto:${EMAIL}`}>{EMAIL}</Link>
 					</div>
 					<div className={classnames(styles.halfRow, styles.right)}>
-						{'© Wehunt 2023'}
+						{COPYRIGHT}
 					</div>
 				</div>
 			</div>
