@@ -1,0 +1,11 @@
+.arrow {
+	position: absolute;
+	left: 1rem;
+	cursor: pointer;
+	width: 7rem;
+	height: 6rem;
+}
+
+.arrowAccent {
+	fill: #000;
+}

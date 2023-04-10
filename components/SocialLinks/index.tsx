@@ -3,7 +3,7 @@ import TwitterIcon from '@/public/twitter.svg';
 import GithubIcon from '@/public/github.svg';
 import LinkedinIcon from '@/public/linkedin.svg';
 import MailIcon from '@/public/mail.svg';
-import { SvgButton } from '../SvgButton';
+import { IconButton } from '../IconButton';
 import styles from './socialLinks.module.css';
 
 interface SocialLinksProps {
@@ -17,29 +17,33 @@ export const SocialLinks = ({
 }: SocialLinksProps) => {
 	return (
 		<div className={classnames(styles.container, className)}>
-			<SvgButton
-				isExternal
+			<IconButton
 				href={'https://github.com/adamjwehunt'}
+				isExternalLink
 				accent={hasAccents}
 				icon={GithubIcon}
+				ariaLabel="Github"
 			/>
-			<SvgButton
-				isExternal
+			<IconButton
 				href={'https://www.linkedin.com/in/ajwehunt'}
+				isExternalLink
 				accent={hasAccents}
 				icon={LinkedinIcon}
+				ariaLabel="LinkedIn"
 			/>
-			<SvgButton
-				isExternal
+			<IconButton
 				href={'https://twitter.com/codetiquette'}
+				isExternalLink
 				accent={hasAccents}
 				icon={TwitterIcon}
+				ariaLabel="Twitter"
 			/>
-			<SvgButton
-				isExternal
+			<IconButton
 				href={'mailto:adamjwehunt@gmail.com'}
+				isExternalLink
 				accent={hasAccents}
 				icon={MailIcon}
+				ariaLabel="Email"
 			/>
 		</div>
 	);

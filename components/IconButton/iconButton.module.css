@@ -1,5 +1,4 @@
-
-.link {
+.iconButton {
 	position: relative;
 	width: var(--home-item-height);
 	height: var(--home-item-height);
@@ -8,13 +7,17 @@
 	align-items: center;
 }
 
-.svg {
+.svg,
+.accent {
 	position: absolute;
 	inset: 0;
 	height: 100%;
 	width: 100%;
+}
+
+.svg {
 	fill: var(--home-item-foreground);
-	z-index: 2;
+	z-index: 1;
 }
 
 .svg:hover {
@@ -26,16 +29,16 @@
 
 .svg:active {
 	transform: translate(
-		calc(var(--home-item-accent-offset)),
-		calc(var(--home-item-accent-offset))
+		var(--home-item-accent-offset),
+		var(--home-item-accent-offset)
 	);
 }
 
 .accent {
+	fill: var(--accent-4);
+	z-index: 0;
 	transform: translate(
 		var(--home-item-accent-offset),
 		var(--home-item-accent-offset)
 	);
-	fill: var(--accent-4);
-	z-index: 1;
 }

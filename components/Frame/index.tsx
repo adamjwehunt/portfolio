@@ -1,11 +1,10 @@
 import classnames from 'classnames';
 import { Roboto } from 'next/font/google';
 import { Name } from '../Name';
-import BackArrow from '@/public/back-arrow.svg';
-import { SvgButton } from '../SvgButton';
 import { SocialLinks } from '../SocialLinks';
 import Link from 'next/link';
 import styles from './frame.module.css';
+import { BackButton } from '../BackButton';
 
 const FLAGSTAFF_AZ = 'Flagstaff, AZ';
 const EMAIL = 'adamjwehunt@gmail.com';
@@ -24,13 +23,7 @@ export default function Frame({ children }: FrameProps) {
 	return (
 		<>
 			<div className={styles.header}>
-				<SvgButton
-					className={styles.backArrow}
-					accentClassName={styles.backArrowAccent}
-					href={'/'}
-					icon={BackArrow}
-					accent
-				/>
+				<BackButton />
 				<Name className={styles.name} />
 			</div>
 			<div className={styles.frame}>
