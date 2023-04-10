@@ -43,25 +43,22 @@ export const IconButton = ({
 		</>
 	);
 
-	return (
-		<>
-			{!href ? (
-				<button
-					className={classnames(styles.iconButton, className)}
-					onClick={onClick}
-					aria-label={ariaLabel}
-				>
-					<Icons />
-				</button>
-			) : (
-				<Link
-					className={classnames(styles.iconButton, className)}
-					href={href}
-					target={isExternalLink ? '_blank' : '_self'}
-				>
-					<Icons />
-				</Link>
-			)}
-		</>
+	return !href ? (
+		<button
+			className={classnames(styles.iconButton, className)}
+			onClick={onClick}
+			aria-label={ariaLabel}
+		>
+			<Icons />
+		</button>
+	) : (
+		<Link
+			className={classnames(styles.iconButton, className)}
+			href={href}
+			target={isExternalLink ? '_blank' : '_self'}
+			aria-label={ariaLabel}
+		>
+			<Icons />
+		</Link>
 	);
 };
