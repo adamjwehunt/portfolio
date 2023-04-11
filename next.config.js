@@ -37,6 +37,10 @@ const nextConfig = {
 		appDir: true,
 		mdxRs: true,
 	},
+	sassOptions: {
+		includePaths: ['./app', './components', './lib'],
+		prependData: `@import "variables.scss";`,
+	},
 };
 
 module.exports = withMDX(nextConfig);

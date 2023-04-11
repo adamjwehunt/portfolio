@@ -5,7 +5,7 @@ import { Name } from '../Name';
 import { SocialLinks } from '../SocialLinks';
 import Link from 'next/link';
 import { BackButton } from '../BackButton';
-import styles from './frame.module.css';
+import styles from './frame.module.scss';
 
 const { location, copyright } = content.components.frame.footer;
 const { email } = content;

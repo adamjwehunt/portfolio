@@ -38,14 +38,14 @@ export const IconButton = ({
 		<>
 			<Icon className={styles.svg} />
 			{!accent ? null : (
-				<Icon className={classnames(styles.accent, accentClassName)} />
+				<Icon className={classnames(accentClassName, styles.accent)} />
 			)}
 		</>
 	);
 
 	return !href ? (
 		<button
-			className={classnames(styles.iconButton, className)}
+			className={classnames(className, styles.iconButton)}
 			onClick={onClick}
 			aria-label={ariaLabel}
 		>
@@ -53,7 +53,7 @@ export const IconButton = ({
 		</button>
 	) : (
 		<Link
-			className={classnames(styles.iconButton, className)}
+			className={classnames(className, styles.iconButton)}
 			href={href}
 			target={isExternalLink ? '_blank' : '_self'}
 			aria-label={ariaLabel}

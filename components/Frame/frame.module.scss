@@ -1,3 +1,7 @@
+$frame-padding: 1rem;
+$socialLinks-min-height: 6rem;
+$halfRow-height: 4rem;
+
 .header {
 	position: fixed;
 	inset: 0;
@@ -19,8 +23,8 @@
 	overflow: scroll;
 	position: absolute;
 	top: 6rem;
-	left: 1rem;
-	right: 1rem;
+	left: $frame-padding;
+	right: $frame-padding;
 	bottom: 0;
 	border-top: var(--frame-border);
 }
@@ -34,10 +38,12 @@
 	align-items: center;
 	overflow: visible;
 	padding: 8dvh 8vw;
+	min-height: calc(
+		99% - calc($frame-padding + $socialLinks-min-height + $halfRow-height)
+	);
 }
 
 .content {
-	min-height: calc(100% - 11rem);
 	width: 100%;
 	height: auto;
 	max-width: 72rem;
@@ -50,7 +56,7 @@
 	grid-template-columns: 1fr 1fr;
 	border: var(--frame-border);
 	border-top: none;
-	margin-bottom: 1rem;
+	margin-bottom: $frame-padding;
 }
 
 .fullRow,
@@ -66,7 +72,7 @@
 }
 
 .socialLinks {
-	min-height: 6rem;
+	min-height: $socialLinks-min-height;
 	height: calc(5dvw + 2rem);
 }
 
@@ -75,7 +81,7 @@
 }
 
 .halfRow {
-	height: 4rem;
+	height: $halfRow-height;
 	padding: 1rem;
 	border-top: var(--frame-border);
 	flex-direction: column;
