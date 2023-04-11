@@ -24,11 +24,12 @@ const Starfield = () => {
 			return;
 		}
 
-		if (canvasDimensions.width !== window.innerWidth) {
+		if (
+			canvasDimensions.width !== window.innerWidth ||
+			canvasDimensions.height !== window.innerHeight
+		) {
 			canvas.width = window.innerWidth;
 			canvasDimensions.width = window.innerWidth;
-		}
-		if (canvasDimensions.height !== window.innerHeight) {
 			canvas.height = window.innerHeight;
 			canvasDimensions.height = window.innerHeight;
 		}
@@ -62,9 +63,11 @@ const Starfield = () => {
 			star.age++;
 
 			if (
-				star.age === Math.floor(50 / ACCELERATION) ||
-				star.age === Math.floor(150 / ACCELERATION) ||
-				star.age === Math.floor(300 / ACCELERATION)
+				[
+					Math.floor(50 / ACCELERATION),
+					Math.floor(150 / ACCELERATION),
+					Math.floor(300 / ACCELERATION),
+				].includes(star.age)
 			) {
 				star.w++;
 				star.h++;
@@ -84,10 +87,10 @@ const Starfield = () => {
 		}
 
 		if (starsToRemove.length > 0) {
-			for (const index of starsToRemove) {
+			starsToRemove.forEach((index) => {
 				stars.splice(index, 1);
 				numStarsRef.current--;
-			}
+			});
 		}
 
 		const starsToDraw = (canvasWidth * canvasHeight) / 5_000;
