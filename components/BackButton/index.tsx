@@ -1,5 +1,6 @@
 'use client';
 
+import { content } from '@/content';
 import { useRouter } from 'next/navigation';
 import BackArrow from '@/public/back-arrow.svg';
 import { IconButton } from '../IconButton';
@@ -14,9 +15,9 @@ export const BackButton = () => {
 		<IconButton
 			className={styles.arrow}
 			accentClassName={styles.arrowAccent}
-      accent
+			accent
 			icon={BackArrow}
-			ariaLabel={'Back'}
+			ariaLabel={content.components.backButton.ariaLabel}
 			onClick={handleBackButtonClick}
 		/>
 	);

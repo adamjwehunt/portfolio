@@ -7,5 +7,5 @@
 }
 
 .arrowAccent {
-	fill: #000;
+	fill: var(--accent-5);
 }

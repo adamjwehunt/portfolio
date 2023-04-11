@@ -1,12 +1,4 @@
-.main {
-	width: 100%;
-	height: auto;
-	display: grid;
-	grid-template-rows: auto 1fr;
-	grid-template-columns: 1fr 1fr;
-	padding: 0 8vw;
-	max-width: 72rem;
-}
+/* TODO REMOVE AFTER STYLING ABOUT.MDX */
 
 .fullRow,
 .halfRow {

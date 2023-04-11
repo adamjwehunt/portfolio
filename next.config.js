@@ -1,3 +1,9 @@
+const withMDX = require('@next/mdx')({
+	options: {
+		providerImportSource: '@mdx-js/react',
+	},
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	webpack(config) {
@@ -29,7 +35,8 @@ const nextConfig = {
 	},
 	experimental: {
 		appDir: true,
+		mdxRs: true,
 	},
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);

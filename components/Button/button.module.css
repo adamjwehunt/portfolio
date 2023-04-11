@@ -11,7 +11,7 @@
 .text {
 	position: absolute;
 	inset: 0;
-	border: 2px solid #000;
+	border: 2px solid var(--accent-5);
 }
 
 .text {
@@ -19,7 +19,7 @@
 	justify-content: center;
 	align-items: center;
 	background-color: var(--home-item-foreground);
-	z-index: 2;
+	z-index: 1;
 }
 
 .text:hover {
@@ -29,17 +29,14 @@
 	);
 }
 
-.text:active {
-	transform: translate(
-		calc(var(--home-item-accent-offset)),
-		calc(var(--home-item-accent-offset))
-	);
-}
-
+.text:active,
 .accent {
 	transform: translate(
 		var(--home-item-accent-offset),
 		var(--home-item-accent-offset)
 	);
-	z-index: 1;
+}
+
+.accent {
+	z-index: 0;
 }

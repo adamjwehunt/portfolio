@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './iconButton.module.css';
 
 interface BaseIconButtonProps {
-	icon: any;
+	icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 	ariaLabel: string;
 	accent?: boolean;
 	accentClassName?: string;

@@ -7,15 +7,3 @@
 	align-items: center;
 	gap: 1rem;
 }
-
-.accent1 {
-	fill: var(--accent-1);
-}
-
-.accent2 {
-	fill: var(--accent-2);
-}
-
-.accent3 {
-	fill: var(--accent-3);
-}

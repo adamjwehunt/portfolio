@@ -1,59 +1,22 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useCallback } from 'react';
+import { useLayoutEffect, useMemo, useRef, useCallback } from 'react';
+import { Star, clearCanvas, createStar } from './utils';
 import styles from './starfield.module.css';
 
-const SPEED = 1.5;
-const ACCELERATION = 0.25;
-const STAR_COLOR = '#fff';
-const BACKGROUND_COLOR = '#3f525d';
+export const SPEED = 1.5;
+export const ACCELERATION = 0.25;
+export const STAR_COLOR = '#fff';
+export const BACKGROUND_COLOR = '#3f525d';
 
-interface Star {
-	x: number;
-	y: number;
-	sx: number;
-	sy: number;
-	w: number;
-	h: number;
-	age: number;
-	dies: number;
-	color: string;
-}
-
-// Source: https://codepen.io/bts/pen/BygMzB
-export default function Starfield() {
+// Converted this https://codepen.io/bts/pen/BygMzB to React
+const Starfield = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const starsRef = useRef<Star[]>([]);
 	const numStarsRef = useRef<number>(0);
 	const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 	const canvasDimensions = useMemo(() => ({ width: 0, height: 0 }), []);
 	const animationRef = useRef<number | null>(null);
-
-	const createStar = useCallback(
-		(canvasWidth: number, canvasHeight: number): Star => {
-			const x = canvasDimensions.width / 2;
-			const y = canvasDimensions.height / 2;
-			const sx = Math.random() * 10 - 5;
-			const sy = Math.random() * 10 - 5;
-
-			const start = canvasWidth > canvasHeight ? canvasWidth : canvasHeight;
-
-			const star: Star = {
-				x: x + (sx * start) / SPEED,
-				y: y + (sy * start) / SPEED,
-				sx,
-				sy,
-				w: 1,
-				h: 1,
-				age: 0,
-				dies: 500,
-				color: STAR_COLOR,
-			};
-
-			return star;
-		},
-		[canvasDimensions]
-	);
 
 	const resizeCanvas = useCallback(() => {
 		const canvas = canvasRef.current;
@@ -71,15 +34,6 @@ export default function Starfield() {
 		}
 	}, [canvasDimensions]);
 
-	const clearCanvas = useCallback(() => {
-		const ctx = ctxRef.current;
-		if (!ctx) {
-			return;
-		}
-		ctx.fillStyle = BACKGROUND_COLOR;
-		ctx.fillRect(0, 0, canvasDimensions.width, canvasDimensions.height);
-	}, [canvasDimensions]);
-
 	const draw = useCallback(() => {
 		const canvas = canvasRef.current;
 		const ctx = ctxRef.current;
@@ -91,12 +45,12 @@ export default function Starfield() {
 		const canvasWidth = canvas.width;
 		const canvasHeight = canvas.height;
 
-		clearCanvas();
+		clearCanvas(ctx, canvasWidth, canvasHeight);
 
 		const stars = starsRef.current;
 		const starsToRemove: number[] = [];
 
-		for (let i = 0; i < stars.length; i++) {
+		for (let i = stars.length - 1; i >= 0; i--) {
 			const star = stars[i];
 
 			star.x += star.sx;
@@ -123,14 +77,13 @@ export default function Starfield() {
 				star.y > canvasHeight
 			) {
 				starsToRemove.push(i);
+			} else {
+				ctx.fillStyle = star.color;
+				ctx.fillRect(star.x, star.y, star.w, star.h);
 			}
-
-			ctx.fillStyle = star.color;
-			ctx.fillRect(star.x, star.y, star.w, star.h);
 		}
 
 		if (starsToRemove.length > 0) {
-			starsToRemove.sort((a, b) => b - a);
 			for (const index of starsToRemove) {
 				stars.splice(index, 1);
 				numStarsRef.current--;
@@ -141,23 +94,22 @@ export default function Starfield() {
 
 		if (numStarsRef.current < starsToDraw) {
 			const numNewStars = starsToDraw - numStarsRef.current;
-			const newStars = Array.from({ length: numNewStars }, () =>
-				createStar(canvasWidth, canvasHeight)
-			);
-			starsRef.current = [...starsRef.current, ...newStars];
-			numStarsRef.current += numNewStars;
+			for (let i = 0; i < numNewStars; i++) {
+				starsRef.current.push(createStar(canvasWidth, canvasHeight));
+				numStarsRef.current++;
+			}
 		}
 
-		requestAnimationFrame(draw);
-	}, [clearCanvas, createStar]);
+		animationRef.current = requestAnimationFrame(draw);
+	}, []);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		window.addEventListener('resize', resizeCanvas);
 		resizeCanvas();
 		return () => window.removeEventListener('resize', resizeCanvas);
 	}, [resizeCanvas]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const canvas = canvasRef.current;
 		if (!canvas) {
 			return;
@@ -175,7 +127,9 @@ export default function Starfield() {
 				cancelAnimationFrame(animationRef.current);
 			}
 		};
-	}, [createStar, canvasDimensions, draw]);
+	}, [canvasDimensions, draw]);
 
 	return <canvas ref={canvasRef} className={styles.starfield} />;
-}
+};
+
+export default Starfield;

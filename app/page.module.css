@@ -20,14 +20,14 @@
 	margin-bottom: calc(var(--home-item-gap) * 2);
 }
 
-.button1 {
+.blogButton {
 	background-color: var(--accent-1);
 }
 
-.button2 {
+.projectsButton {
 	background-color: var(--accent-2);
 }
 
-.button3 {
+.aboutButton {
 	background-color: var(--accent-3);
 }
