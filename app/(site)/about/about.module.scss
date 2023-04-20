@@ -16,8 +16,7 @@
 
 .content p {
 	font-size: 1.125rem;
-	margin-bottom: 0.5rem;
-	line-height: 1.5;
+	margin-bottom: 1rem;
 }
 
 .title {
@@ -43,10 +42,6 @@
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
-	.content p {
-		margin-bottom: 0.35rem;
-	}
-
 	.title {
 		font-size: 1.75rem;
 		margin: 2.5rem 0;

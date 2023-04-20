@@ -39,7 +39,7 @@ $content-padding-vertical: 8dvh;
 	flex-direction: column;
 	align-items: center;
 	overflow: visible;
-	padding: 0 8vw $content-padding-vertical;
+	padding: 0 6vw $content-padding-vertical;
 	min-height: calc(
 		85dvh - calc($frame-padding + $socialLinks-min-height + $halfRow-height)
 	);

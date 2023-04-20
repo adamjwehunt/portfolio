@@ -5,18 +5,24 @@ import { SocialLinks } from '@/components/SocialLinks';
 import styles from './page.module.scss';
 
 const {
-	page: { blog, projects, about },
+	page: {
+		home: { greeting, aboutMe, callToAction },
+		blog,
+		projects,
+		about,
+	},
 } = content;
 
 const Home = () => (
 	<main className={styles.main}>
-		<Name className={styles.name} />
+		<section className={styles.intro}>
+			<div className={styles.greeting}>{greeting}</div>
+			<Name className={styles.name} />
+			<div className={styles.aboutMe}>{aboutMe}</div>
+			<div className={styles.callToAction}>{callToAction}</div>
+		</section>
 		<section className={styles.buttons}>
-			<Button
-				className={styles.button1}
-				text={blog.linkText}
-				href={'/blog'}
-			/>
+			<Button className={styles.button1} text={blog.linkText} href={'/blog'} />
 			<Button
 				className={styles.button2}
 				text={projects.linkText}

@@ -10,6 +10,7 @@
 	--home-item-max-width: 24rem;
 	--home-item-gap: 1.5rem;
 	--home-item-accent-offset: 0.3rem;
+	--home-greeting-color: #e8e6e0;
 
 	--frame-border: 3px var(--accent-5) solid;
 	--frame-border-color: var(--home-item-foreground);
@@ -80,8 +81,8 @@ button {
 }
 
 h2 {
-	font-size: 2.375rem;
-	margin: 3.75rem 0 2.25rem;
+	font-size: 2rem;
+	margin: 3.75rem 0 2rem;
 	line-height: 1.5;
 }
 
@@ -111,7 +112,7 @@ code {
 
 @media only screen and (max-width: $mobile-breakpoint) {
 	h2 {
-		font-size: 2rem;
+		font-size: 1.75rem;
 		margin: 3rem 0 1.5rem;
 	}
 

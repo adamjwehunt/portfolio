@@ -9,16 +9,35 @@
 	align-items: center;
 }
 
-.name {
+.intro,
+.buttons {
+	max-width: var(--home-item-max-width);
 	margin-bottom: calc(var(--home-item-gap) * 2);
+	width: 100%;
+}
+
+.intro {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--home-item-gap) / 3);
+	padding: 0 2rem;
+}
+
+.greeting,
+.aboutMe,
+.callToAction {
+	color: var(--home-greeting-color);
+	font-size: 1.25rem;
+}
+
+.name {
 	line-height: 1;
 	font-size: 1.5rem;
+	text-align: left !important;
 }
 
 .buttons {
-	max-width: var(--home-item-max-width);
 	gap: var(--home-item-gap);
-	margin-bottom: calc(var(--home-item-gap) * 2);
 	padding: 0 1rem;
 }
 

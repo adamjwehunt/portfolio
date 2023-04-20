@@ -26,9 +26,9 @@ export const content = {
 	email,
 	metadata: {
 		titleBase: 'Adam Wehunt -',
-		titleRootPage: 'Software Engineer, Web Developer, and Tinkerer',
+		titleRootPage: 'Web Developer',
 		description:
-			'Adam Wehunt is a software engineer, web developer, and tinkerer. He is currently looking for fulltime employment.',
+			'Hi, my name is Adam Wehunt and I am a web developer. I am currently looking for fulltime employment.',
 	},
 	components: {
 		frame: {
@@ -63,6 +63,11 @@ export const content = {
 		],
 	},
 	page: {
+		home: {
+			greeting: 'Hello, my name is',
+			aboutMe: 'and I love to code.',
+			callToAction: '(Seeking new opportunities)',
+		},
 		blog: {
 			linkText: 'Blog',
 			header:
@@ -181,7 +186,7 @@ export const content = {
 					description: [
 						'Spotify inspired design to easily view and search through transcripts of YouTube videos',
 						"Generates a recap with [GPT-3](https://openai.com/blog/gpt-3-apps 'GPT-3 AI Language Model') from video's transcript (On longer videos, the transcript is trimmed before AI analysis)",
-						'Other features: Recap text-to-speech, bypass search by pasting youtube links, Download youtube videos, Copy transcript button, Share links, mobile friendly',
+						'Other features: Recap text-to-speech, bypass search by pasting youtube links, Download youtube videos, Copy transcript button, Share links, Listen to video while viewing transcript',
 					],
 				},
 				{
@@ -240,8 +245,7 @@ export const content = {
 				height: 450,
 				alt: 'Welcome!',
 			},
-			title:
-				"Welcome! Thanks for visiting. I'm Adam and I'm thrilled to have you here.",
+			title: "Welcome! Thanks for visiting. I'm thrilled to have you here.",
 			intro:
 				'Growing up in the sunny suburbs of the Arizona desert 🌵, my journey began riding a wave of tech growth. With a PC always within reach, I developed a passion for creativity through constant tinkering. This ultimately led me to become a software developer. As a child, I had a love for drawing and art, which has translated into my work as a programmer. I find the most satisfaction from building with a team and bringing the UI to life by creating clean, reliable (and satisfying!) software.',
 			outro:
