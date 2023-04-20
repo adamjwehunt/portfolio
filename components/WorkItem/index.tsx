@@ -49,7 +49,11 @@ const WorkItem = async ({
 			<div className={styles.tasks}>
 				{mdxTasks.map(({ image: taskImage, content }, index) => (
 					<div key={index} className={styles.taskContainer}>
-						<Image className={styles.taskImage} {...taskImage} />
+						<Image
+							className={styles.taskImage}
+							{...taskImage}
+							alt={taskImage.alt}
+						/>
 						{content}
 					</div>
 				))}

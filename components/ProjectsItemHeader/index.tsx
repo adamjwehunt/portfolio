@@ -12,14 +12,12 @@ export const ProjectsItemHeader = ({
 	image,
 	title,
 	subtitle,
-}: ProjectsItemHeaderProps) => {
-	return (
-		<div className={styles.header}>
-			<Image className={styles.image} {...image} />
-			<div className={styles.text}>
-				<h3 className={styles.title}>{title}</h3>
-				<div className={styles.subtitle}>{subtitle}</div>
-			</div>
+}: ProjectsItemHeaderProps) => (
+	<div className={styles.header}>
+		<Image className={styles.image} {...image} alt={image.alt} />
+		<div className={styles.text}>
+			<h3 className={styles.title}>{title}</h3>
+			<div className={styles.subtitle}>{subtitle}</div>
 		</div>
-	);
-};
+	</div>
+);

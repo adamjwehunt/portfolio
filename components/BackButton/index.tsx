@@ -8,7 +8,6 @@ import styles from './backButton.module.css';
 
 export const BackButton = () => {
 	const router = useRouter();
-
 	const handleBackButtonClick = () => router.back();
 
 	return (
