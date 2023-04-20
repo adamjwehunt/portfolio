@@ -41,3 +41,19 @@
 .email {
 	color: var(--accent-2);
 }
+
+@media only screen and (max-width: $mobile-breakpoint) {
+	.content p {
+		margin-bottom: 0.35rem;
+	}
+
+	.title {
+		font-size: 1.75rem;
+		margin: 2.5rem 0;
+	}
+
+	.intro,
+	.outro {
+		font-size: 1.35rem;
+	}
+}

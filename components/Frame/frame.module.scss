@@ -56,6 +56,12 @@ $content-padding-vertical: 8dvh;
 	flex-basis: min-content;
 }
 
+@media only screen and (max-width: $mobile-breakpoint) {
+	.contentHeader {
+		font-size: 1rem;
+	}
+}
+
 .content {
 	width: 100%;
 	height: auto;
@@ -75,6 +81,12 @@ $content-padding-vertical: 8dvh;
 	border: var(--frame-border);
 	border-top: none;
 	margin-bottom: $frame-padding;
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+	.footer {
+		font-size: 0.875rem;
+	}
 }
 
 .fullRow,

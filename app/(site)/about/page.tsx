@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { content } from '@/content';
 import { getAbout } from '@/lib/mdx';
 import Frame from '@/components/Frame';
-import styles from './about.module.css';
+import styles from './about.module.scss';
 
 const {
 	header,

@@ -1,4 +1,5 @@
 $gap: 2rem;
+$image-gap: 0.5rem;
 $border-radius: 12px;
 
 .wrapper,
@@ -20,8 +21,15 @@ $border-radius: 12px;
 	gap: $gap;
 }
 
+@media only screen and (max-width: $mobile-breakpoint) {
+	.wrapper {
+		flex-direction: column;
+		gap: 1rem;
+	}
+}
+
 .details {
-	flex: 1;
+	flex: 0.7;
 }
 
 .description {
@@ -39,22 +47,33 @@ $border-radius: 12px;
 }
 
 .images {
-	border: 6px solid var(--image-border);
+	border: $image-gap solid var(--image-border);
 	border-radius: 18px;
 	box-shadow: 0 0 0 3px var(--image-border-edge);
 	background-color: white;
-	gap: 1rem;
+	gap: $image-gap;
+	align-self: flex-start;
+	align-items: center;
+	flex: 1;
+	width: 100%;
 }
 
-.image {
+.desktopImage,
+.mobileImages img {
+	width: 100%;
+	height: auto;
+	flex: 1;
+}
+
+.desktopImage {
 	border-top-left-radius: $border-radius;
 	border-top-right-radius: $border-radius;
 }
 
 .mobileImages {
-	max-width: 483px;
 	width: 100%;
 	justify-content: space-between;
+	gap: $image-gap;
 
 	:first-child {
 		border-bottom-left-radius: $border-radius;

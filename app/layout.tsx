@@ -1,7 +1,7 @@
 import { content } from '@/content';
 import StarField from '@/components/StarField/StarField';
 import { Share_Tech_Mono } from 'next/font/google';
-import './globals.css';
+import './globals.scss';
 
 const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'] });
 const { titleBase, titleRootPage, description } = content.metadata;

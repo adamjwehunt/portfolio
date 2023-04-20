@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { content } from '@/content';
 import { getPostsMetadata } from '@/lib/mdx';
 import { joinListItems } from '@/lib/util';
-import styles from './blog.module.css';
+import styles from './blog.module.scss';
 
 const { title } = content.page.blog;
 

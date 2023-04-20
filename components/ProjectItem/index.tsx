@@ -51,7 +51,7 @@ const ProjectItem = async ({
 					</ul>
 				</div>
 				<div className={styles.images}>
-					<Image className={styles.image} {...desktop} />
+					<Image className={styles.desktopImage} {...desktop} />
 					<div className={styles.mobileImages}>
 						{mobile.map((props, index) => (
 							<Image key={index} {...props} />

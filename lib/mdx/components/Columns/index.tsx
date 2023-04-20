@@ -1,5 +1,5 @@
 import { Children, ReactNode, isValidElement } from 'react';
-import styles from './columns.module.css';
+import styles from './columns.module.scss';
 
 interface ColumnProps {
 	children: ReactNode;
