@@ -1,8 +1,20 @@
 import path from 'path';
 import fs from 'fs';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { A } from './components/A';
+import { MdxLink } from './components/MdxLink';
 import { ReactElement } from 'react';
+import { MdxImage } from './components/MdxImage';
+import { Columns, Left, Right } from './components/Columns';
+import moment from 'moment';
+import { ImageProps } from 'next/image';
+
+const components = {
+	a: MdxLink,
+	Image: MdxImage,
+	Columns,
+	Left,
+	Right,
+};
 
 interface BlogPost {
 	metadata: BlogPostMetadata;
@@ -27,9 +39,23 @@ export const getPost = async (slug: string): Promise<BlogPost> => {
 	const { frontmatter, content } = await compileMDX({
 		source: fileContent,
 		options: { parseFrontmatter: true },
+		components,
 	});
 
-	return { metadata: { ...frontmatter, slug: mdxSlug }, content };
+	return {
+		metadata: {
+			...frontmatter,
+			slug: mdxSlug,
+			...(frontmatter.publishDate
+				? {
+						publishDate: moment(frontmatter.publishDate).format(
+							'MMMM Do, YYYY'
+						),
+				  }
+				: {}),
+		},
+		content,
+	};
 };
 
 export const getPostsMetadata = async (): Promise<BlogPostMetadata[]> => {
@@ -61,48 +87,46 @@ export const getAbout = async (): Promise<About> => {
 	const { frontmatter, content } = await compileMDX({
 		source: fileContent,
 		options: { parseFrontmatter: true },
-		components: {
-			a: A,
-		},
+		components,
 	});
 
 	return { metadata: frontmatter, content };
 };
 
-interface Project {
-	metadata: ProjectsMetadata;
-	content: string | ReactElement;
-}
-
-interface ProjectsMetadata {
-	title?: string;
-	publishDate?: string;
-}
-
-const projectsDirectory = path.join(process.cwd(), 'content', 'projects');
-
-const getProject = async (slug: string): Promise<Project> => {
-	const mdxSlug = slug.replace(/\.mdx$/, '');
-	const filePath = path.join(projectsDirectory, `${mdxSlug}.mdx`);
-	const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
-
-	const { frontmatter, content } = await compileMDX({
-		source: fileContent,
-		options: { parseFrontmatter: true },
+const getContentFromMdxString = async (
+	mdxString: string
+): Promise<ReactElement> => {
+	const { content } = await compileMDX({
+		source: mdxString,
+		components,
 	});
 
-	return { metadata: frontmatter, content };
+	return content;
 };
 
-export const getProjects = async (): Promise<Project[]> => {
-	const files = fs.readdirSync(projectsDirectory);
+export interface Task {
+	text: string;
+	image: ImageProps;
+}
 
-	const projects = [];
+export const convertTasksToMdx = async (tasks: Task[]) => {
+	const newTasks: { image: ImageProps; content: ReactElement }[] = [];
 
-	for (const file of files) {
-		const project = await getProject(file);
-		projects.push(project);
+	for (const task of tasks) {
+		const content = await getContentFromMdxString(task.text);
+		newTasks.push({ image: task.image, content });
 	}
 
-	return projects;
+	return newTasks;
+};
+
+export const convertStringsToMdx = async (strings: string[]) => {
+	const mdx: ReactElement[] = [];
+
+	for (const string of strings) {
+		const content = await getContentFromMdxString(string);
+		mdx.push(content);
+	}
+
+	return mdx;
 };

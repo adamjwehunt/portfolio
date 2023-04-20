@@ -1,0 +1,28 @@
+.header,
+.text {
+	display: flex;
+}
+
+.header {
+	margin: 1rem 0 2.5rem;
+}
+
+.image {
+	border: 6px solid var(--image-border);
+	border-radius: 12px;
+	box-shadow: 0 0 0 3px var(--image-border-edge);
+}
+
+.text {
+	flex-direction: column;
+	margin-left: 1rem;
+	line-height: 1.25;
+}
+
+.title {
+	margin: 0;
+}
+
+.subtitle {
+	font-size: 1.125rem;
+}

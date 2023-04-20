@@ -18,6 +18,11 @@
 	--frame-footer-left-background-color: #d8d3c7;
 	--frame-footer-left-background-color-hover: #1c8df0;
 	--frame-footer-right-background-color: var(--accent-5);
+
+	--mdx-code-background-color: #d6d0c0;
+
+	--image-border-edge: #161616;
+	--image-border: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,14 +64,47 @@ body {
 	position: fixed;
 	inset: 0;
 	background-color: #3f525d;
+	text-rendering: geometricPrecision;
+	line-height: 1.7;
 }
 
 a {
-	color: inherit;
+	color: var(--accent-2);
 	text-decoration: none;
 }
 
 button {
+	color: #000;
 	background-color: inherit;
 	border: none;
+}
+
+h2 {
+	font-size: 2.375rem;
+	margin: 3rem 0 2rem;
+	line-height: 1.5;
+}
+
+h3 {
+	font-size: 1.75rem;
+	margin: 2.5rem 0 1.5rem;
+	line-height: 1.35;
+}
+
+p,
+ul,
+li {
+	font-size: 1.35rem;
+	margin: 0.75rem 0;
+	list-style-type: square;
+}
+
+ul {
+	margin-left: 3rem;
+	margin-bottom: 1rem;
+}
+
+code {
+	background-color: var(--mdx-code-background-color);
+	padding: 0.25rem;
 }

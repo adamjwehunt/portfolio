@@ -2,7 +2,7 @@ import { content } from '@/content';
 import { Name } from '@/components/Name';
 import { Button } from '@/components/Button';
 import { SocialLinks } from '@/components/SocialLinks';
-import styles from './page.module.css';
+import styles from './page.module.scss';
 
 const {
 	page: { blog, projects, about },
@@ -13,17 +13,17 @@ const Home = () => (
 		<Name className={styles.name} />
 		<section className={styles.buttons}>
 			<Button
-				className={styles.blogButton}
+				className={styles.button1}
 				text={blog.linkText}
 				href={'/blog'}
 			/>
 			<Button
-				className={styles.projectsButton}
+				className={styles.button2}
 				text={projects.linkText}
 				href={'/projects'}
 			/>
 			<Button
-				className={styles.aboutButton}
+				className={styles.button3}
 				text={about.linkText}
 				href={'/about'}
 			/>

@@ -5,6 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	height: var(--home-item-height);
+	color: black;
 }
 
 .accent,

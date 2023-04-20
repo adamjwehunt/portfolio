@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { content } from '@/content';
 import classnames from 'classnames';
 import { Roboto } from 'next/font/google';
@@ -16,17 +17,21 @@ const roboto = Roboto({
 });
 
 interface FrameProps {
-	children: React.ReactNode;
+	header?: string;
+	children: ReactNode;
 }
 
-const Frame = ({ children }: FrameProps) => (
+const Frame = ({ header, children }: FrameProps) => (
 	<>
 		<header className={styles.header}>
 			<BackButton />
-			<Name className={styles.name} />
+			<Name className={styles.name} linkHome />
 		</header>
 		<div className={styles.frame}>
 			<div className={classnames(styles.contentWrapper, roboto.className)}>
+				<header className={styles.contentHeader}>
+					{header && <i>{header}</i>}
+				</header>
 				<main className={styles.content}>{children}</main>
 			</div>
 			<footer className={styles.footer}>
@@ -35,7 +40,9 @@ const Frame = ({ children }: FrameProps) => (
 				</div>
 				<section className={classnames(styles.halfRow, styles.left)}>
 					<div>{location}</div>
-					<Link href={`mailto:${email}`}>{email}</Link>
+					<Link className={styles.email} href={`mailto:${email}`}>
+						{email}
+					</Link>
 				</section>
 				<section className={classnames(styles.halfRow, styles.right)}>
 					{copyright}

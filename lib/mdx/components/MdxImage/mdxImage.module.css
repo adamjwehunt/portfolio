@@ -1,0 +1,16 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.image {
+	border: var(--frame-border);
+	max-width: 100%;
+  height: auto;
+}
+
+.caption {
+	margin: 1rem 0;
+	font-size: 0.75rem;
+}

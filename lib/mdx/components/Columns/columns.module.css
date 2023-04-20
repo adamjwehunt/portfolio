@@ -1,0 +1,18 @@
+.columns {
+	display: flex;
+  margin: 5rem 0;
+}
+
+.left,
+.right {
+	flex: 1;
+}
+
+.left {
+  padding-right: 3rem;
+  color: #000;
+}
+
+.right {
+  padding-left: 3rem;
+}

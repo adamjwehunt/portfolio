@@ -1,0 +1,33 @@
+---
+title: 'Developing for the Roku'
+author: 'Adam Wehunt'
+publishDate: '2023-04-10'
+tags: ['Roku', 'Brightscript', 'Learning']
+---
+
+At the beginning of my software career, I rebuilt a Roku client from the ground up in response to Roku's transition from Brightscript to Brightscript with SceneGraph (a component-based XML framework). At the time, I was most comfortable with Javascript web apps, so learning a new language for my entry into software development felt daunting.  I quickly learned that few people knew what Brightscript actually was. Powered by the "naively confident" part of my learning curve, I dived in headfirst and had a lot of  headaches, nostalgia, and fun.
+
+### What is Brightscript?
+
+BrightScript is an odd duck, but I now find it charming (most likely from nostalgia), and I think it'd be fun to get back into. It was created by Roku's CEO, Anthony Wood, and is similar to Javascript and BASIC. Learning Brightscript was a significant change for me. It’s case-insensitive, `IF` ends with `END IF`, `FUNCTION` ends with `END FUNCTION`, `?` prints to console (which is on [TELNET](https://en.wikipedia.org/wiki/Telnet) by the way 😅), arrays are 0-based, but strings are 1-based, and the list goes on. 
+
+Strange enough, it was fun to learn a language without much support. I didn’t have StackOverflow, tutorials, or blogs. All I had was somewhat decent documentation and a forum on Roku’s website. But despite all that, there were some pretty amazing applications out there, so I knew it was possible to make something great. All it took was some hope.
+
+### My Experience
+
+My MVP was to clone the original video-on-demand app. When I began the project, I was given the old app and someone’s failed attempt at the new one. Knowing a failed attempt existed seemed a bit of a red flag 🚩, but after comparing it to my initial “Hello world”, I felt like I was in a good direction.
+
+Initially, it was gratifying to create something that wasn't on the web, as it was fun to see the TV load up my software. However, this novelty soon wore off due to the significant amount of rebuilding required for minor changes. I had no linter, no type-checking, no guide on best practices. Surprisingly, I missed the "safety" of Javascript, and now I can't imagine JS without Typescript.
+
+The project took around three months to complete, which became my ticket to becoming a regular employee 🎉. I went a little over the estimated time, but I don’t think this was a surprise to anyone. I’m super grateful they took the gamble of having a fairly green dev solo a project with a language with such little support. Currently I’ve been occupied with NextJs, but I’ve been keeping an eye on Brightscript updates, and I plan on getting back into it soon. I think it would be fun to make a Roku game for my daughter to play :D.
+
+### …and what did we learn?
+
+Find other devs who are going through the same pains. Like any language, understanding and developing Brightscript is a community effort. Roku developers slack channel, and the Roku dev forum was a lifesaver. Talk problems out with other people in your company, even if they aren’t working on the same project.
+
+Here are some Roku resources:
+   - Roku Developer Community [Slack](https://rokudevelopers.slack.com/ssb/redirect)
+   - Roku’s Official Dev [Forum](https://community.roku.com/t5/Developers/ct-p/channel-developers)
+   - Roku [docs](https://developer.roku.com/docs/developer-program/getting-started/roku-dev-prog.md)
+   - I recently found this Brightscript [fiddle](https://brsfiddle.net )
+

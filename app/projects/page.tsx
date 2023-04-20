@@ -1,24 +1,28 @@
-import { content } from '@/content';
-import { getProjects } from '@/lib/mdx';
 import Frame from '@/components/Frame';
+import { content } from '@/content';
+import ProjectItem from '@/components/ProjectItem';
+import WorkItem from '@/components/WorkItem';
 
-const ProjectPage = async () => {
-	const projects = await getProjects();
+const { header, projectsHeader, projectItems, workHeader, workItems } =
+	content.page.projects;
 
-	return (
-		<Frame>
-			<h1>{content.page.projects.title}</h1>
-			<section>
-				{projects.map(({ metadata: { title, publishDate }, content }) => (
-					<>
-						<h3>{title}</h3>
-						<time>{publishDate}</time>
-						<article>{content}</article>
-					</>
-				))}
-			</section>
-		</Frame>
-	);
-};
+const ProjectPage = () => (
+	<Frame header={header}>
+		<section>
+			<h2>{workHeader}</h2>
+			{workItems.map((props, index) => (
+				// @ts-expect-error Server Component
+				<WorkItem key={index} {...props} />
+			))}
+		</section>
+		<section>
+			<h2>{projectsHeader}</h2>
+			{projectItems.map((props, index) => (
+				// @ts-expect-error Server Component
+				<ProjectItem key={index} {...props} />
+			))}
+		</section>
+	</Frame>
+);
 
 export default ProjectPage;

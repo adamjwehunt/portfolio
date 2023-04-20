@@ -1,6 +1,7 @@
 $frame-padding: 1rem;
 $socialLinks-min-height: 6rem;
 $halfRow-height: 4rem;
+$content-padding-vertical: 8dvh;
 
 .header {
 	position: fixed;
@@ -16,7 +17,8 @@ $halfRow-height: 4rem;
 .name {
 	position: absolute;
 	top: 1.25rem;
-	font-size: 1.5rem;
+	font-size: 0.75rem;
+	line-height: 1.25;
 }
 
 .frame {
@@ -37,16 +39,32 @@ $halfRow-height: 4rem;
 	flex-direction: column;
 	align-items: center;
 	overflow: visible;
-	padding: 8dvh 8vw;
+	padding: 0 8vw $content-padding-vertical;
 	min-height: calc(
-		99% - calc($frame-padding + $socialLinks-min-height + $halfRow-height)
+		85dvh - calc($frame-padding + $socialLinks-min-height + $halfRow-height)
 	);
+}
+
+.contentHeader {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	height: $content-padding-vertical;
+	opacity: 0.5;
+	font-size: 1.125rem;
+	padding-top: 2rem;
+	flex-basis: min-content;
 }
 
 .content {
 	width: 100%;
 	height: auto;
-	max-width: 72rem;
+	max-width: 52rem;
+
+	section {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 .footer {
@@ -92,9 +110,17 @@ $halfRow-height: 4rem;
 	align-items: flex-start;
 }
 
+.email {
+	color: #000;
+}
+
 .left:hover {
 	background-color: inherit;
 	color: var(--home-item-foreground);
+
+	.email {
+		color: var(--home-item-foreground);
+	}
 }
 
 .right {
