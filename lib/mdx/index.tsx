@@ -68,7 +68,9 @@ export const getPostsMetadata = async (): Promise<BlogPostMetadata[]> => {
 		posts.push(metadata);
 	}
 
-	return posts;
+	const sortedPosts = sortPostsByDate(posts);
+
+	return sortedPosts;
 };
 
 interface About {
@@ -130,3 +132,15 @@ export const convertStringsToMdx = async (strings: string[]) => {
 
 	return mdx;
 };
+
+function sortPostsByDate(posts: BlogPostMetadata[]) {
+	return posts.sort((a, b) => {
+		const aDate = a.publishDate
+			? moment(a.publishDate, 'MMMM Do, YYYY').valueOf()
+			: 0;
+		const bDate = b.publishDate
+			? moment(b.publishDate, 'MMMM Do, YYYY').valueOf()
+			: 0;
+		return bDate - aDate;
+	});
+}
