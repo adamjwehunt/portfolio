@@ -38,8 +38,10 @@ const Home = () => (
 				href={'/about'}
 			/>
 		</section>
-		<CallToAction />
-		<SocialLinks hasAccent />
+		<section>
+			<CallToAction />
+			<SocialLinks hasAccent />
+		</section>
 	</main>
 );
 

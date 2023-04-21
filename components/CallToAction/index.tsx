@@ -10,16 +10,15 @@ const {
 
 export const CallToAction = () => (
 	<div className={styles.callToAction}>
-		{`*${callToAction1} (`}
+		{`${callToAction1} (`}
 		<Link
 			className={styles.resume}
 			aria-label={'Download Resume'}
 			href={'/Adam_Wehunt_Resume.pdf'}
 			target={'_blank'}
-			download
 		>
 			{'resume'}
 		</Link>
-		{`) ${callToAction2}`}
+		{`)${callToAction2}`}
 	</div>
 );

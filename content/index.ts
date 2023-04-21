@@ -28,7 +28,7 @@ export const content = {
 		titleBase: 'Adam Wehunt -',
 		titleRootPage: 'Web Developer',
 		description:
-			'Hi, my name is Adam Wehunt and I am a web developer. I am currently looking for fulltime employment.',
+			'Hi, my name is Adam Wehunt and I am a web developer. I am currently looking for fulltime position.',
 	},
 	components: {
 		frame: {
@@ -66,8 +66,8 @@ export const content = {
 		home: {
 			greeting: 'Hello, my name is',
 			aboutMe: 'I love to code.',
-			callToAction1: 'I\'m seeking full-time employment,' ,
-			callToAction2: 'please reach out 👇',
+			callToAction1: "*Seeking full-time position",
+			callToAction2: ' please reach out 👇',
 		},
 		blog: {
 			linkText: 'Blog',
@@ -192,7 +192,7 @@ export const content = {
 				},
 				{
 					title: 'Strong Tower Installations',
-					subtitle: 'Website for a local tech services company',
+					subtitle: 'Freelance project for local tech services company',
 					image: {
 						src: StrongtowerLogo,
 						width: 64,
