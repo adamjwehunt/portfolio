@@ -9,20 +9,20 @@ interface NameProps {
 }
 
 export const Name = ({ className, linkHome = false }: NameProps) => {
-	const InnerContent = () => (
-		<h1>
-			<div>{content.components.name.firstName}</div>
-			<div>{content.components.name.lastName}</div>
-		</h1>
+	const Text = () => (
+		<div>
+			<h1>{content.components.name.firstName}</h1>
+			<h1>{content.components.name.lastName}</h1>
+		</div>
 	);
 
 	return linkHome ? (
 		<Link className={classnames(styles.name, className)} href={'/'}>
-			<InnerContent />
+			<Text />
 		</Link>
 	) : (
 		<div className={classnames(styles.name, className)}>
-			<InnerContent />
+			<Text />
 		</div>
 	);
 };

@@ -40,8 +40,18 @@ const ProjectItem = async ({
 			<div className={styles.wrapper}>
 				<div className={styles.details}>
 					<div className={styles.buttons}>
-						<Button text={visitSiteText} href={siteLink} isExternalLink />
-						<Button text={visitCodeText} href={githubLink} isExternalLink />
+						<Button
+							accentClassName={styles.button1}
+							text={visitSiteText}
+							href={siteLink}
+							isExternalLink
+						/>
+						<Button
+							accentClassName={styles.button2}
+							text={visitCodeText}
+							href={githubLink}
+							isExternalLink
+						/>
 					</div>
 					<ul className={styles.description}>
 						<li>{joinListItems(tech)}</li>

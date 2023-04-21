@@ -7,14 +7,14 @@ const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'] });
 interface ButtonProps {
 	href: string;
 	text: string;
-	className?: string;
+	accentClassName?: string;
 	isExternalLink?: boolean;
 }
 
 export const Button = ({
 	href,
 	text,
-	className,
+	accentClassName,
 	isExternalLink = false,
 }: ButtonProps) => (
 	<Link
@@ -23,6 +23,6 @@ export const Button = ({
 		target={isExternalLink ? '_blank' : '_self'}
 	>
 		<div className={styles.text}>{text}</div>
-		<div className={classnames(styles.accent, className)} />
+		<div className={classnames(styles.accent, accentClassName)} />
 	</Link>
 );

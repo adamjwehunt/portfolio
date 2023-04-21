@@ -1,4 +1,7 @@
 :root {
+	--header-color: #ffa200;
+	--link-color: #e3500a;
+
 	--accent-1: #ffa200;
 	--accent-2: #e3500a;
 	--accent-3: #9d0b0e;
@@ -33,10 +36,13 @@
 		--accent-3: #f67c15;
 		--accent-4: #382076;
 
-		--home-item-foreground: #93979a;
-
-		--frame-social-link-background-color: #cecece;
-		--frame-footer-left-background-color: #75797d;
+		p,
+		i,
+		h2,
+		h3,
+		section {
+			color: #000;
+		}
 	}
 }
 
@@ -70,7 +76,7 @@ body {
 }
 
 a {
-	color: var(--accent-2);
+	color: var(--link-color);
 	text-decoration: none;
 }
 

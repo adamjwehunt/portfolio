@@ -12,15 +12,9 @@
 .intro,
 .buttons {
 	max-width: var(--home-item-max-width);
-	margin-bottom: calc(var(--home-item-gap) * 2);
+	margin-bottom: calc(var(--home-item-gap) * 2.5);
 	width: 100%;
-}
-
-.intro {
-	display: flex;
-	flex-direction: column;
-	gap: calc(var(--home-item-gap) / 3);
-	padding: 0 2rem;
+	padding: 0 1rem;
 }
 
 .greeting,
@@ -28,17 +22,23 @@
 .callToAction {
 	color: var(--home-greeting-color);
 	font-size: 1.25rem;
+	opacity: 0.85;
 }
 
-.name {
-	line-height: 1;
-	font-size: 1.5rem;
-	text-align: left !important;
+.name > div {
+	line-height: 1.5;
+	font-size: 1.75rem;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.aboutMe {
+	text-align: right;
 }
 
 .buttons {
 	gap: var(--home-item-gap);
-	padding: 0 1rem;
 }
 
 .button1 {
@@ -51,4 +51,14 @@
 
 .button3 {
 	background-color: var(--accent-3);
+}
+
+.callToAction {
+	margin-bottom: var(--home-item-gap);
+	max-width: var(--home-item-max-width);
+	text-align: center;
+}
+
+.resume {
+	color: var(--header-color);
 }

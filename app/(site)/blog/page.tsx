@@ -10,7 +10,7 @@ const BlogPage = async () => {
 	const posts = await getPostsMetadata();
 
 	return (
-		<>
+		<section>
 			<h2>{title}</h2>
 			{posts.map(({ slug, title, tags, publishDate }) => (
 				<Link className={styles.entry} href={`blog/${slug}`} key={title}>
@@ -21,7 +21,7 @@ const BlogPage = async () => {
 					</div>
 				</Link>
 			))}
-		</>
+		</section>
 	);
 };
 

@@ -46,11 +46,18 @@ $border-radius: 12px;
 	gap: $gap;
 }
 
+.button1 {
+	background-color: var(--accent-1);
+}
+
+.button2 {
+	background-color: var(--accent-2);
+}
+
 .images {
-	border: $image-gap solid var(--image-border);
+	border: $image-gap solid transparent;
 	border-radius: 18px;
 	box-shadow: 0 0 0 3px var(--image-border-edge);
-	background-color: white;
 	gap: $image-gap;
 	align-self: flex-start;
 	align-items: center;
