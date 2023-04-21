@@ -18,8 +18,7 @@
 }
 
 .greeting,
-.aboutMe,
-.callToAction {
+.aboutMe {
 	color: var(--home-greeting-color);
 	font-size: 1.25rem;
 	opacity: 0.85;
@@ -51,14 +50,4 @@
 
 .button3 {
 	background-color: var(--accent-3);
-}
-
-.callToAction {
-	margin-bottom: var(--home-item-gap);
-	max-width: var(--home-item-max-width);
-	text-align: center;
-}
-
-.resume {
-	color: var(--header-color);
 }

@@ -2,12 +2,12 @@ import { content } from '@/content';
 import { Name } from '@/components/Name';
 import { Button } from '@/components/Button';
 import { SocialLinks } from '@/components/SocialLinks';
-import Link from 'next/link';
+import { CallToAction } from '@/components/CallToAction';
 import styles from './page.module.scss';
 
 const {
 	page: {
-		home: { greeting, aboutMe, callToAction1, callToAction2 },
+		home: { greeting, aboutMe },
 		blog,
 		projects,
 		about,
@@ -38,19 +38,7 @@ const Home = () => (
 				href={'/about'}
 			/>
 		</section>
-		<div className={styles.callToAction}>
-			{`${callToAction1} (`}
-			<Link
-				className={styles.resume}
-				aria-label={'Download Resume'}
-				href={'/Adam_Wehunt_Resume.pdf'}
-				target={'_blank'}
-				download
-			>
-				{'resume'}
-			</Link>
-			{`) ${callToAction2}`}
-		</div>
+		<CallToAction />
 		<SocialLinks hasAccent />
 	</main>
 );
