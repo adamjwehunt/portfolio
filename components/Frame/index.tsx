@@ -14,6 +14,7 @@ const { email } = content;
 const roboto = Roboto({
 	weight: ['100', '300', '400', '700'],
 	subsets: ['latin'],
+	fallback: ['Arial'],
 });
 
 interface FrameProps {

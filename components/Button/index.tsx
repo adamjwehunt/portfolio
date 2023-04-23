@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import classnames from 'classnames';
-import { Share_Tech_Mono } from 'next/font/google';
 import styles from './button.module.css';
 
-const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'] });
 interface ButtonProps {
 	href: string;
 	text: string;
@@ -19,7 +17,7 @@ export const Button = ({
 }: ButtonProps) => (
 	<Link
 		href={href}
-		className={classnames(styles.link, shareTechMono.className)}
+		className={styles.link}
 		target={isExternalLink ? '_blank' : '_self'}
 	>
 		<div className={styles.text}>{text}</div>

@@ -1,10 +1,16 @@
 import { content } from '@/content';
 import StarField from '@/components/StarField/StarField';
-import { Share_Tech_Mono } from 'next/font/google';
+import { Roboto, Share_Tech_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.scss';
 
-const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'] });
+const shareTechMono = Share_Tech_Mono({
+	weight: '400',
+	subsets: ['latin'],
+	variable: '--share-tech-mono-font',
+	fallback: ['monospace'],
+});
+
 const { titleBase, titleRootPage, description } = content.metadata;
 
 export const metadata = {
