@@ -16,6 +16,7 @@ export const CallToAction = () => (
 			aria-label={'Download Resume'}
 			href={'/Adam_Wehunt_Resume.pdf'}
 			target={'_blank'}
+			prefetch={false}
 		>
 			{'resume'}
 		</Link>
