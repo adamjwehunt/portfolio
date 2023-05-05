@@ -18,6 +18,7 @@ import FaithlifeLogo from '@/public/faithlife-logo.png';
 import LogosLogo from '@/public/logos-logo.jpg';
 import StrongtowerLogo from '@/public/strongtower-logo.jpg';
 import VodifaiLogo from '@/public/vodifai-logo.jpg';
+import TetrisLogo from '@/public/tetris-logo.jpg';
 import Portrait from '@/public/portrait.webp';
 
 const email = 'adamjwehunt@gmail.com';
@@ -66,7 +67,7 @@ export const content = {
 		home: {
 			greeting: 'Hello, my name is',
 			aboutMe: 'I love to code.',
-			callToAction1: "*Seeking full-time position",
+			callToAction1: '*Seeking full-time position',
 			callToAction2: ' please reach out 👇',
 		},
 		blog: {
@@ -233,6 +234,26 @@ export const content = {
 					description: [
 						"Integrated CMS: With [Sanity.io,](https://www.sanity.io/ 'Sanity') the owner is able to modify content",
 						'Following consultation with the owner, who provided examples of their desired designs and specifications, I created the Design and UX',
+					],
+				},
+			],
+			etceteraHeader: 'Etcetera',
+			iframeItems: [
+				{
+					title: 'Tetris',
+					subtitle: 'First go at SolidJs',
+					image: {
+						src: TetrisLogo,
+						width: 64,
+						height: 64,
+						alt: 'Tetris',
+					},
+					siteLink: 'https://solid-tetris.vercel.app/',
+					githubLink: 'https://github.com/adamjwehunt/solid-tetris',
+					tech: ['Solid.js', 'Typescript'],
+					description: [
+						'Minimal code: Under a few hundred lines',
+						'Play it right here 🙌',
 					],
 				},
 			],
