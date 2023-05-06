@@ -1,4 +1,5 @@
-$frame-padding: 1rem;
+$frame-padding: 3rem;
+$frame-padding-mobile: 0.5rem;
 $socialLinks-min-height: 6rem;
 $halfRow-height: 4rem;
 $content-padding-vertical: 8dvh;
@@ -29,6 +30,13 @@ $content-padding-vertical: 8dvh;
 	right: $frame-padding;
 	bottom: 0;
 	border-top: var(--frame-border);
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+	.frame {
+		left: $frame-padding-mobile;
+		right: $frame-padding-mobile;
+	}
 }
 
 .contentWrapper {

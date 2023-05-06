@@ -4,7 +4,7 @@ import { content } from '@/content';
 import { useRouter } from 'next/navigation';
 import BackArrow from '@/public/back-arrow.svg';
 import { IconButton } from '../IconButton';
-import styles from './backButton.module.css';
+import styles from './backButton.module.scss';
 
 export const BackButton = () => {
 	const router = useRouter();

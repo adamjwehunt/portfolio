@@ -6,6 +6,12 @@
 	height: 6rem !important;
 }
 
+@media only screen and (max-width: $mobile-breakpoint) {
+	.arrow {
+		width: 5rem !important;
+	}
+}
+
 .arrowAccent {
 	fill: var(--accent-5) !important;
 }
