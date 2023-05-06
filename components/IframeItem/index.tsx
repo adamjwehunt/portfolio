@@ -66,7 +66,7 @@ const IframeItem = async ({
 						scrolling={'no'}
 						loading={'lazy'}
 						frameBorder={0}
-						height={600}
+						height={'600px'}
 					/>
 				</div>
 			</div>
