@@ -1,0 +1,430 @@
+---
+title: '8 Design patterns'
+author: 'Adam Wehunt'
+publishDate: '2023-05-07'
+tags: ['Patterns', 'Typescript']
+---
+
+I've been working as a full-time programmer for almost 6 years now. My learning experience has been a combination of fundamentals and practical knowledge gained through building things. I've come across many design patterns during this time, most of which I learned from implementing them rather than from classroom instruction. I recently watched [8 Design Patterns Every Programmer Should Know](https://www.youtube.com/watch?v=tAuRQs_d9F8), which covers many patterns I've used. In this article, I'll give my perspective on each pattern and provide a TypeScript example for each.
+
+## Factory
+
+The Factory design pattern is a creational pattern that provides a way to create objects without specifying the exact class of object that will be created. It encapsulates the object creation process in a separate class or method, allowing the client code to be more flexible and decoupled from the actual objects being created. The pattern is commonly used in situations where the type of object needed can only be determined at runtime, or when the creation of an object involves complex logic that is best abstracted away from the client code.
+
+```typescript
+class Burger {
+	ingredients: string[];
+
+	constructor(ingredients: string[]) {
+		this.ingredients = ingredients;
+	}
+
+	print(): void {
+		console.log(this.ingredients);
+	}
+}
+
+class BurgerFactory {
+	createCheeseBurger(): Burger {
+		const ingredients = ['bun', 'cheese', 'beef-patty'];
+		return new Burger(ingredients);
+	}
+
+	createDeluxeCheeseBurger(): Burger {
+		const ingredients = ['bun', 'tomatoe', 'lettuce', 'cheese', 'beef-patty'];
+		return new Burger(ingredients);
+	}
+
+	createVeganBurger(): Burger {
+		const ingredients = ['bun', 'special-sauce', 'veggie-patty'];
+		return new Burger(ingredients);
+	}
+}
+
+const burgerFactory = new BurgerFactory();
+burgerFactory.createCheeseBurger().print();
+burgerFactory.createDeluxeCheeseBurger().print();
+burgerFactory.createVeganBurger().print();
+```
+
+Output:
+
+```
+['bun', 'cheese', 'beef-patty']
+['bun', 'tomatoe', 'lettuce', 'cheese', 'beef-patty']
+['bun', 'special-sauce', 'veggie-patty']
+```
+
+Sometimes I feel how annoyingly coupled this is. You have to say the thing you want as the method name. I think you should be able to compose a burger of it's various toppings. You should be able to `push` a topping to make your own.
+
+## Builder
+
+The Builder pattern is another creational pattern that provides more control over how objects are created. Instead of passing in all the parameters at once, we can use a builder object to add each ingredient one at a time. The builder object will have individual methods for each ingredient that return a reference to the builder. Then, we can use the build method to return the final product. This allows us to instantiate a builder, add the desired ingredients, and build the exact object that we want. The Builder pattern is commonly used with protocol buffers at Google.
+
+
+```typescript
+class Burger:
+  class Burger {
+  private buns: string | null = null;
+  private patty: string | null = null;
+  private cheese: string | null = null;
+
+  setBuns(bunStyle: string): void {
+    this.buns = bunStyle;
+  }
+
+  setPatty(pattyStyle: string): void {
+    this.patty = pattyStyle;
+  }
+
+  setCheese(cheeseStyle: string): void {
+    this.cheese = cheeseStyle;
+  }
+}
+
+class BurgerBuilder {
+  private burger: Burger = new Burger();
+
+  addBuns(bunStyle: string): this {
+    this.burger.setBuns(bunStyle);
+    return this;
+  }
+
+  addPatty(pattyStyle: string): this {
+    this.burger.setPatty(pattyStyle);
+    return this;
+  }
+
+  addCheese(cheeseStyle: string): this {
+    this.burger.setCheese(cheeseStyle);
+    return this;
+  }
+
+  build(): Burger {
+    return this.burger;
+  }
+}
+
+const burger = new BurgerBuilder()
+  .addBuns("sesame")
+  .addPatty("fish-patty")
+  .addCheese("swiss cheese")
+  .build();
+```
+
+This feels MUCH better.
+
+## Singleton
+
+The Singleton pattern is a design pattern that restricts the instantiation of a class to a single instance. This pattern has many use cases such as maintaining a single copy of an application state. To implement this pattern, we start by having a static instance variable, and we use a static method called "get app state" to check if there's already an existing instance of our application state. If there is, we just return the existing instance; otherwise, we'll instantiate one. With this pattern, we can ensure that multiple components in our app will have a shared source of truth.
+
+```typescript
+class ApplicationState {
+	private static instance: ApplicationState | null = null;
+	isLoggedIn: boolean = false;
+
+	private constructor() {}
+
+	static getAppState(): ApplicationState {
+		if (!ApplicationState.instance) {
+			ApplicationState.instance = new ApplicationState();
+		}
+		return ApplicationState.instance;
+	}
+}
+
+const appState1 = ApplicationState.getAppState();
+console.log(appState1.isLoggedIn);
+
+const appState2 = ApplicationState.getAppState();
+appState1.isLoggedIn = true;
+
+console.log(appState1.isLoggedIn);
+console.log(appState2.isLoggedIn);
+```
+
+Output:
+
+```
+False True True
+```
+
+
+
+## Observer
+
+The Observer pattern is a widely used pub-sub pattern that allows for real-time updates. It is commonly used in distributed systems and can be implemented in various ways. In this pattern, a subject or publisher maintains a list of its subscribers or observers. When an event occurs, the publisher sends the event data to each of its subscribers. To implement this pattern, we define a subscriber interface and each subscriber implements it differently. For instance, in the case of a YouTube user, we can simply print the received notification. With the Observer pattern, we can have multiple components in our app listen for updates in real-time from a shared source of events.
+
+```typescript
+interface YoutubeSubscriber {
+	sendNotification(channelName: string, event: string): void;
+}
+
+class YoutubeChannel {
+	private name: string;
+	private subscribers: YoutubeSubscriber[] = [];
+
+	constructor(name: string) {
+		this.name = name;
+	}
+
+	subscribe(sub: YoutubeSubscriber): void {
+		this.subscribers.push(sub);
+	}
+
+	notify(event: string): void {
+		for (const sub of this.subscribers) {
+			sub.sendNotification(this.name, event);
+		}
+	}
+}
+
+class YoutubeUser implements YoutubeSubscriber {
+	private name: string;
+
+	constructor(name: string) {
+		this.name = name;
+	}
+
+	sendNotification(channelName: string, event: string): void {
+		console.log(
+			`User ${this.name} received notification from ${channelName}: ${event}`
+		);
+	}
+}
+
+const channel = new YoutubeChannel('neetcode');
+
+channel.subscribe(new YoutubeUser('sub1'));
+channel.subscribe(new YoutubeUser('sub2'));
+channel.subscribe(new YoutubeUser('sub3'));
+
+channel.notify('A new video released');
+```
+
+Output:
+
+```
+User sub1 received notification from neetcode: A new video released User sub2 received notification from neetcode: A new video released User sub3 received notification from neetcode: A new video released
+```
+
+## Iterator
+
+The iterator pattern is a simple and useful design pattern that allows for iterating through the values in an object without having to directly access them through indexing. In Python, one can easily define an iterator for simple objects like arrays, but for more complex objects like linked lists or binary search trees, one can define their own iterator using an inner function that sets the current pointer to the head and returns a reference to the object. The iterator's next function can then be defined to get the value and shift the current pointer to the next node, making it much simpler to iterate through complex objects.
+
+```typescript
+class ListNode {
+	val: number;
+	next: ListNode | null;
+
+	constructor(val: number) {
+		this.val = val;
+		this.next = null;
+	}
+}
+
+class LinkedList implements Iterable<number> {
+	head: ListNode | null;
+	cur: ListNode | null;
+
+	constructor(head: ListNode) {
+		this.head = head;
+		this.cur = null;
+	}
+
+	// Define Iterator
+	[Symbol.iterator](): Iterator<number> {
+		this.cur = this.head;
+		return this;
+	}
+
+	// Iterate
+	next(): IteratorResult<number> {
+		if (this.cur) {
+			const val = this.cur.val;
+			this.cur = this.cur.next;
+			return { value: val, done: false };
+		} else {
+			return { value: null as any, done: true };
+		}
+	}
+}
+
+// Initialize LinkedList
+const head = new ListNode(1);
+head.next = new ListNode(2);
+head.next.next = new ListNode(3);
+const myList = new LinkedList(head);
+
+// Iterate through LinkedList
+for (const n of myList) {
+	console.log(n);
+}
+```
+
+output:
+
+```
+1 2 3
+```
+
+## Strategy
+
+The strategy pattern is a design pattern that allows for the dynamic selection of an algorithm at runtime. It is useful when there are multiple ways to accomplish a task and the selection of the approach should be configurable. By defining a strategy interface and creating different implementations of the interface, the strategy pattern allows for flexibility and extensibility without modifying the core code.
+
+```typescript
+abstract class FilterStrategy {
+	abstract removeValue(val: number): boolean;
+}
+
+class RemoveNegativeStrategy implements FilterStrategy {
+	removeValue(val: number): boolean {
+		return val < 0;
+	}
+}
+
+class RemoveOddStrategy implements FilterStrategy {
+	removeValue(val: number): boolean {
+		return Math.abs(val) % 2 !== 0;
+	}
+}
+
+class Values {
+	constructor(private vals: number[]) {}
+
+	filter(strategy: FilterStrategy): number[] {
+		const res: number[] = [];
+		for (let n of this.vals) {
+			if (!strategy.removeValue(n)) {
+				res.push(n);
+			}
+		}
+		return res;
+	}
+}
+
+const values = new Values([-7, -4, -1, 0, 2, 6, 9]);
+
+console.log(values.filter(new RemoveNegativeStrategy()));
+console.log(values.filter(new RemoveOddStrategy()));
+```
+
+Output:
+
+```
+[0, 2, 6, 9]
+[-4, 0, 2, 6]
+```
+
+This is great. Make the thing into the interface and do the logic below the interface. Program at interface level.
+
+## Adapter
+
+The Adapter pattern is a structural pattern that allows two incompatible interfaces to work together by creating a bridge between them. It's similar to using an adapter to make a screw fit into a hole or using a micro USB to USB adapter to connect a micro USB cable to a USB port. By creating an adapter, we can make two incompatible interfaces compatible and work together seamlessly.
+
+```typescript
+interface Usb {
+	isPlugged: boolean;
+	plug(): void;
+}
+
+class UsbCable implements Usb {
+	public isPlugged = false;
+
+	public plug(): void {
+		this.isPlugged = true;
+	}
+}
+
+class UsbPort {
+	private portAvailable = true;
+
+	public plug(usb: Usb): void {
+		if (this.portAvailable) {
+			usb.plug();
+			this.portAvailable = false;
+		}
+	}
+}
+
+class MicroUsbCable {
+	public isPlugged = false;
+
+	public plugMicroUsb(): void {
+		this.isPlugged = true;
+	}
+}
+
+class MicroToUsbAdapter implements Usb {
+	public isPlugged = false;
+
+	constructor(private microUsbCable: MicroUsbCable) {
+		this.microUsbCable.plugMicroUsb();
+	}
+
+	public plug(): void {
+		this.isPlugged = true;
+	}
+}
+
+// Example usage
+const usbCable: Usb = new UsbCable();
+const usbPort1: UsbPort = new UsbPort();
+usbPort1.plug(usbCable);
+
+const microToUsbAdapter: Usb = new MicroToUsbAdapter(new MicroUsbCable());
+const usbPort2: UsbPort = new UsbPort();
+usbPort2.plug(microToUsbAdapter);
+```
+
+## Facade
+
+The Facade pattern is an abstraction that wraps a complex system with a simplified interface to reduce its complexity. In programming, a Facade is a class or interface that is used to hide low-level implementation details from the user, and provide a simpler and more intuitive interface for them to interact with. Some examples of Facades include HTTP clients that hide low-level network details, or dynamic arrays like vectors in C++ or arraylists in Java that hide memory allocation complexity from the user.
+
+```typescript
+class Array {
+	private capacity: number;
+	private length: number;
+	private arr: number[];
+
+	constructor() {
+		this.capacity = 2;
+		this.length = 0;
+		this.arr = new Array<number>(2).fill(0); // Array of capacity = 2
+	}
+
+	// Insert n in the last position of the array
+	public pushback(n: number): void {
+		if (this.length === this.capacity) {
+			this.resize();
+		}
+
+		// insert at next empty position
+		this.arr[this.length] = n;
+		this.length += 1;
+	}
+
+	private resize(): void {
+		// Create new array of double capacity
+		this.capacity = 2 * this.capacity;
+		const newArr = new Array<number>(this.capacity).fill(0);
+
+		// Copy elements to newArr
+		for (let i = 0; i < this.length; i++) {
+			newArr[i] = this.arr[i];
+		}
+		this.arr = newArr;
+	}
+
+	// Remove the last element in the array
+	public popback(): void {
+		if (this.length > 0) {
+			this.length -= 1;
+		}
+	}
+}
+```
+
+Encapsulation. This is why I like return types, because you can facade it. This is less a design pattern and more just a good programming technique.
+
+### And there you have it. 🎉
