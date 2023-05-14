@@ -3,8 +3,11 @@ import { content } from '@/content';
 import WorkItem from '@/components/WorkItem';
 import ProjectItem from '@/components/ProjectItem';
 import IframeItem from '@/components/IframeItem';
+import styles from './projects.module.css';
 
 const {
+	greeting1,
+	greeting2,
 	header,
 	workHeader,
 	workItems,
@@ -17,6 +20,12 @@ const {
 const ProjectPage = () => (
 	<Frame header={header}>
 		<section>
+			<div className={styles.greeting}>
+				<div>
+					<b>{greeting1}</b>
+				</div>
+				<div>{greeting2}</div>
+			</div>
 			<h2>{workHeader}</h2>
 			{workItems.map((props, index) => (
 				// @ts-expect-error Server Component

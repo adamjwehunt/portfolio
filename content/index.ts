@@ -77,6 +77,9 @@ export const content = {
 			title: "Coder's Journal",
 		},
 		projects: {
+			greeting1: 'What I’ve been digging into (or planning) this 2023:',
+			greeting2:
+				'Typescript, React.js, Next.js, Tailwind, Sass, Framer motion, Zod, Urql (GraphQL client), PostgresSQL, Prisma, TRPC, Sanity.io, Shopify, React Native, Solid.js',
 			linkText: 'Code',
 			header: 'Make it work, Make it right, Make it fast',
 			workHeader: 'Work Experience',

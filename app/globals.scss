@@ -88,21 +88,21 @@ button {
 }
 
 h2 {
-	font-size: 2rem;
-	margin: 3.75rem 0 2rem;
+	font-size: 1.85rem;
+	margin: 4rem 0 1.5rem;
 	line-height: 1.5;
 }
 
 h3 {
-	font-size: 1.75rem;
-	margin: 2.5rem 0 1.5rem;
+	font-size: 1.5rem;
+	margin: 2.5rem 0 1.275rem;
 	line-height: 1.35;
 }
 
 p,
 ul,
 li {
-	font-size: 1.35rem;
+	font-size: 1.275rem;
 	margin: 0.75rem 0;
 	list-style-type: square;
 }
@@ -126,8 +126,8 @@ pre {
 
 @media only screen and (max-width: $mobile-breakpoint) {
 	h2 {
-		font-size: 1.75rem;
-		margin: 3rem 0 1.5rem;
+		font-size: 1.675rem;
+		margin: 3rem 0 1.275rem;
 	}
 
 	h3 {
