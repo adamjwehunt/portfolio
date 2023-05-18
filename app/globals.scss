@@ -76,6 +76,11 @@ body {
 	font-family: var(--share-tech-mono-font);
 }
 
+body::-webkit-scrollbar,
+div::-webkit-scrollbar {
+	display: none;
+}
+
 a {
 	color: var(--link-color);
 	text-decoration: none;
@@ -112,7 +117,8 @@ ul {
 	margin-bottom: 1rem;
 }
 
-code, pre {
+code,
+pre {
 	background-color: var(--mdx-code-background-color);
 	padding: 0.25rem;
 	tab-size: 1rem;
@@ -122,6 +128,8 @@ code, pre {
 pre {
 	margin: 1rem 0 2rem;
 	padding: 1rem;
+	overflow-y: hidden;
+	overflow-x: auto;
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
