@@ -27,9 +27,9 @@ export const content = {
 	email,
 	metadata: {
 		titleBase: 'Adam Wehunt -',
-		titleRootPage: 'Web Developer',
+		titleRootPage: 'Software Engineer',
 		description:
-			'Hi, my name is Adam Wehunt and I am a web developer. I am currently looking for fulltime position.',
+			'Hi, my name is Adam Wehunt and I am a software engineer.',
 	},
 	components: {
 		frame: {

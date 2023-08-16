@@ -39,7 +39,7 @@ const Home = () => (
 			/>
 		</section>
 		<section>
-			<CallToAction />
+			{/* <CallToAction /> */}
 			<SocialLinks hasAccent />
 		</section>
 	</main>
