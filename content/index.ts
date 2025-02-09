@@ -71,7 +71,7 @@ export const content = {
 	page: {
 		home: {
 			greeting: 'Hello, my name is',
-			aboutMe: 'I love to code.',
+			aboutMe: "Let's code something.",
 			callToAction1: '*Seeking full-time position',
 			callToAction2: ' please reach out 👇',
 		},
