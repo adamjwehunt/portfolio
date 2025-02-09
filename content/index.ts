@@ -1,5 +1,5 @@
 import BlueskyIcon from '@/public/bluesky.svg';
-import TwitterIcon from '@/public/twitter.svg';
+import XIcon from '@/public/x.svg';
 import GithubIcon from '@/public/github.svg';
 import LinkedinIcon from '@/public/linkedin.svg';
 import MailIcon from '@/public/mail.svg';
@@ -57,9 +57,9 @@ export const content = {
 				icon: BlueskyIcon,
 			},
 			{
-				href: 'https://twitter.com/codetiquette',
-				ariaLabel: 'Twitter',
-				icon: TwitterIcon,
+				href: 'https://x.com/codetiquette',
+				ariaLabel: 'X',
+				icon: XIcon,
 			},
 			{
 				href: `mailto:${email}`,
