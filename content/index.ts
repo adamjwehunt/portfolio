@@ -1,3 +1,4 @@
+import BlueskyIcon from '@/public/bluesky.svg';
 import TwitterIcon from '@/public/twitter.svg';
 import GithubIcon from '@/public/github.svg';
 import LinkedinIcon from '@/public/linkedin.svg';
@@ -28,8 +29,7 @@ export const content = {
 	metadata: {
 		titleBase: 'Adam Wehunt -',
 		titleRootPage: 'Software Engineer',
-		description:
-			'Hi, my name is Adam Wehunt and I am a software engineer.',
+		description: 'Hi, my name is Adam Wehunt and I am a software engineer.',
 	},
 	components: {
 		frame: {
@@ -50,6 +50,11 @@ export const content = {
 				href: 'https://www.linkedin.com/in/ajwehunt',
 				ariaLabel: 'LinkedIn',
 				icon: LinkedinIcon,
+			},
+			{
+				href: 'https://bsky.app/profile/codetiquette.bsky.social',
+				ariaLabel: 'Bluesky',
+				icon: BlueskyIcon,
 			},
 			{
 				href: 'https://twitter.com/codetiquette',
