@@ -17,7 +17,7 @@ export const ProjectsItemHeader = ({
 		<Image className={styles.image} {...image} alt={image.alt} />
 		<div className={styles.text}>
 			<h3 className={styles.title}>{title}</h3>
-			<div className={styles.subtitle}>{subtitle}</div>
+			{subtitle && <div className={styles.subtitle}>{subtitle}</div>}
 		</div>
 	</div>
 );

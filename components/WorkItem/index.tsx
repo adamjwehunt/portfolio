@@ -14,7 +14,7 @@ export interface WorkItemProps {
 	company: string;
 	companyLink: string;
 	image: ImageProps;
-	dateRange: string;
+	subtitle: string;
 	tasks: Task[];
 }
 
@@ -23,7 +23,7 @@ const WorkItem = async ({
 	company,
 	companyLink,
 	image,
-	dateRange,
+	subtitle,
 	tasks,
 }: WorkItemProps) => {
 	const mdxTasks = await convertTasksToMdx(tasks);
@@ -44,7 +44,7 @@ const WorkItem = async ({
 						</Link>
 					</>
 				}
-				subtitle={dateRange}
+				subtitle={subtitle}
 			/>
 			<div className={styles.tasks}>
 				{mdxTasks.map(({ image: taskImage, content }, index) => (

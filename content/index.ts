@@ -12,6 +12,10 @@ import StrongTowerMobile1 from '@/public/strongtower-mobile-1.png';
 import StrongTowerMobile2 from '@/public/strongtower-mobile-2.png';
 import StrongTowerMobile3 from '@/public/strongtower-mobile-3.png';
 import FaithlifeTvLogo from '@/public/faithlife-tv-logo.jpg';
+import MotortrendLogoLarge from '@/public/motortrend-logo-large.png';
+import Motortrend75Logo from '@/public/motortrend-75years-logo.png';
+import MotortrendMtLogo from '@/public/motortrend-mt-logo.png';
+import MotortrendBlackRedLogo from '@/public/motortrend-blackred-logo.png';
 import FaithlifeLogoLarge from '@/public/faithlife-logo-large.png';
 import RokuLogo from '@/public/roku-logo.jpg';
 import AmberLogo from '@/public/amber-logo.jpg';
@@ -82,13 +86,53 @@ export const content = {
 			title: "Coder's Journal",
 		},
 		projects: {
-			greeting1: 'What I’ve been digging into (or planning) this 2023:',
+			greeting1: 'What I’ve been digging into this 2025:',
 			greeting2:
-				'Typescript, React.js, Next.js, Tailwind, Sass, Framer motion, Zod, Urql (GraphQL client), PostgresSQL, Prisma, TRPC, Sanity.io, Shopify, React Native, Solid.js, Brightscript (Roku)',
+				'Typescript, React.js, Next.js, Tailwind, Framer motion, Zod, GraphQL, Webiny, Prisma, TRPC, Shopify, React Native, Solid.js, Brightscript (Roku), and various AI / LLM things',
 			linkText: 'Code',
 			header: 'Make it work, Make it right, Make it fast',
-			workHeader: 'Work Experience',
+			workHeader: 'Group efforts',
 			workItems: [
+				{
+					role: 'Software Development Engineer II, Web',
+					company: 'Motortrend',
+					companyLink: 'https://motortrend.com',
+					image: {
+						src: MotortrendLogoLarge,
+						width: 64,
+						height: 64,
+						alt: 'Motortrend',
+					},
+					tasks: [
+						{
+							image: {
+								src: Motortrend75Logo,
+								width: 36,
+								height: 36,
+								alt: 'Motortrend',
+							},
+							text: `Replaced legacy stack with Next.js (SSR/SSG), cutting page load times and boosting SEO for millions of visitors`,
+						},
+						{
+							image: {
+								src: MotortrendMtLogo,
+								width: 36,
+								height: 36,
+								alt: 'Motortrend',
+							},
+							text: 'Streamlined CI/CD to reduce deployments from days to minutes, accelerating stakeholder feedback and QA (via GitHub Actions + Vercel preview urls)',
+						},
+						{
+							image: {
+								src: MotortrendBlackRedLogo,
+								width: 36,
+								height: 36,
+								alt: 'Motortrend',
+							},
+							text: 'Helped refine GPT ad architecture, reducing layout shift and improving Core Web Vitals',
+						},
+					],
+				},
 				{
 					role: 'Software Engineer',
 					company: 'Faithlife',
@@ -99,7 +143,6 @@ export const content = {
 						height: 64,
 						alt: 'Faithlife',
 					},
-					dateRange: '2017 - 2022',
 					tasks: [
 						{
 							image: {
@@ -144,12 +187,12 @@ export const content = {
 								height: 36,
 								alt: 'Logos Bible Software',
 							},
-							text: "Built a timeline web component using [React-Virtualized](https://www.npmjs.com/package/react-virtualized 'npm - react-virtualized') for [Logos Bible software](https://www.logos.com/ 'Logos.com'), rendering over 18k interactive events and syncing with books and resources for a seamless user experience across web, desktop, and iPad platforms.",
+							text: "Built a timeline feature using [React-Virtualized](https://www.npmjs.com/package/react-virtualized 'npm - react-virtualized') for [Logos Bible software](https://www.logos.com/ 'Logos.com'), rendering over 18k interactive events and syncing with books and resources for a seamless user experience across web, desktop, and iPad platforms.",
 						},
 					],
 				},
 			],
-			projectsHeader: 'Recent Projects',
+			projectsHeader: 'Solo projects',
 			visitSiteText: 'Visit Website',
 			visitCodeText: 'See the Code',
 			projectItems: [
