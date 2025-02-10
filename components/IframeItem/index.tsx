@@ -4,8 +4,8 @@ import { Button } from '../Button';
 import { ProjectsItemHeader } from '../ProjectsItemHeader';
 import { joinListItems } from '@/lib/util';
 import { convertStringsToMdx } from '@/lib/mdx';
-import Iframe from 'react-iframe';
 import styles from './iframeItem.module.scss';
+import IframeWrapper from './IframeWrapper';
 
 const { visitSiteText, visitCodeText } = content.page.projects;
 
@@ -60,15 +60,7 @@ const IframeItem = async ({
 						))}
 					</ul>
 				</div>
-				<div className={styles.iframeWrapper}>
-					<Iframe
-						url={siteLink}
-						scrolling={'no'}
-						loading={'lazy'}
-						frameBorder={0}
-						height={'600px'}
-					/>
-				</div>
+				<IframeWrapper siteLink={siteLink} />
 			</div>
 		</>
 	);
