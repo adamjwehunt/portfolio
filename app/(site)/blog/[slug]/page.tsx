@@ -3,16 +3,18 @@ import { getPost } from '@/lib/mdx';
 import styles from './blog.module.css';
 
 interface BlogPageProps {
-	params: { slug: string };
+	params: Promise<{ slug: string }>;
 }
 
-export const generateMetadata = async ({ params: { slug } }: BlogPageProps) => {
+export const generateMetadata = async ({ params }: BlogPageProps) => {
+	const { slug } = await params;
 	const { metadata } = await getPost(slug);
 
 	return { title: `${content.metadata.titleBase} ${metadata.title}` };
 };
 
-const BlogPage = async ({ params: { slug } }: BlogPageProps) => {
+const BlogPage = async ({ params }: BlogPageProps) => {
+	const { slug } = await params;
 	const {
 		content,
 		metadata: { title },

@@ -97,6 +97,7 @@ export const content = {
 					role: 'Software Development Engineer II, Web',
 					company: 'Motortrend',
 					companyLink: 'https://motortrend.com',
+					subtitle: '',
 					image: {
 						src: MotortrendLogoLarge,
 						width: 64,
@@ -137,6 +138,7 @@ export const content = {
 					role: 'Software Engineer',
 					company: 'Faithlife',
 					companyLink: 'https://faithlife.com',
+					subtitle: '',
 					image: {
 						src: FaithlifeLogoLarge,
 						width: 64,

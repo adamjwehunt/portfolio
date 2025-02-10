@@ -33,13 +33,9 @@ const nextConfig = {
 
 		return config;
 	},
-	experimental: {
-		appDir: true,
-		mdxRs: true,
-	},
 	sassOptions: {
 		includePaths: ['./app', './components', './lib'],
-		prependData: `@import "variables.scss";`,
+		prependData: `@use 'variables' as *;`,
 	},
 };
 

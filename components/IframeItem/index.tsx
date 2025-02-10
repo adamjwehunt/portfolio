@@ -16,10 +16,6 @@ interface IframeItemProps {
 	githubLink: string;
 	tech: string[];
 	image: ImageProps;
-	images: {
-		desktop: ImageProps;
-		mobile: ImageProps[];
-	};
 	description: string[];
 }
 

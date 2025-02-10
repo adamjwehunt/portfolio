@@ -28,21 +28,18 @@ const ProjectPage = () => (
 			</div>
 			<h2>{workHeader}</h2>
 			{workItems.map((props, index) => (
-				// @ts-expect-error Server Component
 				<WorkItem key={index} {...props} />
 			))}
 		</section>
 		<section>
 			<h2>{projectsHeader}</h2>
 			{projectItems.map((props, index) => (
-				// @ts-expect-error Server Component
 				<ProjectItem key={index} {...props} />
 			))}
 		</section>
 		<section>
 			<h2>{etceteraHeader}</h2>
 			{iframeItems.map((props, index) => (
-				// @ts-expect-error Server Component
 				<IframeItem key={index} {...props} />
 			))}
 		</section>
