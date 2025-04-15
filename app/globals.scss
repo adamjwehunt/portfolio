@@ -122,6 +122,16 @@ pre {
 	overflow-x: auto;
 }
 
+article {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+
+	li {
+		margin-left: 2rem;
+	}
+}
+
 @media only screen and (max-width: $mobile-breakpoint) {
 	h2 {
 		font-size: 1.675rem;

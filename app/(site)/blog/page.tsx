@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { content } from '@/content';
 import { getPostsMetadata } from '@/lib/mdx';
 import { joinListItems } from '@/lib/util';
-import { shareTechMono } from '@/constants/fonts';
-import classNames from 'classnames';
 import styles from './blog.module.scss';
 
 const BlogPage = async () => {
