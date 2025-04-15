@@ -51,7 +51,7 @@ const BlogPage = async ({ params }: BlogPageProps) => {
 			/>
 			<section>
 				<div>
-					<h2 className={styles.title}>{title}</h2>
+					<h1 className={styles.title}>{title}</h1>
 					<div className={styles.details}>
 						<time>{publishDate}</time>
 						{tags?.length && <div>{joinListItems(tags)}</div>}
@@ -59,6 +59,7 @@ const BlogPage = async ({ params }: BlogPageProps) => {
 				</div>
 
 				<article>{content}</article>
+				<p>{"- Adam"}</p>
 			</section>
 		</>
 	);

@@ -25,9 +25,9 @@ const Frame = ({ header, children }: FrameProps) => {
 			</header>
 			<div className={styles.frame}>
 				<div className={styles.contentWrapper}>
-					<h1 className={classNames(styles.heading, shareTechMono.className)}>
+					<div className={classNames(styles.heading, shareTechMono.className)}>
 						{header}
-					</h1>
+					</div>
 					<main className={styles.content}>{children}</main>
 				</div>
 				<footer className={classNames(styles.footer, shareTechMono.className)}>
