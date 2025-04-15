@@ -1,6 +1,8 @@
-import { content } from '@/content';
-import { shareTechMono } from '@/constants/fonts';
 import classNames from 'classnames';
+
+import { shareTechMono } from '@/constants/fonts';
+import { content } from '@/content';
+
 import styles from './callToAction.module.css';
 
 export const CallToAction = () => {

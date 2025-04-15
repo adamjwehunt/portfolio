@@ -1,8 +1,9 @@
 'use client';
 
 import { useLayoutEffect, useMemo, useRef, useCallback } from 'react';
-import { Star, clearCanvas, createStar } from './utils';
+
 import styles from './starfield.module.css';
+import { Star, clearCanvas, createStar } from './utils';
 
 export const SPEED = 1.5;
 export const ACCELERATION = 0.25;
@@ -15,7 +16,7 @@ const Starfield = () => {
 	const starsRef = useRef<Star[]>([]);
 	const numStarsRef = useRef<number>(0);
 	const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
-	const canvasDimensions = useMemo(() => ({ width: 0, height: 0 }), []);
+	const canvasDimensions = useMemo(() => ({ height: 0, width: 0 }), []);
 	const animationRef = useRef<number | null>(null);
 
 	const resizeCanvas = useCallback(() => {

@@ -1,6 +1,7 @@
+import { Url } from 'url';
+
 import Link, { LinkProps } from 'next/link';
 import { AnchorHTMLAttributes } from 'react';
-import { Url } from 'url';
 
 interface MdxLinkProps extends Omit<LinkProps, 'href'> {
 	href?: string | Url;

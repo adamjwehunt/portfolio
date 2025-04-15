@@ -21,15 +21,15 @@ export function createStar(width: number, height: number): Star {
 	const start = width > height ? width : height;
 
 	const star: Star = {
-		x: x + (sx * start) / SPEED,
-		y: y + (sy * start) / SPEED,
+		age: 0,
+		color: STAR_COLOR,
+		dies: 500,
+		h: 1,
 		sx,
 		sy,
 		w: 1,
-		h: 1,
-		age: 0,
-		dies: 500,
-		color: STAR_COLOR,
+		x: x + (sx * start) / SPEED,
+		y: y + (sy * start) / SPEED,
 	};
 
 	return star;

@@ -1,21 +1,22 @@
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+
 import matter from 'gray-matter';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { MdxLink } from './components/MdxLink';
-import { ReactElement } from 'react';
-import { MdxImage } from './components/MdxImage';
-import { Columns, Left, Right } from './components/Columns';
 import moment from 'moment';
 import { ImageProps } from 'next/image';
-import { cache } from 'react';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { ReactElement , cache } from 'react';
+
+import { Columns, Left, Right } from './components/Columns';
+import { MdxImage } from './components/MdxImage';
+import { MdxLink } from './components/MdxLink';
 
 const components = {
-	a: MdxLink,
-	Image: MdxImage,
 	Columns,
+	Image: MdxImage,
 	Left,
 	Right,
+	a: MdxLink,
 };
 
 interface BlogPost {
@@ -71,19 +72,20 @@ export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 	const { data: frontmatter, content: mdxContent } = matter(fileContent);
 
 	const content = await MDXRemote({
-		source: mdxContent,
 		components,
 		options: {
-			parseFrontmatter: false,
 			mdxOptions: {
 				development: process.env.NODE_ENV === 'development',
-				remarkPlugins: [],
 				rehypePlugins: [],
+				remarkPlugins: [],
 			},
+			parseFrontmatter: false,
 		},
+		source: mdxContent,
 	});
 
 	return {
+		content,
 		metadata: {
 			...frontmatter,
 			slug: mdxSlug,
@@ -95,7 +97,6 @@ export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 				  }
 				: {}),
 		},
-		content,
 	};
 });
 
@@ -129,17 +130,17 @@ export const getAbout = cache(async (): Promise<About> => {
 	const { data: frontmatter, content: mdxContent } = matter(fileContent);
 
 	const content = await MDXRemote({
-		source: mdxContent,
 		components,
 		options: {
-			parseFrontmatter: false,
 			mdxOptions: {
 				development: process.env.NODE_ENV === 'development',
 			},
+			parseFrontmatter: false,
 		},
+		source: mdxContent,
 	});
 
-	return { metadata: frontmatter, content };
+	return { content, metadata: frontmatter };
 });
 
 export interface Task {
@@ -152,13 +153,13 @@ export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 
 	const contentPromises = tasks.map(task => 
 		MDXRemote({
-			source: task.text,
 			components,
 			options: {
 				mdxOptions: {
 					development: process.env.NODE_ENV === 'development',
 				},
 			},
+			source: task.text,
 		})
 	);
 	
@@ -166,7 +167,7 @@ export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 	
 	// Match content with images
 	for (let i = 0; i < tasks.length; i++) {
-		newTasks.push({ image: tasks[i].image, content: contents[i] });
+		newTasks.push({ content: contents[i], image: tasks[i].image });
 	}
 
 	return newTasks;
@@ -175,13 +176,13 @@ export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 export const convertStringsToMdx = cache(async (strings: string[]) => {
 	const contentPromises = strings.map(string => 
 		MDXRemote({
-			source: string,
 			components,
 			options: {
 				mdxOptions: {
 					development: process.env.NODE_ENV === 'development',
 				},
 			},
+			source: string,
 		})
 	);
 	

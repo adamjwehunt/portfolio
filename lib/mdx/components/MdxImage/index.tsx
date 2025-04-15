@@ -1,4 +1,5 @@
 import Image, { ImageProps } from 'next/image';
+
 import styles from './mdxImage.module.css';
 
 interface MdxImageProps extends ImageProps {

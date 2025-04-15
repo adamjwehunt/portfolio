@@ -1,10 +1,13 @@
-import { content } from '@/content';
+import classNames from 'classnames';
+
 import { Button } from '@/components/Button';
-import { SocialLinks } from '@/components/SocialLinks';
 import { CallToAction } from '@/components/CallToAction';
 import { Name } from '@/components/Name';
+import { SocialLinks } from '@/components/SocialLinks';
 import { shareTechMono } from '@/constants/fonts';
-import classNames from 'classnames';
+import { content } from '@/content';
+
+
 import styles from './page.module.scss';
 
 const Home = () => {

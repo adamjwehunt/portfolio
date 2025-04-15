@@ -1,18 +1,20 @@
 import Image from 'next/image';
+
+import Frame from '@/components/Frame';
 import { content } from '@/content';
 import { getAbout } from '@/lib/mdx';
-import Frame from '@/components/Frame';
 import { generatePersonJsonLd } from '@/lib/seo';
+
 import styles from './about.module.scss';
 
 export const generateMetadata = async () => {
 	const { metadata } = await getAbout();
 
 	return {
-		title: `${content.metadata.titleBase} ${metadata.title}`,
 		alternates: {
 			canonical: '/about',
 		},
+		title: `${content.metadata.titleBase} ${metadata.title}`,
 	};
 };
 

@@ -1,11 +1,15 @@
 import Image, { ImageProps } from 'next/image';
+
 import { content } from '@/content';
-import { Button } from '../Button';
-import { ProjectsItemHeader } from '../ProjectsItemHeader';
-import { joinListItems } from '@/lib/util';
 import { convertStringsToMdx } from '@/lib/mdx';
-import styles from './projectItem.module.scss';
+import { joinListItems } from '@/lib/util';
+
+import { Button } from '../Button';
 import IframeWrapper from '../IframeContainer/IframeContainer';
+import { ProjectsItemHeader } from '../ProjectsItemHeader';
+
+import styles from './projectItem.module.scss';
+
 
 interface ProjectItemProps {
 	title: string;
@@ -41,7 +45,7 @@ const ProjectItem = async ({
 
 	return (
 		<div className={styles.container}>
-			<ProjectsItemHeader {...{ image, title, subtitle }} />
+			<ProjectsItemHeader {...{ image, subtitle, title }} />
 			<div className={styles.wrapper}>
 				<div className={styles.details}>
 					<div className={styles.buttons}>

@@ -1,8 +1,10 @@
 import { content } from '@/content';
 import { getPost, getPostsMetadata } from '@/lib/mdx';
-import styles from './blog.module.scss';
-import { joinListItems } from '@/lib/util';
 import { generateBlogPostJsonLd } from '@/lib/seo';
+import { joinListItems } from '@/lib/util';
+
+import styles from './blog.module.scss';
+
 
 interface BlogPageProps {
 	params: Promise<{ slug: string }>;
@@ -20,10 +22,10 @@ export const generateMetadata = async ({ params }: BlogPageProps) => {
 	const { metadata } = await getPost(slug);
 
 	return { 
-		title: `${content.metadata.titleBase} ${metadata.title}`,
 		alternates: {
 			canonical: `/blog/${slug}`,
 		},
+		title: `${content.metadata.titleBase} ${metadata.title}`,
 	};
 };
 
@@ -35,10 +37,10 @@ const BlogPage = async ({ params }: BlogPageProps) => {
 	} = await getPost(slug);
 
 	const blogPostJsonLd = generateBlogPostJsonLd({
-		title,
-		publishDate,
 		author,
+		publishDate,
 		slug,
+		title,
 	});
 
 	return (

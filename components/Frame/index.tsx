@@ -1,11 +1,13 @@
-import { ReactNode } from 'react';
-import { content } from '@/content';
 import classnames from 'classnames';
-import { SocialLinks } from '../SocialLinks';
+import { ReactNode } from 'react';
+
+import { shareTechMono } from '@/constants/fonts';
+import { content } from '@/content';
+
 import { BackButton } from '../BackButton';
 import { Name } from '../Name';
-import { shareTechMono } from '@/constants/fonts';
-import classNames from 'classnames';
+import { SocialLinks } from '../SocialLinks';
+
 import styles from './frame.module.scss';
 
 interface FrameProps {
@@ -25,12 +27,12 @@ const Frame = ({ header, children }: FrameProps) => {
 			</header>
 			<div className={styles.frame}>
 				<div className={styles.contentWrapper}>
-					<div className={classNames(styles.heading, shareTechMono.className)}>
+					<div className={classnames(styles.heading, shareTechMono.className)}>
 						{header}
 					</div>
 					<main className={styles.content}>{children}</main>
 				</div>
-				<footer className={classNames(styles.footer, shareTechMono.className)}>
+				<footer className={classnames(styles.footer, shareTechMono.className)}>
 					<div className={styles.fullRow}>
 						<SocialLinks className={styles.socialLinks} />
 					</div>

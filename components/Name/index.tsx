@@ -1,7 +1,9 @@
-import Link from 'next/link';
-import { content } from '@/content';
 import classnames from 'classnames';
+import Link from 'next/link';
+
 import { shareTechMono } from '@/constants/fonts';
+import { content } from '@/content';
+
 import styles from './name.module.css';
 
 interface NameProps {

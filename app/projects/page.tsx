@@ -1,7 +1,8 @@
 import Frame from '@/components/Frame';
-import { content } from '@/content';
-import WorkItem from '@/components/WorkItem';
 import ProjectItem from '@/components/ProjectItem';
+import WorkItem from '@/components/WorkItem';
+import { content } from '@/content';
+
 import styles from './projects.module.css';
 
 const ProjectPage = () => {

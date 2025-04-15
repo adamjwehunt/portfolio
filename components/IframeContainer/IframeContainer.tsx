@@ -1,8 +1,10 @@
 'use client';
 
 import Iframe from 'react-iframe';
-import styles from './iframeItem.module.scss';
+
 import { useLazyLoad } from '@/hooks/useLazyLoad';
+
+import styles from './iframeItem.module.scss';
 
 interface IframeContainer {
 	siteLink: string;

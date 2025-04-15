@@ -1,9 +1,11 @@
-import Link from 'next/link';
 import classnames from 'classnames';
+import Link from 'next/link';
+import { ComponentType, SVGProps } from 'react';
+
 import styles from './iconButton.module.css';
 
 interface BaseIconButtonProps {
-	icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+	icon: ComponentType<SVGProps<SVGSVGElement>>;
 	ariaLabel: string;
 	accent?: boolean;
 	accentClassName?: string;

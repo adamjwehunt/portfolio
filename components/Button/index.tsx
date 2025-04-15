@@ -1,6 +1,8 @@
-import Link from 'next/link';
 import classnames from 'classnames';
+import Link from 'next/link';
+
 import { shareTechMono } from '@/constants/fonts';
+
 import styles from './button.module.css';
 
 interface ButtonProps {

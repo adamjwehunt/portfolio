@@ -1,8 +1,11 @@
 import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
+
 import { convertTasksToMdx } from '@/lib/mdx';
-import styles from './workItem.module.scss';
+
 import { ProjectsItemHeader } from '../ProjectsItemHeader';
+
+import styles from './workItem.module.scss';
 
 interface Task {
 	text: string;

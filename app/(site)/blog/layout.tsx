@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
+
 import Frame from '@/components/Frame';
 import { content } from '@/content';
 
 interface BlogLayoutProps {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {

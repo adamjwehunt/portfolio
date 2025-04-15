@@ -1,5 +1,5 @@
-import { getPostsMetadata } from '@/lib/mdx';
 import { content } from '@/content';
+import { getPostsMetadata } from '@/lib/mdx';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
@@ -10,8 +10,8 @@ export default async function sitemap() {
 
   // Blog posts
   const blogUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: post.publishDate,
+    url: `${baseUrl}/blog/${post.slug}`,
   }));
 
   // Static pages
@@ -21,8 +21,8 @@ export default async function sitemap() {
     '/blog',
     '/projects',
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
+    url: `${baseUrl}${route}`,
   }));
 
   return [...routes, ...blogUrls];

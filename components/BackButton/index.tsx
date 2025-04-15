@@ -1,9 +1,12 @@
 'use client';
 
-import { content } from '@/content';
 import { useRouter } from 'next/navigation';
+
+import { content } from '@/content';
 import BackArrow from '@/public/back-arrow.svg';
+
 import { IconButton } from '../IconButton';
+
 import styles from './backButton.module.scss';
 
 export const BackButton = () => {

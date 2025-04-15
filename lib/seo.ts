@@ -22,12 +22,12 @@ export function generateBlogPostJsonLd({
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: title,
-    datePublished: publishDate,
     author: {
       "@type": "Person",
       name: author || "Adam Wehunt",
     },
+    datePublished: publishDate,
+    headline: title,
     url: canonicalUrl,
   };
 }
@@ -36,12 +36,12 @@ export function generatePersonJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    jobTitle: "Software Engineer",
     name: `${content.components.name.firstName} ${content.components.name.lastName}`,
-    url: content.metadata.siteUrl,
     sameAs: content.components.socialLinks
       .map(link => link.href)
       .filter(href => !href.includes('mailto:')),
-    jobTitle: "Software Engineer",
+    url: content.metadata.siteUrl,
     worksFor: {
       "@type": "Organization",
       name: "Motortrend"
@@ -53,8 +53,8 @@ export function generateWebsiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    url: content.metadata.siteUrl,
-    name: `${content.components.name.firstName} ${content.components.name.lastName}`,
     description: content.metadata.description,
+    name: `${content.components.name.firstName} ${content.components.name.lastName}`,
+    url: content.metadata.siteUrl,
   };
 }

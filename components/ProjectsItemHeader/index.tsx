@@ -1,5 +1,6 @@
 import Image, { ImageProps } from 'next/image';
 import { ReactElement } from 'react';
+
 import styles from './projectsItemHeader.module.css';
 
 interface ProjectsItemHeaderProps {
