@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://adamwehunt.com
+
+# Sitemaps
+Sitemap: https://adamwehunt.com/sitemap.xml

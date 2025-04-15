@@ -34,6 +34,7 @@ export const content = {
 		titleBase: 'Adam Wehunt -',
 		titleRootPage: 'Software Engineer',
 		description: 'Hi, my name is Adam Wehunt and I am a software engineer.',
+		siteUrl: 'https://adamwehunt.com',
 	},
 	components: {
 		frame: {
