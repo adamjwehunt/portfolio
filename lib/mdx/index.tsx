@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
-import { compileMDX } from 'next-mdx-remote/rsc';
+import matter from 'gray-matter';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import { MdxLink } from './components/MdxLink';
 import { ReactElement } from 'react';
 import { MdxImage } from './components/MdxImage';
@@ -18,7 +19,7 @@ const components = {
 
 interface BlogPost {
 	metadata: BlogPostMetadata;
-	content: string | ReactElement;
+	content: ReactElement;
 }
 
 interface BlogPostMetadata {
@@ -36,9 +37,11 @@ export const getPost = async (slug: string): Promise<BlogPost> => {
 	const filePath = path.join(postsDirectory, `${mdxSlug}.mdx`);
 	const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
 
-	const { frontmatter, content } = await compileMDX({
-		source: fileContent,
-		options: { parseFrontmatter: true },
+	// Use gray-matter to parse frontmatter and content
+	const { data: frontmatter, content: mdxContent } = matter(fileContent);
+
+	const content = await MDXRemote({
+		source: mdxContent,
 		components,
 	});
 
@@ -75,7 +78,7 @@ export const getPostsMetadata = async (): Promise<BlogPostMetadata[]> => {
 
 interface About {
 	metadata: AboutMetadata;
-	content: string | ReactElement;
+	content: ReactElement;
 }
 
 interface AboutMetadata {
@@ -86,24 +89,15 @@ export const getAbout = async (): Promise<About> => {
 	const filePath = path.join('content', `about.mdx`);
 	const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
 
-	const { frontmatter, content } = await compileMDX({
-		source: fileContent,
-		options: { parseFrontmatter: true },
+	// Use gray-matter to parse frontmatter and content
+	const { data: frontmatter, content: mdxContent } = matter(fileContent);
+
+	const content = await MDXRemote({
+		source: mdxContent,
 		components,
 	});
 
 	return { metadata: frontmatter, content };
-};
-
-const getContentFromMdxString = async (
-	mdxString: string
-): Promise<ReactElement> => {
-	const { content } = await compileMDX({
-		source: mdxString,
-		components,
-	});
-
-	return content;
 };
 
 export interface Task {
@@ -115,7 +109,10 @@ export const convertTasksToMdx = async (tasks: Task[]) => {
 	const newTasks: { image: ImageProps; content: ReactElement }[] = [];
 
 	for (const task of tasks) {
-		const content = await getContentFromMdxString(task.text);
+		const content = await MDXRemote({
+			source: task.text,
+			components,
+		});
 		newTasks.push({ image: task.image, content });
 	}
 
@@ -126,7 +123,10 @@ export const convertStringsToMdx = async (strings: string[]) => {
 	const mdx: ReactElement[] = [];
 
 	for (const string of strings) {
-		const content = await getContentFromMdxString(string);
+		const content = await MDXRemote({
+			source: string,
+			components,
+		});
 		mdx.push(content);
 	}
 
