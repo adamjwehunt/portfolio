@@ -8,6 +8,7 @@ import { MdxImage } from './components/MdxImage';
 import { Columns, Left, Right } from './components/Columns';
 import moment from 'moment';
 import { ImageProps } from 'next/image';
+import { cache } from 'react';
 
 const components = {
 	a: MdxLink,
@@ -32,17 +33,49 @@ interface BlogPostMetadata {
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts');
 
-export const getPost = async (slug: string): Promise<BlogPost> => {
+// Cached version of file reading to avoid repeated disk I/O
+const getFileContent = cache((filePath: string): string => {
+	return fs.readFileSync(filePath, { encoding: 'utf8' });
+});
+
+// Cached version of metadata extraction
+export const getPostMetadata = cache(async (slug: string): Promise<BlogPostMetadata> => {
 	const mdxSlug = slug.replace(/\.mdx$/, '');
 	const filePath = path.join(postsDirectory, `${mdxSlug}.mdx`);
-	const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+	const fileContent = getFileContent(filePath);
 
-	// Use gray-matter to parse frontmatter and content
+	const { data: frontmatter } = matter(fileContent);
+	
+	return {
+		...frontmatter,
+		slug: mdxSlug,
+		...(frontmatter.publishDate
+			? {
+					publishDate: moment(frontmatter.publishDate).format(
+						'MMMM Do, YYYY'
+					),
+			  }
+			: {}),
+	};
+});
+
+// Cached version of full post loading with content
+export const getPost = cache(async (slug: string): Promise<BlogPost> => {
+	const mdxSlug = slug.replace(/\.mdx$/, '');
+	const filePath = path.join(postsDirectory, `${mdxSlug}.mdx`);
+	const fileContent = getFileContent(filePath);
+
 	const { data: frontmatter, content: mdxContent } = matter(fileContent);
 
 	const content = await MDXRemote({
 		source: mdxContent,
 		components,
+		options: {
+			parseFrontmatter: false,
+			mdxOptions: {
+				development: process.env.NODE_ENV === 'development',
+			},
+		},
 	});
 
 	return {
@@ -59,22 +92,20 @@ export const getPost = async (slug: string): Promise<BlogPost> => {
 		},
 		content,
 	};
-};
+});
 
-export const getPostsMetadata = async (): Promise<BlogPostMetadata[]> => {
+export const getPostsMetadata = cache(async (): Promise<BlogPostMetadata[]> => {
 	const files = fs.readdirSync(postsDirectory);
+	
+	const posts = await Promise.all(
+		files.map(async (file) => {
+			const slug = file.replace(/\.mdx$/, '');
+			return await getPostMetadata(slug);
+		})
+	);
 
-	const posts = [];
-
-	for (const file of files) {
-		const { metadata } = await getPost(file);
-		posts.push(metadata);
-	}
-
-	const sortedPosts = sortPostsByDate(posts);
-
-	return sortedPosts;
-};
+	return sortPostsByDate(posts);
+});
 
 interface About {
 	metadata: AboutMetadata;
@@ -85,9 +116,9 @@ interface AboutMetadata {
 	title?: string;
 }
 
-export const getAbout = async (): Promise<About> => {
+export const getAbout = cache(async (): Promise<About> => {
 	const filePath = path.join('content', `about.mdx`);
-	const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+	const fileContent = getFileContent(filePath);
 
 	// Use gray-matter to parse frontmatter and content
 	const { data: frontmatter, content: mdxContent } = matter(fileContent);
@@ -95,43 +126,62 @@ export const getAbout = async (): Promise<About> => {
 	const content = await MDXRemote({
 		source: mdxContent,
 		components,
+		options: {
+			parseFrontmatter: false,
+			mdxOptions: {
+				development: process.env.NODE_ENV === 'development',
+			},
+		},
 	});
 
 	return { metadata: frontmatter, content };
-};
+});
 
 export interface Task {
 	text: string;
 	image: ImageProps;
 }
 
-export const convertTasksToMdx = async (tasks: Task[]) => {
+export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 	const newTasks: { image: ImageProps; content: ReactElement }[] = [];
 
-	for (const task of tasks) {
-		const content = await MDXRemote({
+	const contentPromises = tasks.map(task => 
+		MDXRemote({
 			source: task.text,
 			components,
-		});
-		newTasks.push({ image: task.image, content });
+			options: {
+				mdxOptions: {
+					development: process.env.NODE_ENV === 'development',
+				},
+			},
+		})
+	);
+	
+	const contents = await Promise.all(contentPromises);
+	
+	// Match content with images
+	for (let i = 0; i < tasks.length; i++) {
+		newTasks.push({ image: tasks[i].image, content: contents[i] });
 	}
 
 	return newTasks;
-};
+});
 
-export const convertStringsToMdx = async (strings: string[]) => {
-	const mdx: ReactElement[] = [];
-
-	for (const string of strings) {
-		const content = await MDXRemote({
+export const convertStringsToMdx = cache(async (strings: string[]) => {
+	const contentPromises = strings.map(string => 
+		MDXRemote({
 			source: string,
 			components,
-		});
-		mdx.push(content);
-	}
-
-	return mdx;
-};
+			options: {
+				mdxOptions: {
+					development: process.env.NODE_ENV === 'development',
+				},
+			},
+		})
+	);
+	
+	return Promise.all(contentPromises);
+});
 
 function sortPostsByDate(posts: BlogPostMetadata[]) {
 	return posts.sort((a, b) => {
