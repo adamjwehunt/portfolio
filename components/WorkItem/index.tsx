@@ -29,7 +29,7 @@ const WorkItem = async ({
 	const mdxTasks = await convertTasksToMdx(tasks);
 
 	return (
-		<>
+		<div className={styles.container}>
 			<ProjectsItemHeader
 				image={image}
 				title={
@@ -58,7 +58,7 @@ const WorkItem = async ({
 					</div>
 				))}
 			</div>
-		</>
+		</div>
 	);
 };
 

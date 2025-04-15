@@ -11,17 +11,14 @@
 	border: 10px solid #fff;
 	border-radius: 25px;
 	box-shadow: 0 0 0 3px var(--image-border-edge);
-	margin: 1.5rem 0;
 }
 
 .content p {
 	font-size: 1.125rem;
-	margin-bottom: 1rem;
 }
 
 .title {
 	font-size: 2rem;
-	margin: 3rem 0;
 	font-weight: 600;
 }
 
@@ -33,10 +30,6 @@
 	line-height: 1.75;
 }
 
-.outro {
-	margin: 3.5rem 0 1rem;
-}
-
 .email {
 	color: var(--accent-2);
 }
@@ -44,7 +37,6 @@
 @media only screen and (max-width: $mobile-breakpoint) {
 	.title {
 		font-size: 1.75rem;
-		margin: 2.5rem 0;
 	}
 
 	.intro,

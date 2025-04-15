@@ -3,10 +3,6 @@
 	display: flex;
 }
 
-.header {
-	margin-bottom: 2rem;
-}
-
 .image {
 	border: 6px solid var(--image-border);
 	border-radius: 12px;
@@ -16,12 +12,11 @@
 .text {
 	justify-content: center;
 	flex-direction: column;
-	margin-left: 1rem;
 	line-height: 1.25;
 }
 
-.title {
-	margin: 0.125rem 0;
+.header {
+	gap: 1rem;
 }
 
 .subtitle {

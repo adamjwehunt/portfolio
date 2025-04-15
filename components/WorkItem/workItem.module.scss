@@ -1,29 +1,27 @@
-$taskImageSize: 35px;
-
-.tasks {
-	margin-left: 1.75rem;
-}
-
-@media only screen and (max-width: $mobile-breakpoint) {
-	.tasks {
-		margin-left: 1rem;
-	}
-}
-
+.container,
+.tasks,
 .taskContainer {
 	display: flex;
-	margin-bottom: 0.5rem;
+}
 
-	p {
-		margin-top: 0.25rem;
-		margin-left: 1rem;
-	}
+.container,
+.tasks {
+	flex-direction: column;
+}
+
+.container {
+	gap: 2rem;
+}
+
+.tasks,
+.taskContainer {
+	gap: 1rem;
+}
+
+.tasks {
+	padding-left: 2rem;
 }
 
 .taskImage {
-	height: $taskImageSize;
-	width: $taskImageSize;
-	flex-shrink: 0;
-	margin-top: 0.75rem;
 	border-radius: 6px;
 }

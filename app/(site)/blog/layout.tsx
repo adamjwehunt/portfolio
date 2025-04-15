@@ -5,10 +5,9 @@ interface BlogLayoutProps {
 	children: React.ReactNode;
 }
 
-const { header } = content.page.blog;
-
 const BlogLayout = ({ children }: BlogLayoutProps) => {
-	return <Frame header={header}>{children}</Frame>;
+	const { title } = content.page.blog;
+	return <Frame header={title}>{children}</Frame>;
 };
 
 export default BlogLayout;

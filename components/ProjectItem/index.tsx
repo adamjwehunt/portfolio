@@ -5,8 +5,7 @@ import { ProjectsItemHeader } from '../ProjectsItemHeader';
 import { joinListItems } from '@/lib/util';
 import { convertStringsToMdx } from '@/lib/mdx';
 import styles from './projectItem.module.scss';
-
-const { visitSiteText, visitCodeText } = content.page.projects;
+import IframeWrapper from '../IframeContainer/IframeContainer';
 
 interface ProjectItemProps {
 	title: string;
@@ -15,10 +14,11 @@ interface ProjectItemProps {
 	githubLink: string;
 	tech: string[];
 	image: ImageProps;
-	images: {
+	images?: {
 		desktop: ImageProps;
 		mobile: ImageProps[];
 	};
+	iframeLink?: string;
 	description: string[];
 }
 
@@ -28,14 +28,19 @@ const ProjectItem = async ({
 	siteLink,
 	githubLink,
 	tech,
+	iframeLink,
 	image,
-	images: { desktop, mobile },
+	images,
 	description,
 }: ProjectItemProps) => {
+	const { visitSiteText, visitCodeText } = content.page.projects;
+
 	const mdxDescriptionItems = await convertStringsToMdx(description);
 
+	const { desktop, mobile } = images || {};
+
 	return (
-		<>
+		<div className={styles.container}>
 			<ProjectsItemHeader {...{ image, title, subtitle }} />
 			<div className={styles.wrapper}>
 				<div className={styles.details}>
@@ -60,20 +65,23 @@ const ProjectItem = async ({
 						))}
 					</ul>
 				</div>
-				<div className={styles.images}>
-					<Image
-						className={styles.desktopImage}
-						{...desktop}
-						alt={desktop.alt}
-					/>
-					<div className={styles.mobileImages}>
-						{mobile.map((props, index) => (
-							<Image key={index} {...props} alt={props.alt} />
-						))}
+				{images ? (
+					<div className={styles.images}>
+						<Image
+							className={styles.desktopImage}
+							{...desktop!}
+							alt={desktop?.alt || ''}
+						/>
+						<div className={styles.mobileImages}>
+							{mobile?.map((props, index) => (
+								<Image key={index} {...props} alt={props.alt} />
+							))}
+						</div>
 					</div>
-				</div>
+				) : null}
+				{iframeLink && <IframeWrapper siteLink={siteLink} />}
 			</div>
-		</>
+		</div>
 	);
 };
 

@@ -1,40 +1,49 @@
-$gap: 2rem;
+$gap-large: 2rem;
+$gap-small: 1rem;
 $image-gap: 0.5rem;
 $border-radius: 12px;
 
+.container,
 .wrapper,
 .details,
 .images,
 .mobileImages,
-.buttons {
+.buttons,
+.description {
 	display: flex;
 }
 
+.container,
 .details,
 .images,
-.buttons {
+.buttons,
+.description {
 	flex-direction: column;
 }
 
+.container {
+	gap: $gap-large;
+}
+
 .wrapper {
-	margin-bottom: 5rem;
-	gap: $gap;
+	gap: $gap-large;
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
 	.wrapper {
 		flex-direction: column;
-		gap: 1rem;
+		gap: $gap-small;
 	}
 }
 
 .details {
-	flex: 0.7;
+	flex: 0.66;
+	gap: $gap-large;
 }
 
 .description {
-	margin-left: 1.125rem;
-	margin-top: $gap;
+	gap: $gap-small;
+	margin-left: 1rem;
 
 	li,
 	p {
@@ -43,7 +52,7 @@ $border-radius: 12px;
 }
 
 .buttons {
-	gap: $gap;
+	gap: $gap-large;
 }
 
 .button1 {

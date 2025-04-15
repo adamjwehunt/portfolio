@@ -1,19 +1,18 @@
+.header {
+	text-align: center;
+	color: #000;
+}
+
 .entry {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	color: #000;
-	margin-top: 2rem;
-}
-
-.title {
-	margin: 0;
 }
 
 .details {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 0.25rem;
 }
 
 .entry:hover .title,

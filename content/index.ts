@@ -1,7 +1,7 @@
 import BlueskyIcon from '@/public/bluesky.svg';
-import XIcon from '@/public/x.svg';
+// import XIcon from '@/public/x.svg';
 import GithubIcon from '@/public/github.svg';
-import LinkedinIcon from '@/public/linkedin.svg';
+// import LinkedinIcon from '@/public/linkedin.svg';
 import MailIcon from '@/public/mail.svg';
 import VodifaiDesktop from '@/public/vodifai-desktop.png';
 import VodifaiMobile1 from '@/public/vodifai-mobile-1.png';
@@ -39,7 +39,7 @@ export const content = {
 		frame: {
 			footer: {
 				location: 'Flagstaff, AZ',
-				copyright: '© Wehunt 2023',
+				copyright: '© Wehunt 2025',
 			},
 		},
 		backButton: { ariaLabel: 'Back' },
@@ -50,21 +50,21 @@ export const content = {
 				ariaLabel: 'GitHub',
 				icon: GithubIcon,
 			},
-			{
-				href: 'https://www.linkedin.com/in/ajwehunt',
-				ariaLabel: 'LinkedIn',
-				icon: LinkedinIcon,
-			},
+			// {
+			// 	href: 'https://www.linkedin.com/in/ajwehunt',
+			// 	ariaLabel: 'LinkedIn',
+			// 	icon: LinkedinIcon,
+			// },
 			{
 				href: 'https://bsky.app/profile/codetiquette.bsky.social',
 				ariaLabel: 'Bluesky',
 				icon: BlueskyIcon,
 			},
-			{
-				href: 'https://x.com/codetiquette',
-				ariaLabel: 'X',
-				icon: XIcon,
-			},
+			// {
+			// 	href: 'https://x.com/codetiquette',
+			// 	ariaLabel: 'X',
+			// 	icon: XIcon,
+			// },
 			{
 				href: `mailto:${email}`,
 				ariaLabel: 'Email',
@@ -75,9 +75,9 @@ export const content = {
 	page: {
 		home: {
 			greeting: 'Hello, my name is',
-			aboutMe: "Let's code something.",
-			callToAction1: '*Seeking full-time position',
-			callToAction2: ' please reach out 👇',
+			aboutMe: "Let's code something*.",
+			callToAction1:
+				'*Seeking projects with locals and friendlies, please reach out 👇',
 		},
 		blog: {
 			linkText: 'Blog',
@@ -86,10 +86,11 @@ export const content = {
 			title: "Coder's Journal",
 		},
 		projects: {
+			title: 'Projects',
 			greeting1: 'What I’ve been digging into this 2025:',
 			greeting2:
-				'Typescript, React.js, Next.js, Tailwind, Framer motion, Zod, GraphQL, Webiny, Prisma, TRPC, Shopify, React Native, Solid.js, Brightscript (Roku), and various AI / LLM things',
-			linkText: 'Code',
+				'Typescript, Next.js, Tailwind, Framer motion, Zod, GraphQL, Webiny, Prisma, TRPC, Shopify, React Native, Solid.js, Brightscript (Roku), and various AI / LLM things',
+			linkText: 'Projects',
 			header: 'Make it work, Make it right, Make it fast',
 			workHeader: 'Group efforts',
 			workItems: [
@@ -112,7 +113,7 @@ export const content = {
 								height: 36,
 								alt: 'Motortrend',
 							},
-							text: `Replaced legacy stack with Next.js (SSR/SSG), cutting page load times and boosting SEO for millions of visitors`,
+							text: `Replaced legacy frontend with Next.js (SSR/SSG), cutting page load times and boosting SEO for millions of visitors`,
 						},
 						{
 							image: {
@@ -153,7 +154,7 @@ export const content = {
 								height: 36,
 								alt: 'Faithlife TV',
 							},
-							text: `Built and maintained [Faithlife TV](https://www.faithlifetv.com 'Faithlife TV'), a video stream service for the web, iOS, Android, Apple TV, Fire TV, and Roku, with over 20k monthly unique users. Upgraded the React codebase by converting to Typescript, replacing class components with React hooks. Developed a "watch list" feature across all platforms.`,
+							text: `Built and maintained [Faithlife TV](https://www.faithlifetv.com 'Faithlife TV'), a video streaming service for the web, iOS, Android, Apple TV, Fire TV, and Roku. Serving over 30k unique users every month.`,
 						},
 						{
 							image: {
@@ -162,7 +163,7 @@ export const content = {
 								height: 36,
 								alt: 'Roku',
 							},
-							text: "Solely developed Faithlife TV's Roku client from the ground up, requiring quick proficiency in proprietary language [Brightscript](https://developer.roku.com/docs/references/brightscript/language/brightscript-language-reference.md 'BrightScript language reference') and XML framework [SceneGraph](https://developer.roku.com/docs/developer-program/core-concepts/core-concepts.md 'SceneGraph core concepts'). Designed custom components such as the video player UI while leveraging built-in components whenever possible.",
+							text: "Solo dev for Faithlife TV's Roku app. Built from the ground up, with the proprietary language [Brightscript](https://developer.roku.com/docs/references/brightscript/language/brightscript-language-reference.md 'BrightScript language reference') and [SceneGraph](https://developer.roku.com/docs/developer-program/core-concepts/core-concepts.md 'SceneGraph core concepts') (Nobody else in the company wanted to learn 🤣).",
 						},
 						{
 							image: {
@@ -171,7 +172,7 @@ export const content = {
 								height: 36,
 								alt: 'Amber',
 							},
-							text: "Maintained and enhanced the frontend of Faithlife's digital asset manager, [Amber](https://amber.faithlife.com/about 'Amber Digital Asset Manager'), by implementing a user-friendly download manager interface and streamlining access to multimedia files.",
+							text: "Led the frontend of Faithlife's digital asset manager, [Amber](https://amber.faithlife.com/about 'Amber Digital Asset Manager'). Implemented a user-friendly download manager interface and streamlined access to multimedia files.",
 						},
 						{
 							image: {
@@ -180,7 +181,7 @@ export const content = {
 								height: 36,
 								alt: 'Faithlife.com',
 							},
-							text: "Assisted in the development of [Faithlife.com's](https://faithlife.com/ 'Faithlife') church management system, improving churches' ability to manage and visualize members of their congregation. Created a touch-friendly [child check-in system](https://support.faithlife.com/hc/en-us/sections/360012145671-Check-In-and-Attendance 'Check-In and Attendance Support').",
+							text: "Developed [Faithlife.com's](https://faithlife.com/ 'Faithlife') church management system, improving churches' ability to manage and visualize members of their congregation. Created a touch-friendly [child check-in system](https://support.faithlife.com/hc/en-us/sections/360012145671-Check-In-and-Attendance 'Check-In and Attendance Support').",
 						},
 						{
 							image: {
@@ -289,12 +290,10 @@ export const content = {
 						'Following consultation with the owner, who provided examples of their desired designs and specifications, I created the Design and UX',
 					],
 				},
-			],
-			etceteraHeader: 'Etcetera',
-			iframeItems: [
 				{
 					title: 'Tetris',
-					subtitle: 'First go at SolidJs',
+					subtitle: 'Experimenting with SolidJs',
+					iframeLink: 'https://solid-tetris.vercel.app/',
 					image: {
 						src: TetrisLogo,
 						width: 64,

@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { content } from '@/content';
 import classnames from 'classnames';
+import { shareTechMono } from '@/constants/fonts';
 import styles from './name.module.css';
 
 interface NameProps {
 	className?: string;
-	linkHome?: boolean;
+	href?: string;
 }
 
-export const Name = ({ className, linkHome = false }: NameProps) => {
+export const Name = ({ className, href = '' }: NameProps) => {
 	const Text = () => (
 		<div>
 			<h1>{content.components.name.firstName}</h1>
@@ -16,12 +17,17 @@ export const Name = ({ className, linkHome = false }: NameProps) => {
 		</div>
 	);
 
-	return linkHome ? (
-		<Link className={classnames(styles.name, className)} href={'/'}>
+	return href ? (
+		<Link
+			className={classnames(styles.name, className, shareTechMono.className)}
+			href={href}
+		>
 			<Text />
 		</Link>
 	) : (
-		<div className={classnames(styles.name, className)}>
+		<div
+			className={classnames(styles.name, className, shareTechMono.className)}
+		>
 			<Text />
 		</div>
 	);

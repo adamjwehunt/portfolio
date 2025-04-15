@@ -11,8 +11,8 @@ export const useLazyLoad = (
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
-					setIsVisible(true); // Element is visible, trigger lazy loading
-					observer.disconnect(); // Stop observing once visible
+					setIsVisible(true);
+					observer.disconnect();
 				}
 			},
 			{ rootMargin, threshold }
@@ -23,7 +23,7 @@ export const useLazyLoad = (
 		}
 
 		return () => {
-			observer.disconnect(); // Clean up the observer
+			observer.disconnect();
 		};
 	}, [rootMargin, threshold]);
 

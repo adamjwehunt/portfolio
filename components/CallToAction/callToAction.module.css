@@ -1,5 +1,4 @@
 .callToAction {
-	margin-bottom: var(--home-item-gap);
 	max-width: var(--home-item-max-width);
 	text-align: center;
 	color: var(--home-greeting-color);

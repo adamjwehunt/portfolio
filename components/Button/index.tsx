@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import classnames from 'classnames';
+import { shareTechMono } from '@/constants/fonts';
 import styles from './button.module.css';
 
 interface ButtonProps {
@@ -17,7 +18,7 @@ export const Button = ({
 }: ButtonProps) => (
 	<Link
 		href={href}
-		className={styles.link}
+		className={classnames(styles.link, shareTechMono.className)}
 		target={isExternalLink ? '_blank' : '_self'}
 	>
 		<div className={styles.text}>{text}</div>

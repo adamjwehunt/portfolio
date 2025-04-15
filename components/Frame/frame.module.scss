@@ -2,7 +2,6 @@ $frame-padding: 3rem;
 $frame-padding-mobile: 0.5rem;
 $socialLinks-min-height: 6rem;
 $halfRow-height: 4rem;
-$content-padding-vertical: 8dvh;
 
 .header {
 	position: fixed;
@@ -10,9 +9,20 @@ $content-padding-vertical: 8dvh;
 	bottom: auto;
 	overflow: hidden;
 	height: 6rem;
-	margin: 0 1rem;
+	margin: 0 1.5rem;
 	display: flex;
 	justify-content: center;
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+	.header {
+		margin: 0;
+	}
+}
+
+.heading {
+	text-align: center;
+	color: #000;
 }
 
 .name {
@@ -20,6 +30,8 @@ $content-padding-vertical: 8dvh;
 	top: 1.25rem;
 	font-size: 0.75rem;
 	line-height: 1.25;
+	color: var(--header-color);
+	text-align: center;
 }
 
 .frame {
@@ -40,6 +52,7 @@ $content-padding-vertical: 8dvh;
 }
 
 .contentWrapper {
+	gap: 2.25rem;
 	border: var(--frame-border);
 	border-top: none;
 	background-color: var(--frame-border-color);
@@ -47,7 +60,7 @@ $content-padding-vertical: 8dvh;
 	flex-direction: column;
 	align-items: center;
 	overflow: visible;
-	padding: 0 6vw $content-padding-vertical;
+	padding: 2rem 6vw;
 	min-height: calc(
 		85dvh - calc($frame-padding + $socialLinks-min-height + $halfRow-height)
 	);
@@ -57,11 +70,9 @@ $content-padding-vertical: 8dvh;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	height: $content-padding-vertical;
-	opacity: 0.5;
+	opacity: 0.3;
 	font-size: 1.125rem;
-	padding-top: 2rem;
-	flex-basis: min-content;
+	padding: 1rem 0;
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
@@ -73,11 +84,15 @@ $content-padding-vertical: 8dvh;
 .content {
 	width: 100%;
 	height: auto;
-	max-width: 52rem;
+	max-width: 66rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
 
 	section {
 		display: flex;
 		flex-direction: column;
+		gap: 2.25rem;
 	}
 }
 
@@ -130,7 +145,8 @@ $content-padding-vertical: 8dvh;
 	align-items: flex-start;
 }
 
-.email {
+.email,
+.location {
 	color: #000;
 }
 
@@ -138,13 +154,14 @@ $content-padding-vertical: 8dvh;
 	background-color: inherit;
 	color: var(--home-item-foreground);
 
-	.email {
+	.email,
+	.location {
 		color: var(--home-item-foreground);
 	}
 }
 
 .right {
-	color: white;
+	color: white !important;
 	background-color: var(--frame-footer-right-background-color);
 	align-items: flex-end;
 }
