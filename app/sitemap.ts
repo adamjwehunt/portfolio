@@ -1,6 +1,9 @@
 import { getPostsMetadata } from '@/lib/mdx';
 import { content } from '@/content';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export default async function sitemap() {
   const posts = await getPostsMetadata();
   const baseUrl = content.metadata.siteUrl;

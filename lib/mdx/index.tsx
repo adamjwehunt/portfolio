@@ -33,9 +33,13 @@ interface BlogPostMetadata {
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts');
 
-// Cached version of file reading to avoid repeated disk I/O
 const getFileContent = cache((filePath: string): string => {
-	return fs.readFileSync(filePath, { encoding: 'utf8' });
+	try {
+		return fs.readFileSync(filePath, { encoding: 'utf8' });
+	} catch (error) {
+		console.error(`Error reading file ${filePath}:`, error);
+		return '';
+	}
 });
 
 // Cached version of metadata extraction
@@ -59,7 +63,6 @@ export const getPostMetadata = cache(async (slug: string): Promise<BlogPostMetad
 	};
 });
 
-// Cached version of full post loading with content
 export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 	const mdxSlug = slug.replace(/\.mdx$/, '');
 	const filePath = path.join(postsDirectory, `${mdxSlug}.mdx`);
@@ -74,6 +77,8 @@ export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 			parseFrontmatter: false,
 			mdxOptions: {
 				development: process.env.NODE_ENV === 'development',
+				remarkPlugins: [],
+				rehypePlugins: [],
 			},
 		},
 	});

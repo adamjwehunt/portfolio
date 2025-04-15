@@ -31,11 +31,28 @@ const nextConfig = {
 		// Modify the file loader rule to ignore *.svg, since we have it handled now.
 		fileLoaderRule.exclude = /\.svg$/i;
 
+		// Optimize MDX processing
+		config.module.rules.push({
+			test: /\.mdx?$/,
+			use: [
+				{
+					loader: '@mdx-js/loader',
+					options: {
+						providerImportSource: '@mdx-js/react',
+					},
+				},
+			],
+		});
+
 		return config;
 	},
 	sassOptions: {
 		includePaths: ['./app', './components', './lib'],
 		prependData: `@use 'variables' as *;`,
+	},
+	reactStrictMode: true,
+	images: {
+		unoptimized: true,
 	},
 };
 

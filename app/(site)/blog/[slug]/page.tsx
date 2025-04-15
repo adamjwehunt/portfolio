@@ -1,11 +1,18 @@
 import { content } from '@/content';
-import { getPost } from '@/lib/mdx';
+import { getPost, getPostsMetadata } from '@/lib/mdx';
 import styles from './blog.module.scss';
 import { joinListItems } from '@/lib/util';
 import { generateBlogPostJsonLd } from '@/lib/seo';
 
 interface BlogPageProps {
 	params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+	const posts = await getPostsMetadata();
+	return posts.map((post) => ({
+		slug: post.slug,
+	}));
 }
 
 export const generateMetadata = async ({ params }: BlogPageProps) => {

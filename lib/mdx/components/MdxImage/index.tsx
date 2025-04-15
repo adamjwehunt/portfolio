@@ -3,11 +3,17 @@ import styles from './mdxImage.module.css';
 
 interface MdxImageProps extends ImageProps {
 	caption: string;
+	priority?: boolean;
 }
 
-export const MdxImage = ({ caption, ...otherProps }: MdxImageProps) => (
+export const MdxImage = ({ caption, priority = false, ...otherProps }: MdxImageProps) => (
 	<figure className={styles.wrapper}>
-		<Image className={styles.image} {...otherProps} alt={otherProps.alt} />
+		<Image 
+			className={styles.image} 
+			priority={priority} 
+			{...otherProps} 
+			alt={otherProps.alt} 
+		/>
 		<figcaption className={styles.caption}>{caption}</figcaption>
 	</figure>
 );
