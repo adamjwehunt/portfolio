@@ -13,34 +13,16 @@
 	box-shadow: 0 0 0 3px var(--image-border-edge);
 }
 
-.content p {
-	font-size: 1.125rem;
-}
-
 .title {
-	font-size: 2rem;
 	font-weight: 600;
 }
 
 .intro,
 .outro {
-	font-size: 1.5rem;
 	font-weight: 400;
 	letter-spacing: 0.02rem;
-	line-height: 1.75;
 }
 
 .email {
 	color: var(--accent-2);
-}
-
-@media only screen and (max-width: $mobile-breakpoint) {
-	.title {
-		font-size: 1.75rem;
-	}
-
-	.intro,
-	.outro {
-		font-size: 1.275rem;
-	}
 }

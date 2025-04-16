@@ -7,10 +7,9 @@
 .image {
 	border: var(--frame-border);
 	max-width: 100%;
-  height: auto;
+	height: auto;
 }
 
 .caption {
 	margin: 0.5rem 0;
-	font-size: 0.75rem;
 }

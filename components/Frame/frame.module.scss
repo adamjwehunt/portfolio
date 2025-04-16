@@ -28,8 +28,7 @@ $halfRow-height: 4rem;
 .name {
 	position: absolute;
 	top: 1.25rem;
-	font-size: 0.75rem;
-	line-height: 1.25;
+
 	color: var(--header-color);
 	text-align: center;
 }
@@ -85,14 +84,7 @@ $halfRow-height: 4rem;
 	justify-content: center;
 	align-items: flex-start;
 	opacity: 0.3;
-	font-size: 1.125rem;
 	padding: 1rem 0;
-}
-
-@media only screen and (max-width: $mobile-breakpoint) {
-	.contentHeader {
-		font-size: 1rem;
-	}
 }
 
 .content {
@@ -117,12 +109,6 @@ $halfRow-height: 4rem;
 	grid-template-columns: 1fr 1fr;
 	border: var(--frame-border);
 	margin-bottom: $frame-padding;
-}
-
-@media only screen and (max-width: $mobile-breakpoint) {
-	.footer {
-		font-size: 0.875rem;
-	}
 }
 
 .fullRow,

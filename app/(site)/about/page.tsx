@@ -52,15 +52,15 @@ const AboutPage = async () => {
 							priority
 						/>
 					</div>
-					<div className={styles.title}>{title}</div>
-					<div className={styles.intro}>{intro}</div>
+					<h1 className={styles.title}>{title}</h1>
+					<p className={styles.intro}>{intro}</p>
 					<article className={styles.content}>{mdxContent}</article>
-					<div className={styles.outro}>
+					<p className={styles.outro}>
 						{`${outro} `}
 						<a className={styles.email} href={`mailto:${email}`}>
 							{email}
 						</a>
-					</div>
+					</p>
 				</section>
 			</Frame>
 		</>

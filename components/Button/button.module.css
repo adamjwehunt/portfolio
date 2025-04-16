@@ -6,7 +6,6 @@
 	align-items: center;
 	height: var(--home-item-height);
 	color: black;
-	font-size: 1rem;
 }
 
 .accent,

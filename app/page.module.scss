@@ -21,13 +21,10 @@
 .greeting,
 .aboutMe {
 	color: var(--home-greeting-color);
-	font-size: 1.25rem;
 	opacity: 0.85;
 }
 
 .name > div {
-	line-height: 1.5;
-	font-size: 1.75rem;
 	display: flex;
 	justify-content: center;
 	gap: 1rem;

@@ -2,7 +2,6 @@
 	max-width: var(--home-item-max-width);
 	text-align: center;
 	color: var(--home-greeting-color);
-	font-size: 1.25rem;
 	opacity: 0.85;
 }
 

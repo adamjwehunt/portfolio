@@ -72,7 +72,6 @@ body {
 	inset: 0;
 	background-color: #3f525d;
 	text-rendering: geometricPrecision;
-	line-height: 1.7;
 }
 
 body::-webkit-scrollbar,
@@ -91,27 +90,14 @@ button {
 	border: none;
 }
 
-h2 {
-	font-size: 1.85rem;
-	line-height: 1.5;
-}
-
-h3 {
-	font-size: 1.5rem;
-	line-height: 1.35;
-}
-
-p,
 ul,
 li {
-	font-size: 1.275rem;
 	list-style-type: square;
 }
 
 code,
 pre {
 	background-color: var(--mdx-code-background-color);
-	padding: 0.25rem;
 	tab-size: 1rem;
 	overflow: scroll;
 }
@@ -128,26 +114,10 @@ article {
 	gap: 1.5rem;
 
 	h2 {
-		margin-top: .5rem;
+		margin-top: 0.5rem;
 	}
 
 	li {
 		margin-left: 2rem;
-	}
-}
-
-@media only screen and (max-width: $mobile-breakpoint) {
-	h2 {
-		font-size: 1.675rem;
-	}
-
-	h3 {
-		font-size: 1.5rem;
-	}
-
-	p,
-	ul,
-	li {
-		font-size: 1.25rem;
 	}
 }
