@@ -35,13 +35,15 @@ $halfRow-height: 4rem;
 }
 
 .frame {
-	overflow: scroll;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 	position: absolute;
 	top: 6rem;
 	left: $frame-padding;
 	right: $frame-padding;
 	bottom: 0;
 	border-top: var(--frame-border);
+	overscroll-behavior: contain;
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
