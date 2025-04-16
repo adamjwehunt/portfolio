@@ -1,7 +1,5 @@
 'use client';
 
-import Iframe from 'react-iframe';
-
 import { useLazyLoad } from '@/hooks/useLazyLoad';
 
 import styles from './iframeItem.module.scss';
@@ -16,12 +14,11 @@ const IframeContainer = ({ siteLink }: IframeContainer) => {
 	return (
 		<div className={styles.iframeContainer} ref={elementRef}>
 			{isVisible && (
-				<Iframe
-					url={siteLink}
-					scrolling={'no'}
+				<iframe
+					src={siteLink}
 					loading={'eager'}
-					frameBorder={0}
 					height={'600px'}
+					style={{ border: 0 }}
 				/>
 			)}
 		</div>
