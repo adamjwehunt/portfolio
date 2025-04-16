@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 
 export const useLazyLoad = (
-	rootMargin: string = '200px',
+	rootMargin: string = '-300px',
 	threshold: number = 0.1
 ) => {
 	const [isVisible, setIsVisible] = useState(false);
