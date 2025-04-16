@@ -2,10 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 import matter from 'gray-matter';
-import moment from 'moment';
 import { ImageProps } from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { ReactElement , cache } from 'react';
+import { ReactElement, cache } from 'react';
 
 import { Columns, Left, Right } from './components/Columns';
 import { MdxImage } from './components/MdxImage';
@@ -43,26 +42,39 @@ const getFileContent = cache((filePath: string): string => {
 	}
 });
 
-// Cached version of metadata extraction
-export const getPostMetadata = cache(async (slug: string): Promise<BlogPostMetadata> => {
-	const mdxSlug = slug.replace(/\.mdx$/, '');
-	const filePath = path.join(postsDirectory, `${mdxSlug}.mdx`);
-	const fileContent = getFileContent(filePath);
-
-	const { data: frontmatter } = matter(fileContent);
-	
-	return {
-		...frontmatter,
-		slug: mdxSlug,
-		...(frontmatter.publishDate
-			? {
-					publishDate: moment(frontmatter.publishDate).format(
-						'MMMM Do, YYYY'
-					),
-			  }
-			: {}),
+// Helper to format date as "MMMM Do, YYYY"
+function formatPublishDate(dateString?: string): string | undefined {
+	if (!dateString) return undefined;
+	const date = new Date(dateString);
+	if (isNaN(date.getTime())) return dateString; // fallback to original if invalid
+	const options: Intl.DateTimeFormatOptions = {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
 	};
-});
+	return date.toLocaleDateString('en-US', options);
+}
+
+// Cached version of metadata extraction
+export const getPostMetadata = cache(
+	async (slug: string): Promise<BlogPostMetadata> => {
+		const mdxSlug = slug.replace(/\.mdx$/, '');
+		const filePath = path.join(postsDirectory, `${mdxSlug}.mdx`);
+		const fileContent = getFileContent(filePath);
+
+		const { data: frontmatter } = matter(fileContent);
+
+		return {
+			...frontmatter,
+			slug: mdxSlug,
+			...(frontmatter.publishDate
+				? {
+						publishDate: formatPublishDate(frontmatter.publishDate),
+				  }
+				: {}),
+		};
+	}
+);
 
 export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 	const mdxSlug = slug.replace(/\.mdx$/, '');
@@ -91,9 +103,7 @@ export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 			slug: mdxSlug,
 			...(frontmatter.publishDate
 				? {
-						publishDate: moment(frontmatter.publishDate).format(
-							'MMMM Do, YYYY'
-						),
+						publishDate: formatPublishDate(frontmatter.publishDate),
 				  }
 				: {}),
 		},
@@ -102,7 +112,7 @@ export const getPost = cache(async (slug: string): Promise<BlogPost> => {
 
 export const getPostsMetadata = cache(async (): Promise<BlogPostMetadata[]> => {
 	const files = fs.readdirSync(postsDirectory);
-	
+
 	const posts = await Promise.all(
 		files.map(async (file) => {
 			const slug = file.replace(/\.mdx$/, '');
@@ -151,7 +161,7 @@ export interface Task {
 export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 	const newTasks: { image: ImageProps; content: ReactElement }[] = [];
 
-	const contentPromises = tasks.map(task => 
+	const contentPromises = tasks.map((task) =>
 		MDXRemote({
 			components,
 			options: {
@@ -162,9 +172,9 @@ export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 			source: task.text,
 		})
 	);
-	
+
 	const contents = await Promise.all(contentPromises);
-	
+
 	// Match content with images
 	for (let i = 0; i < tasks.length; i++) {
 		newTasks.push({ content: contents[i], image: tasks[i].image });
@@ -174,7 +184,7 @@ export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 });
 
 export const convertStringsToMdx = cache(async (strings: string[]) => {
-	const contentPromises = strings.map(string => 
+	const contentPromises = strings.map((string) =>
 		MDXRemote({
 			components,
 			options: {
@@ -185,18 +195,14 @@ export const convertStringsToMdx = cache(async (strings: string[]) => {
 			source: string,
 		})
 	);
-	
+
 	return Promise.all(contentPromises);
 });
 
 function sortPostsByDate(posts: BlogPostMetadata[]) {
 	return posts.sort((a, b) => {
-		const aDate = a.publishDate
-			? moment(a.publishDate, 'MMMM Do, YYYY').valueOf()
-			: 0;
-		const bDate = b.publishDate
-			? moment(b.publishDate, 'MMMM Do, YYYY').valueOf()
-			: 0;
+		const aDate = a.publishDate ? new Date(a.publishDate).getTime() : 0;
+		const bDate = b.publishDate ? new Date(b.publishDate).getTime() : 0;
 		return bDate - aDate;
 	});
 }
