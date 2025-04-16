@@ -26,7 +26,7 @@ const Frame = ({ header, children }: FrameProps) => {
 				<Name className={styles.name} href="/" />
 			</header>
 			<div className={styles.frame}>
-				<div className={styles.contentWrapper}>
+				<div className={styles.contentContainer}>
 					<div className={classnames(styles.heading, shareTechMono.className)}>
 						{header}
 					</div>

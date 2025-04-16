@@ -42,8 +42,20 @@ $halfRow-height: 4rem;
 	left: $frame-padding;
 	right: $frame-padding;
 	bottom: 0;
-	border-top: var(--frame-border);
 	overscroll-behavior: contain;
+
+	&::before {
+		content: '';
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 0;
+		border-top: var(--frame-border);
+		display: block;
+		z-index: 2;
+		background: transparent;
+	}
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
@@ -53,9 +65,10 @@ $halfRow-height: 4rem;
 	}
 }
 
-.contentWrapper {
+.contentContainer {
 	gap: 2.25rem;
 	border: var(--frame-border);
+	border-bottom: none;
 	border-top: none;
 	background-color: var(--frame-border-color);
 	display: flex;
@@ -104,7 +117,6 @@ $halfRow-height: 4rem;
 	grid-template-rows: auto 1fr;
 	grid-template-columns: 1fr 1fr;
 	border: var(--frame-border);
-	border-top: none;
 	margin-bottom: $frame-padding;
 }
 
