@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { shareTechMono } from '@/constants/fonts';
 import { content } from '@/content';
 
-import styles from './name.module.css';
+import styles from './name.module.scss';
 
 interface NameProps {
 	className?: string;
