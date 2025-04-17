@@ -1,11 +1,7 @@
 .callToAction {
 	max-width: var(--home-item-max-width);
 	text-align: center;
-	color: var(--home-greeting-color);
+	color: var(--home-greeting-color) !important;
 	opacity: 0.85;
 	font-size: 1.25rem;
-}
-
-.resume {
-	color: var(--header-color);
 }
