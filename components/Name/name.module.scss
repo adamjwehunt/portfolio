@@ -1,7 +1,10 @@
 .name {
-	color: var(--header-color) !important;
 	font-size: 1.25rem;
 	text-align: center;
+
+	p {
+		color: var(--header-color);
+	}
 
 	.stacked {
 		text-align: right;
