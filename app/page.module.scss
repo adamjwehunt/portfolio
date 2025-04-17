@@ -22,12 +22,11 @@
 .aboutMe {
 	color: var(--home-greeting-color);
 	opacity: 0.85;
+	font-size: 1.25rem;
 }
 
-.name > div {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
+.name p {
+	font-size: 2rem;
 }
 
 .aboutMe {

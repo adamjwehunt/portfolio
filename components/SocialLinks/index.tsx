@@ -11,14 +11,9 @@ interface SocialLinksProps {
 }
 
 export const SocialLinks = ({ className, hasAccent }: SocialLinksProps) => (
-	<section className={classnames(styles.container, className)}>
+	<address className={classnames(styles.container, className)}>
 		{content.components.socialLinks.map((props, index) => (
-			<IconButton 
-				{...props}
-				accent={hasAccent}
-				isExternalLink
-				key={index}
-			/>
+			<IconButton {...props} accent={hasAccent} isExternalLink key={index} />
 		))}
-	</section>
+	</address>
 );

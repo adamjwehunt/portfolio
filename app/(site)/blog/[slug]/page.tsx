@@ -5,7 +5,6 @@ import { joinListItems } from '@/lib/util';
 
 import styles from './blog.module.scss';
 
-
 interface BlogPageProps {
 	params: Promise<{ slug: string }>;
 }
@@ -21,7 +20,7 @@ export const generateMetadata = async ({ params }: BlogPageProps) => {
 	const { slug } = await params;
 	const { metadata } = await getPost(slug);
 
-	return { 
+	return {
 		alternates: {
 			canonical: `/blog/${slug}`,
 		},
@@ -61,7 +60,6 @@ const BlogPage = async ({ params }: BlogPageProps) => {
 				</div>
 
 				<article>{content}</article>
-				<p>{"- Adam"}</p>
 			</section>
 		</>
 	);

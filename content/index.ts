@@ -304,10 +304,7 @@ export const content = {
 					siteLink: 'https://solid-tetris.vercel.app/',
 					githubLink: 'https://github.com/adamjwehunt/solid-tetris',
 					tech: ['Solid.js', 'Typescript'],
-					description: [
-						'Minimal code: Under a few hundred lines',
-						'Play it right here 🙌',
-					],
+					description: ['Minimal code: Under a few hundred lines'],
 				},
 			],
 		},

@@ -9,15 +9,21 @@ import styles from './name.module.css';
 interface NameProps {
 	className?: string;
 	href?: string;
+	stacked?: boolean;
 }
 
-export const Name = ({ className, href = '' }: NameProps) => {
-	const Text = () => (
-		<div>
-			<div>{content.components.name.firstName}</div>
-			<div>{content.components.name.lastName}</div>
-		</div>
-	);
+export const Name = ({ className, href = '', stacked = false }: NameProps) => {
+	const Text = () => {
+		const { firstName, lastName } = content.components.name;
+		return stacked ? (
+			<div className={styles.stacked}>
+				<p>{firstName}</p>
+				<p>{lastName}</p>
+			</div>
+		) : (
+			<p>{`${firstName} ${lastName}`}</p>
+		);
+	};
 
 	return href ? (
 		<Link

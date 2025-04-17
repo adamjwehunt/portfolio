@@ -23,7 +23,7 @@ const Frame = ({ header, children }: FrameProps) => {
 		<>
 			<header className={styles.header}>
 				<BackButton />
-				<Name className={styles.name} href="/" />
+				<Name className={styles.name} href="/" stacked />
 			</header>
 			<div className={styles.frame}>
 				<div className={styles.contentContainer}>
@@ -31,6 +31,7 @@ const Frame = ({ header, children }: FrameProps) => {
 						{header}
 					</div>
 					<main className={styles.content}>{children}</main>
+					<div></div>
 				</div>
 				<footer className={classnames(styles.footer, shareTechMono.className)}>
 					<div className={styles.fullRow}>

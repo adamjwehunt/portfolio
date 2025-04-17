@@ -13,8 +13,8 @@ export const CallToAction = () => {
 	} = content;
 
 	return (
-		<div className={classNames(styles.callToAction, shareTechMono.className)}>
+		<p className={classNames(styles.callToAction, shareTechMono.className)}>
 			{callToAction1}
-		</div>
+		</p>
 	);
 };

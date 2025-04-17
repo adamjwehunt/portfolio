@@ -1,4 +1,13 @@
 .name {
 	color: var(--header-color);
+	font-size: 1.25rem;
 	text-align: center;
+
+	.stacked {
+		text-align: right;
+
+		p {
+			line-height: 1;
+		}
+	}
 }

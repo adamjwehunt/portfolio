@@ -7,7 +7,6 @@ import { SocialLinks } from '@/components/SocialLinks';
 import { shareTechMono } from '@/constants/fonts';
 import { content } from '@/content';
 
-
 import styles from './page.module.scss';
 
 const Home = () => {
@@ -22,12 +21,12 @@ const Home = () => {
 
 	return (
 		<main className={styles.main}>
-			<section className={classNames(styles.intro, shareTechMono.className)}>
+			<header className={classNames(styles.intro, shareTechMono.className)}>
 				<div className={styles.greeting}>{greeting}</div>
 				<Name className={styles.name} />
 				<div className={styles.aboutMe}>{aboutMe}</div>
-			</section>
-			<section className={styles.buttons}>
+			</header>
+			<nav className={styles.buttons}>
 				<Button
 					accentClassName={styles.button1}
 					text={blog.linkText}
@@ -43,11 +42,11 @@ const Home = () => {
 					text={about.linkText}
 					href={'/about'}
 				/>
-			</section>
-			<section className={styles.footer}>
+			</nav>
+			<footer className={styles.footer}>
 				<CallToAction />
 				<SocialLinks hasAccent />
-			</section>
+			</footer>
 		</main>
 	);
 };

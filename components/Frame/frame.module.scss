@@ -1,34 +1,38 @@
-$frame-padding: 3rem;
-$frame-padding-mobile: 0.5rem;
-$socialLinks-min-height: 6rem;
+$frame-spacing: 5rem;
+$frame-spacing-mobile: 0.5rem;
+$socialLinks-height: 6rem;
 $halfRow-height: 4rem;
 
 .header {
 	position: fixed;
-	inset: 0;
 	bottom: auto;
-	overflow: hidden;
-	height: 6rem;
-	margin: 0 1.5rem;
+	top: 0;
+	height: $frame-spacing;
+	left: $frame-spacing;
+	right: $frame-spacing;
+	max-width: 1280px;
+	margin: 0 auto;
 	display: flex;
-	justify-content: center;
+	justify-content: end;
+	overscroll-behavior: contain;
+	align-items: center;
 }
 
 @media only screen and (max-width: $mobile-breakpoint) {
 	.header {
-		margin: 0;
+		left: $frame-spacing-mobile;
+		right: $frame-spacing-mobile;
 	}
 }
 
 .heading {
 	text-align: center;
 	color: #000;
+	font-size: 1.25rem;
 }
 
 .name {
-	position: absolute;
 	top: 1.25rem;
-
 	color: var(--header-color);
 	text-align: center;
 }
@@ -36,9 +40,11 @@ $halfRow-height: 4rem;
 .frame {
 	overflow: auto;
 	position: absolute;
-	top: 6rem;
-	left: $frame-padding;
-	right: $frame-padding;
+	top: $frame-spacing;
+	left: $frame-spacing;
+	right: $frame-spacing;
+	max-width: 1280px;
+	margin: 0 auto;
 	bottom: 0;
 	overscroll-behavior: contain;
 
@@ -46,8 +52,10 @@ $halfRow-height: 4rem;
 		content: '';
 		position: sticky;
 		top: 0;
-		left: 0;
-		right: 0;
+		left: $frame-spacing;
+		right: $frame-spacing;
+		max-width: 1280px;
+		margin: 0 auto;
 		height: 0;
 		border-top: var(--frame-border);
 		display: block;
@@ -58,8 +66,8 @@ $halfRow-height: 4rem;
 
 @media only screen and (max-width: $mobile-breakpoint) {
 	.frame {
-		left: $frame-padding-mobile;
-		right: $frame-padding-mobile;
+		left: $frame-spacing-mobile;
+		right: $frame-spacing-mobile;
 	}
 }
 
@@ -73,10 +81,16 @@ $halfRow-height: 4rem;
 	flex-direction: column;
 	align-items: center;
 	overflow: visible;
-	padding: 2rem 6vw;
+	padding: 1.5rem;
 	min-height: calc(
-		85dvh - calc($frame-padding + $socialLinks-min-height + $halfRow-height)
+		85dvh - calc($frame-spacing + $socialLinks-height + $halfRow-height)
 	);
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+	.contentContainer {
+		padding: 1rem;
+	}
 }
 
 .contentHeader {
@@ -88,9 +102,8 @@ $halfRow-height: 4rem;
 }
 
 .content {
-	width: 100%;
+	width: 60%;
 	height: auto;
-	max-width: 66rem;
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
@@ -102,13 +115,19 @@ $halfRow-height: 4rem;
 	}
 }
 
+@media only screen and (max-width: $mobile-breakpoint) {
+	.content {
+		width: 100%;
+	}
+}
+
 .footer {
 	width: 100%;
 	display: grid;
 	grid-template-rows: auto 1fr;
 	grid-template-columns: 1fr 1fr;
 	border: var(--frame-border);
-	margin-bottom: $frame-padding;
+	margin-bottom: $frame-spacing;
 }
 
 .fullRow,
@@ -124,8 +143,7 @@ $halfRow-height: 4rem;
 }
 
 .socialLinks {
-	min-height: $socialLinks-min-height;
-	height: calc(5dvw + 2rem);
+	min-height: $socialLinks-height;
 }
 
 .socialLinks svg {
