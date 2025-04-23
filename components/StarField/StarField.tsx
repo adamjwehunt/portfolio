@@ -5,12 +5,14 @@ import { useLayoutEffect, useMemo, useRef, useCallback } from 'react';
 import styles from './starfield.module.css';
 import { Star, clearCanvas, createStar } from './utils';
 
-export const SPEED = 1.5;
-export const ACCELERATION = 0.25;
+export const SPEED = 4;
+export const ACCELERATION = 0.3;
 export const STAR_COLOR = '#fff';
 export const BACKGROUND_COLOR = '#3f525d';
+export const LAYER_SPEED_MULTIPLIERS = [1, 0.5, 0.15, 0.015]; // Slowest stars are the most distant
+export const LAYER_DENSITY = [0.09, 0.19, 0.27, 0.45]; // Density distribution
+export const LAYER_COLORS = ['#ffffff', '#ffcc66', '#66ccff', '#99ff99'];
 
-// Converted this https://codepen.io/bts/pen/BygMzB to React
 const Starfield = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const starsRef = useRef<Star[]>([]);
@@ -54,20 +56,21 @@ const Starfield = () => {
 
 		for (let i = stars.length - 1; i >= 0; i--) {
 			const star = stars[i];
+			const speedMultiplier = LAYER_SPEED_MULTIPLIERS[star.layer] || 1;
 
 			star.x += star.sx;
 			star.y += star.sy;
 
-			star.sx += star.sx / (50 / ACCELERATION);
-			star.sy += star.sy / (50 / ACCELERATION);
+			star.sx += star.sx / (50 / (ACCELERATION * speedMultiplier));
+			star.sy += star.sy / (50 / (ACCELERATION * speedMultiplier));
 
 			star.age++;
 
 			if (
 				[
-					Math.floor(50 / ACCELERATION),
-					Math.floor(150 / ACCELERATION),
-					Math.floor(300 / ACCELERATION),
+					Math.floor(50 / (ACCELERATION * speedMultiplier)),
+					Math.floor(150 / (ACCELERATION * speedMultiplier)),
+					Math.floor(300 / (ACCELERATION * speedMultiplier)),
 				].includes(star.age)
 			) {
 				star.w++;
@@ -94,12 +97,28 @@ const Starfield = () => {
 			});
 		}
 
-		const starsToDraw = (canvasWidth * canvasHeight) / 5_000;
+		// Increase star count by reducing the divisor (was 5_000)
+		const starsToDraw = (canvasWidth * canvasHeight) / 2_500;
 
 		if (numStarsRef.current < starsToDraw) {
 			const numNewStars = starsToDraw - numStarsRef.current;
 			for (let i = 0; i < numNewStars; i++) {
-				starsRef.current.push(createStar(canvasWidth, canvasHeight));
+				// Choose a layer based on density distribution
+				const rand = Math.random();
+				let selectedLayer = 0;
+				let cumulativeProbability = 0;
+
+				for (let l = 0; l < LAYER_DENSITY.length; l++) {
+					cumulativeProbability += LAYER_DENSITY[l];
+					if (rand <= cumulativeProbability) {
+						selectedLayer = l;
+						break;
+					}
+				}
+
+				starsRef.current.push(
+					createStar(canvasWidth, canvasHeight, selectedLayer)
+				);
 				numStarsRef.current++;
 			}
 		}
