@@ -10,8 +10,8 @@ export const ACCELERATION = 0.3;
 export const STAR_COLOR = '#fff';
 export const BACKGROUND_COLOR = '#3f525d';
 export const LAYER_SPEED_MULTIPLIERS = [1, 0.5, 0.15, 0.015]; // Slowest stars are the most distant
-export const LAYER_DENSITY = [0.09, 0.19, 0.27, 0.45]; // Density distribution
-export const LAYER_COLORS = ['#ffffff', '#ffcc66', '#66ccff', '#99ff99'];
+export const LAYER_DENSITY = [0.04, 0.06, 0.09, 0.12]; // Density distribution
+export const LAYER_COLORS = ['#ffffff', '#ffffff', '#ffffff', '#ffffff'];
 
 const Starfield = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -1,3 +1,5 @@
+const path = require('path');
+
 const withMDX = require('@next/mdx')({
 	options: {
 		providerImportSource: '@mdx-js/react',
@@ -59,8 +61,7 @@ const nextConfig = {
 		return config;
 	},
 	sassOptions: {
-		includePaths: ['./app', './components', './lib'],
-		prependData: `@use 'variables' as *;`,
+		loadPaths: [path.join(__dirname, 'app')],
 	},
 	reactStrictMode: true,
 	images: {
