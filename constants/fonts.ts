@@ -1,13 +1,18 @@
-import { Roboto, Share_Tech_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 
-export const shareTechMono = Share_Tech_Mono({
-	weight: '400',
-	subsets: ['latin'],
+// Self-hosted (Latin subset) so builds don't depend on fetching from Google Fonts.
+export const shareTechMono = localFont({
 	display: 'swap',
+	src: '../assets/fonts/share-tech-mono-400-latin.woff2',
+	weight: '400',
 });
 
-export const roboto = Roboto({
-	weight: ['100', '300', '400', '700'],
-	subsets: ['latin'],
+export const roboto = localFont({
 	display: 'swap',
+	src: [
+		{ path: '../assets/fonts/roboto-100-latin.woff2', style: 'normal', weight: '100' },
+		{ path: '../assets/fonts/roboto-300-latin.woff2', style: 'normal', weight: '300' },
+		{ path: '../assets/fonts/roboto-400-latin.woff2', style: 'normal', weight: '400' },
+		{ path: '../assets/fonts/roboto-700-latin.woff2', style: 'normal', weight: '700' },
+	],
 });
