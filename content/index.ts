@@ -3,14 +3,6 @@ import BlueskyIcon from '@/public/bluesky.svg';
 import GithubIcon from '@/public/github.svg';
 // import LinkedinIcon from '@/public/linkedin.svg';
 import MailIcon from '@/public/mail.svg';
-import VodifaiDesktop from '@/public/vodifai-desktop.png';
-import VodifaiMobile1 from '@/public/vodifai-mobile-1.png';
-import VodifaiMobile2 from '@/public/vodifai-mobile-2.png';
-import VodifaiMobile3 from '@/public/vodifai-mobile-3.png';
-import StrongTowerDesktop from '@/public/strongtower-desktop.png';
-import StrongTowerMobile1 from '@/public/strongtower-mobile-1.png';
-import StrongTowerMobile2 from '@/public/strongtower-mobile-2.png';
-import StrongTowerMobile3 from '@/public/strongtower-mobile-3.png';
 import FaithlifeTvLogo from '@/public/faithlife-tv-logo.jpg';
 import MotortrendLogoLarge from '@/public/motortrend-logo-large.png';
 import Motortrend75Logo from '@/public/motortrend-75years-logo.png';
@@ -21,26 +13,42 @@ import RokuLogo from '@/public/roku-logo.jpg';
 import AmberLogo from '@/public/amber-logo.jpg';
 import FaithlifeLogo from '@/public/faithlife-logo.png';
 import LogosLogo from '@/public/logos-logo.jpg';
-import StrongtowerLogo from '@/public/strongtower-logo.jpg';
-import VodifaiLogo from '@/public/vodifai-logo.jpg';
 import TetrisLogo from '@/public/tetris-logo.jpg';
 import Portrait from '@/public/portrait.webp';
+import HearstAutosLogoLarge from '@/public/hearst-autos-logo-large.png';
+import HearstAutosLogo from '@/public/hearst-autos-logo.png';
+import CarAndDriverLogo from '@/public/caranddriver-logo.png';
+import MarisaRiveraArtLogo from '@/public/marisariveraart-logo.png';
+import MarisaRiveraArtDesktop from '@/public/marisariveraart-desktop.jpg';
+import MarisaRiveraArtMobile1 from '@/public/marisariveraart-mobile-1.jpg';
+import MarisaRiveraArtMobile2 from '@/public/marisariveraart-mobile-2.jpg';
+import MarisaRiveraArtMobile3 from '@/public/marisariveraart-mobile-3.jpg';
+import Tetr48Logo from '@/public/tetr48-logo.png';
+import Tetr48Desktop from '@/public/tetr48-desktop.jpg';
+import Tetr48Mobile1 from '@/public/tetr48-mobile-1.jpg';
+import Tetr48Mobile2 from '@/public/tetr48-mobile-2.jpg';
+import Tetr48Mobile3 from '@/public/tetr48-mobile-3.jpg';
 
 const email = 'adamjwehunt@gmail.com';
+
+import type { FeedSource } from '@/lib/journal/types';
 
 export const content = {
 	email,
 	metadata: {
 		titleBase: 'Adam Wehunt -',
 		titleRootPage: 'Software Engineer',
-		description: 'Hi, my name is Adam Wehunt and I am a software engineer.',
+		description:
+			'Hi, my name is Adam Wehunt. Software engineer. Building for the web, TV, and whatever comes next.',
 		siteUrl: 'https://adamwehunt.com',
 	},
 	components: {
 		frame: {
 			footer: {
-				location: 'Flagstaff, AZ',
-				copyright: '© Wehunt 2025',
+				// TODO(Adam): confirm preferred wording, e.g. a specific city in Washington
+				location: 'Portland Area, WA',
+				locationLink: 'https://en.wikipedia.org/wiki/Portland_metropolitan_area',
+				copyrightName: 'Wehunt',
 			},
 		},
 		backButton: { ariaLabel: 'Back' },
@@ -77,34 +85,133 @@ export const content = {
 		home: {
 			greeting: 'Hello, my name is',
 			aboutMe: "Let's code something*.",
+			subtitle:
+				'Software engineer. Building for the web, TV, and whatever comes next.',
 			callToAction1:
 				'*Seeking projects with locals and friendlies, please reach out 👇',
 		},
-		blog: {
-			linkText: 'Blog',
+		journal: {
+			linkText: 'Journal',
+			metaTitle: 'Journal',
 			header:
 				'A good developer looks both ways before crossing a one way street',
 			title: "Coder's Journal",
+			// Labels for the source of curated social posts. Add new sources here.
+			socialSources: {
+				bluesky: 'Bluesky',
+				mastodon: 'Mastodon',
+				x: 'X',
+			} as Record<string, string>,
+			// RSS / Atom feeds to pull recent posts from (fetched at build time and
+			// refreshed daily). Leave empty to keep the journal fully hand-curated.
+			feeds: [
+				// {
+				// 	url: 'https://simonwillison.net/atom/entries/',
+				// 	author: 'Simon Willison',
+				// 	source: "Simon Willison's Weblog",
+				// 	limit: 2,
+				// },
+			] as FeedSource[],
 		},
 		projects: {
 			title: 'Projects',
-			greeting1: 'What I’ve been digging into this 2025:',
+			greeting1: 'What I’ve been digging into in 2026:',
 			greeting2:
-				'Typescript, Next.js, Tailwind, Framer motion, Zod, GraphQL, Webiny, Prisma, TRPC, Shopify, React Native, Solid.js, Brightscript (Roku), and various AI / LLM things',
+				'Agentic software development, AI-assisted workflows, autonomous coding agents, React and Next.js, TypeScript, technical SEO, large-scale platform migrations, conversational AI and ChatGPT apps, commerce and Shopify integrations, Roku development, and building independent products from idea to launch.',
 			linkText: 'Projects',
 			header: 'Make it work, Make it right, Make it fast',
-			workHeader: 'Group efforts',
+			workHeader: 'Professional Work',
 			workItems: [
 				{
+					role: 'Software Development Engineer II',
+					company: 'Hearst Autos',
+					companyLink: 'https://www.hearstautos.com',
+					subtitle: 'Car and Driver & MotorTrend',
+					image: {
+						src: HearstAutosLogoLarge,
+						width: 64,
+						height: 64,
+						alt: 'Hearst Autos',
+					},
+					// TODO(Adam): copy below came from the content brief and could not be
+					// verified from the codebase. Please review each line.
+					tasks: [
+						{
+							image: {
+								src: HearstAutosLogo,
+								width: 36,
+								height: 36,
+								alt: 'Hearst Autos',
+							},
+							text: "Helped migrate and unify MotorTrend's web platform within the Hearst Autos technology ecosystem, supporting both [MotorTrend](https://www.motortrend.com 'MotorTrend') and [Car and Driver](https://www.caranddriver.com 'Car and Driver')",
+						},
+						{
+							image: {
+								src: CarAndDriverLogo,
+								width: 36,
+								height: 36,
+								alt: 'Car and Driver',
+							},
+							text: 'Developed shared frontend features and reusable components across major automotive publications, while preserving each brand’s requirements',
+						},
+						{
+							image: {
+								src: MotortrendMtLogo,
+								width: 36,
+								height: 36,
+								alt: 'MotorTrend',
+							},
+							text: 'Built automotive comparison, shopping, and discovery experiences',
+						},
+						{
+							image: {
+								src: HearstAutosLogo,
+								width: 36,
+								height: 36,
+								alt: 'Hearst Autos',
+							},
+							text: 'Planned and led CMS improvements to simplify editorial workflows and expand publishing capabilities',
+						},
+						{
+							image: {
+								src: CarAndDriverLogo,
+								width: 36,
+								height: 36,
+								alt: 'Car and Driver',
+							},
+							text: 'Improved technical SEO through metadata, canonical URLs, structured data, and search-friendly architecture',
+						},
+						{
+							image: {
+								src: HearstAutosLogo,
+								width: 36,
+								height: 36,
+								alt: 'Hearst Autos',
+							},
+							text: 'Brought AI-assisted and agentic development workflows into day-to-day engineering to improve productivity',
+						},
+						// TODO(Adam): only enable if this reflects real project work.
+						// {
+						// 	image: {
+						// 		src: CarAndDriverLogo,
+						// 		width: 36,
+						// 		height: 36,
+						// 		alt: 'Car and Driver',
+						// 	},
+						// 	text: 'Developed conversational automotive discovery experiences through ChatGPT apps',
+						// },
+					],
+				},
+				{
 					role: 'Software Development Engineer II, Web',
-					company: 'Motortrend',
+					company: 'MotorTrend',
 					companyLink: 'https://motortrend.com',
 					subtitle: '',
 					image: {
 						src: MotortrendLogoLarge,
 						width: 64,
 						height: 64,
-						alt: 'Motortrend',
+						alt: 'MotorTrend',
 					},
 					tasks: [
 						{
@@ -112,16 +219,16 @@ export const content = {
 								src: Motortrend75Logo,
 								width: 36,
 								height: 36,
-								alt: 'Motortrend',
+								alt: 'MotorTrend',
 							},
-							text: `Replaced legacy frontend with Next.js (SSR/SSG), cutting page load times and boosting SEO for millions of visitors`,
+							text: `Modernized MotorTrend's platform, replacing the legacy frontend with React and Next.js (SSR/SSG) and cutting page load times for millions of visitors`,
 						},
 						{
 							image: {
 								src: MotortrendMtLogo,
 								width: 36,
 								height: 36,
-								alt: 'Motortrend',
+								alt: 'MotorTrend',
 							},
 							text: 'Streamlined CI/CD to reduce deployments from days to minutes, accelerating stakeholder feedback and QA (via GitHub Actions + Vercel preview urls)',
 						},
@@ -130,9 +237,9 @@ export const content = {
 								src: MotortrendBlackRedLogo,
 								width: 36,
 								height: 36,
-								alt: 'Motortrend',
+								alt: 'MotorTrend',
 							},
-							text: 'Helped refine GPT ad architecture, reducing layout shift and improving Core Web Vitals',
+							text: 'Helped refine the Google Publisher Tag (GPT) ad architecture, reducing layout shift and improving Core Web Vitals',
 						},
 					],
 				},
@@ -196,99 +303,99 @@ export const content = {
 					],
 				},
 			],
-			projectsHeader: 'Solo projects',
+			projectsHeader: 'Things I’ve Built',
 			visitSiteText: 'Visit Website',
 			visitCodeText: 'See the Code',
 			projectItems: [
 				{
-					title: 'Vodifai',
-					subtitle: 'Youtube transcript app',
+					title: 'Marisa Rivera Art',
+					subtitle: 'Custom art storefront for an independent artist',
 					image: {
-						src: VodifaiLogo,
+						src: MarisaRiveraArtLogo,
 						width: 64,
 						height: 64,
-						alt: 'Vodifai',
+						alt: 'Marisa Rivera Art',
 					},
 					images: {
 						desktop: {
-							src: VodifaiDesktop,
+							src: MarisaRiveraArtDesktop,
 							width: 483,
 							height: 320,
-							alt: 'Vodifai desktop home view',
+							alt: 'Marisa Rivera Art desktop gallery view',
 						},
 						mobile: [
 							{
-								src: VodifaiMobile1,
+								src: MarisaRiveraArtMobile1,
 								width: 148,
 								height: 320,
-								alt: 'Vodifai mobile watch view',
+								alt: 'Marisa Rivera Art mobile gallery view',
 							},
 							{
-								src: VodifaiMobile2,
+								src: MarisaRiveraArtMobile2,
 								width: 148,
 								height: 320,
-								alt: 'Vodifai mobile transcript view',
+								alt: 'Marisa Rivera Art mobile shop view',
 							},
 							{
-								src: VodifaiMobile3,
+								src: MarisaRiveraArtMobile3,
 								width: 148,
 								height: 320,
-								alt: 'Vodifai mobile recap view',
+								alt: 'Marisa Rivera Art mobile product view',
 							},
 						],
 					},
-					siteLink: 'https://www.vodifai.com/',
-					githubLink: 'https://github.com/adamjwehunt/vodifai',
-					tech: ['Next.js', 'TypeScript', 'Sass', 'GPT-3'],
+					siteLink: 'https://marisariveraart.com',
+					tech: ['Next.js', 'TypeScript', 'Shopify'],
+					// TODO(Adam): confirm print-on-demand fulfillment (not verifiable from the live site).
 					description: [
-						'Spotify inspired design to easily view and search through transcripts of YouTube videos',
-						"Generates a recap with [GPT-3](https://openai.com/blog/gpt-3-apps 'GPT-3 AI Language Model') from video's transcript (On longer videos, the transcript is trimmed before AI analysis)",
-						'Other features: Recap text-to-speech, bypass search by pasting youtube links, Download youtube videos, Copy transcript button, Share links, Listen to video while viewing transcript',
+						"Developed and launched a custom art storefront integrated with [Shopify](https://www.shopify.com 'Shopify'), supporting product variants, print-on-demand fulfillment, and online sales",
+						'Built to help an independent artist (my wife!) manage and grow her business, from gallery to checkout',
 					],
 				},
 				{
-					title: 'Strong Tower Installations',
-					subtitle: 'Freelance project for local tech services company',
+					title: 'TETR48',
+					subtitle: 'Block-stacking puzzle game',
 					image: {
-						src: StrongtowerLogo,
+						src: Tetr48Logo,
 						width: 64,
 						height: 64,
-						alt: 'Strong Tower Installations',
+						alt: 'TETR48',
 					},
 					images: {
 						desktop: {
-							src: StrongTowerDesktop,
+							src: Tetr48Desktop,
 							width: 483,
 							height: 320,
-							alt: 'Strong Tower Installations desktop home view',
+							alt: 'TETR48 desktop game view',
 						},
 						mobile: [
 							{
-								src: StrongTowerMobile1,
+								src: Tetr48Mobile1,
 								width: 148,
 								height: 320,
-								alt: 'Strong Tower Installations mobile home view',
+								alt: 'TETR48 mobile new game',
 							},
 							{
-								src: StrongTowerMobile2,
+								src: Tetr48Mobile2,
 								width: 148,
 								height: 320,
-								alt: 'Strong Tower Installations mobile services view',
+								alt: 'TETR48 mobile game in progress',
 							},
 							{
-								src: StrongTowerMobile3,
+								src: Tetr48Mobile3,
 								width: 148,
 								height: 320,
-								alt: 'Strong Tower Installations mobile contact view',
+								alt: 'TETR48 mobile stacking pieces',
 							},
 						],
 					},
-					siteLink: 'https://www.strongtowerinstallations.com/',
-					githubLink: 'https://github.com/adamjwehunt/st-installations',
-					tech: ['Vue.js', 'Sanity.io'],
+					siteLink: 'https://tetr48.pages.dev',
+					tech: ['React', 'TypeScript', 'Vite', 'Vitest', 'Cloudflare Pages'],
+					// TODO(Adam): drawn from the private tetr48 repo; please review.
 					description: [
-						"Integrated CMS: With [Sanity.io,](https://www.sanity.io/ 'Sanity') the owner is able to modify content",
-						'Following consultation with the owner, who provided examples of their desired designs and specifications, I created the Design and UX',
+						'A fast block-stacking puzzle game: swipe or use the arrow keys to slide pieces, then clear rows and columns to survive',
+						'Built for phones and desktops with swipe, tap, keyboard, and trackpad controls, plus an installable web app manifest',
+						'Game logic covered by unit tests and deployed to Cloudflare Pages with GitHub Actions. Built with an AI-assisted, agentic workflow',
 					],
 				},
 				{
@@ -319,7 +426,7 @@ export const content = {
 			},
 			title: "Welcome! Thanks for visiting. I'm thrilled to have you here.",
 			intro:
-				'Growing up in the sunny suburbs of the Arizona desert 🌵, my journey began riding a wave of tech growth. With a PC always within reach, I developed a passion for creativity through constant tinkering. This ultimately led me to become a software developer. As a child, I had a love for drawing and art, which has translated into my work as a programmer. I find the most satisfaction from building with a team and bringing the UI to life by creating clean, reliable (and satisfying!) software.',
+				'Growing up in the sunny suburbs of Mesa, Arizona 🌵, my journey began riding a wave of tech growth. With a PC always within reach, I developed a passion for creativity through constant tinkering. This ultimately led me to become a software developer. As a child, I had a love for drawing and art, which has translated into my work as a programmer. I find the most satisfaction in building with a team and turning ideas into clean, reliable (and satisfying!) software that actually ships.',
 			outro:
 				"If you're seeking a new addition to your team, need help with an app or website, or simply just want to say hello, please reach out:",
 		},

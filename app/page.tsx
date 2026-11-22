@@ -12,8 +12,8 @@ import styles from './page.module.scss';
 const Home = () => {
 	const {
 		page: {
-			home: { greeting, aboutMe },
-			blog,
+			home: { greeting, aboutMe, subtitle },
+			journal,
 			projects,
 			about,
 		},
@@ -25,12 +25,13 @@ const Home = () => {
 				<div className={styles.greeting}>{greeting}</div>
 				<Name className={styles.name} />
 				<div className={styles.aboutMe}>{aboutMe}</div>
+				<p className={styles.subtitle}>{subtitle}</p>
 			</header>
 			<nav className={styles.buttons}>
 				<Button
 					accentClassName={styles.button1}
-					text={blog.linkText}
-					href={'/blog'}
+					text={journal.linkText}
+					href={'/journal'}
 				/>
 				<Button
 					accentClassName={styles.button2}

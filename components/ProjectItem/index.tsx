@@ -10,12 +10,11 @@ import { ProjectsItemHeader } from '../ProjectsItemHeader';
 
 import styles from './projectItem.module.scss';
 
-
 interface ProjectItemProps {
 	title: string;
 	subtitle: string;
 	siteLink: string;
-	githubLink: string;
+	githubLink?: string;
 	tech: string[];
 	image: ImageProps;
 	images?: {
@@ -55,12 +54,14 @@ const ProjectItem = async ({
 							href={siteLink}
 							isExternalLink
 						/>
-						<Button
-							accentClassName={styles.button2}
-							text={visitCodeText}
-							href={githubLink}
-							isExternalLink
-						/>
+						{githubLink && (
+							<Button
+								accentClassName={styles.button2}
+								text={visitCodeText}
+								href={githubLink}
+								isExternalLink
+							/>
+						)}
 					</div>
 					<ul className={styles.description}>
 						<li>{joinListItems(tech)}</li>

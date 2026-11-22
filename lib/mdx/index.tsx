@@ -28,6 +28,8 @@ interface BlogPostMetadata {
 	title?: string;
 	author?: string;
 	publishDate?: string;
+	/** publishDate as written in frontmatter, for sorting */
+	rawPublishDate?: string;
 	tags?: string[];
 }
 
@@ -43,13 +45,15 @@ const getFileContent = cache((filePath: string): string => {
 });
 
 // Helper to format date as "MMMM Do, YYYY"
-function formatPublishDate(dateString?: string): string | undefined {
+export function formatPublishDate(dateString?: string): string | undefined {
 	if (!dateString) return undefined;
 	const date = new Date(dateString);
 	if (isNaN(date.getTime())) return dateString; // fallback to original if invalid
 	const options: Intl.DateTimeFormatOptions = {
 		day: 'numeric',
 		month: 'long',
+		// Dates are written as YYYY-MM-DD (UTC midnight); keep them from shifting a day
+		timeZone: 'UTC',
 		year: 'numeric',
 	};
 	return date.toLocaleDateString('en-US', options);
@@ -70,6 +74,7 @@ export const getPostMetadata = cache(
 			...(frontmatter.publishDate
 				? {
 						publishDate: formatPublishDate(frontmatter.publishDate),
+						rawPublishDate: frontmatter.publishDate,
 				  }
 				: {}),
 		};
@@ -114,10 +119,12 @@ export const getPostsMetadata = cache(async (): Promise<BlogPostMetadata[]> => {
 	const files = fs.readdirSync(postsDirectory);
 
 	const posts = await Promise.all(
-		files.map(async (file) => {
-			const slug = file.replace(/\.mdx$/, '');
-			return await getPostMetadata(slug);
-		})
+		files
+			.filter((file) => file.endsWith('.mdx'))
+			.map(async (file) => {
+				const slug = file.replace(/\.mdx$/, '');
+				return await getPostMetadata(slug);
+			})
 	);
 
 	return sortPostsByDate(posts);
@@ -182,6 +189,17 @@ export const convertTasksToMdx = cache(async (tasks: Task[]) => {
 
 	return newTasks;
 });
+
+export const renderMdx = (source: string) =>
+	MDXRemote({
+		components,
+		options: {
+			mdxOptions: {
+				development: process.env.NODE_ENV === 'development',
+			},
+		},
+		source,
+	});
 
 export const convertStringsToMdx = cache(async (strings: string[]) => {
 	const contentPromises = strings.map((string) =>
