@@ -96,7 +96,7 @@ export const content = {
 			header:
 				'A good developer looks both ways before crossing a one way street',
 			title: "Coder's Journal",
-			subtitle: 'Thoughts from me and the engineers I like learning from',
+			subtitle: 'Thoughts from me and others I like to learn from',
 			// Labels for the source of curated social posts. Add new sources here.
 			socialSources: {
 				bluesky: 'Bluesky',

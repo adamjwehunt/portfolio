@@ -70,10 +70,17 @@
 	box-shadow: 0 0 0 2px var(--image-border-edge);
 }
 
-.arrow,
 .handle {
 	opacity: 0.6;
 	font-weight: 400;
+}
+
+.arrow {
+	opacity: 0.5;
+	font-weight: 400;
+	font-size: 0.7em;
+	vertical-align: 0.35em;
+	margin-left: 0.15em;
 }
 
 .excerpt {
@@ -92,8 +99,6 @@
 }
 
 .comment {
-	border-left: 3px solid var(--accent-1);
-	padding-left: 0.75rem;
 	font-style: italic;
 	opacity: 0.85;
 }
