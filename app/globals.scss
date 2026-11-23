@@ -75,9 +75,15 @@ body {
 	align-items: center;
 	position: fixed;
 	inset: 0;
-	background-color: #2a3840;
-	// Diagonal wash from the site's slate blue into a deep burnt orange
-	background-image: linear-gradient(to bottom right, #1d272e, #6a2a0e);
+	background-color: #3f525d;
+	// Diagonal wash: stays slate blue through the middle, warming into
+	// burnt orange only toward the bottom-right corner
+	background-image: linear-gradient(
+		to bottom right,
+		#34454f 0%,
+		#46606c 50%,
+		#a14a1d 100%
+	);
 	text-rendering: geometricPrecision;
 }
 
