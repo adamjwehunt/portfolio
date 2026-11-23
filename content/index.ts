@@ -1,7 +1,7 @@
-import BlueskyIcon from '@/public/bluesky.svg';
+// import BlueskyIcon from '@/public/bluesky.svg';
 // import XIcon from '@/public/x.svg';
 import GithubIcon from '@/public/github.svg';
-// import LinkedinIcon from '@/public/linkedin.svg';
+import LinkedinIcon from '@/public/linkedin.svg';
 import MailIcon from '@/public/mail.svg';
 import FaithlifeTvLogo from '@/public/faithlife-tv-logo.jpg';
 import MotortrendLogoLarge from '@/public/motortrend-logo-large.png';
@@ -59,16 +59,16 @@ export const content = {
 				ariaLabel: 'GitHub',
 				icon: GithubIcon,
 			},
-			// {
-			// 	href: 'https://www.linkedin.com/in/ajwehunt',
-			// 	ariaLabel: 'LinkedIn',
-			// 	icon: LinkedinIcon,
-			// },
 			{
-				href: 'https://bsky.app/profile/codetiquette.bsky.social',
-				ariaLabel: 'Bluesky',
-				icon: BlueskyIcon,
+				href: 'https://www.linkedin.com/in/ajwehunt',
+				ariaLabel: 'LinkedIn',
+				icon: LinkedinIcon,
 			},
+			// {
+			// 	href: 'https://bsky.app/profile/codetiquette.bsky.social',
+			// 	ariaLabel: 'Bluesky',
+			// 	icon: BlueskyIcon,
+			// },
 			// {
 			// 	href: 'https://x.com/codetiquette',
 			// 	ariaLabel: 'X',
@@ -118,7 +118,7 @@ export const content = {
 			greeting1: 'What I’ve been digging into in 2026:',
 			greeting2:
 				'Agentic software development, AI-assisted workflows, autonomous coding agents, React and Next.js, TypeScript, technical SEO, large-scale platform migrations, conversational AI and ChatGPT apps, commerce and Shopify integrations, Roku development, and building independent products from idea to launch.',
-			linkText: 'Projects',
+			linkText: 'Work',
 			header: 'Make it work, Make it right, Make it fast',
 			workHeader: 'Professional Work',
 			workItems: [
@@ -179,7 +179,7 @@ export const content = {
 								height: 36,
 								alt: 'Car and Driver',
 							},
-							text: 'Improved technical SEO through metadata, canonical URLs, structured data, and search-friendly architecture',
+							text: 'Improved technical SEO through metadata, canonical URLs, structured data, and search-friendly architecture, and kept ad integrations performant so monetization doesn’t come at the cost of page speed',
 						},
 						{
 							image: {
@@ -303,7 +303,7 @@ export const content = {
 					],
 				},
 			],
-			projectsHeader: 'Things I’ve Built',
+			projectsHeader: 'Recent things I’ve built',
 			visitSiteText: 'Visit Website',
 			visitCodeText: 'See the Code',
 			projectItems: [
@@ -393,6 +393,7 @@ export const content = {
 					tech: ['React', 'TypeScript', 'Vite', 'Vitest', 'Cloudflare Pages'],
 					// TODO(Adam): drawn from the private tetr48 repo; please review.
 					description: [
+						"I’ve always wondered what mashing Tetris together with [2048](https://play2048.co/ '2048') mechanics would be like. Maybe one day it gets refined into something actually fun, but please don’t take it too seriously for now 😅",
 						'A fast block-stacking puzzle game: swipe or use the arrow keys to slide pieces, then clear rows and columns to survive',
 						'Built for phones and desktops with swipe, tap, keyboard, and trackpad controls, plus an installable web app manifest',
 						'Game logic covered by unit tests and deployed to Cloudflare Pages with GitHub Actions. Built with an AI-assisted, agentic workflow',
@@ -411,7 +412,10 @@ export const content = {
 					siteLink: 'https://solid-tetris.vercel.app/',
 					githubLink: 'https://github.com/adamjwehunt/solid-tetris',
 					tech: ['Solid.js', 'Typescript'],
-					description: ['Minimal code: Under a few hundred lines'],
+					description: [
+						'Minimal code: Under a few hundred lines',
+						'This might be the last thing I hand-coded purely by myself, without an agent 😅',
+					],
 				},
 			],
 		},

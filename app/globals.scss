@@ -35,14 +35,12 @@
 		--accent-2: #f6262e;
 		--accent-3: #f67c15;
 		--accent-4: #382076;
+	}
 
-		p,
-		i,
-		h2,
-		h3,
-		section {
-			color: #000;
-		}
+	// Zero specificity so component styles (e.g. the orange name) always win,
+	// regardless of the order CSS chunks load in
+	:where(p, i, h2, h3, section) {
+		color: #000;
 	}
 }
 
@@ -58,6 +56,12 @@
 	margin: 0;
 }
 
+html {
+	// body is position: fixed, so html needs its own height for the
+	// background gradient to have an area to paint into
+	height: 100%;
+}
+
 html,
 body {
 	max-width: 100vw;
@@ -71,7 +75,9 @@ body {
 	align-items: center;
 	position: fixed;
 	inset: 0;
-	background-color: #3f525d;
+	background-color: #2a3840;
+	// Diagonal wash from the site's slate blue into a deep burnt orange
+	background-image: linear-gradient(to bottom right, #1d272e, #6a2a0e);
 	text-rendering: geometricPrecision;
 }
 
