@@ -63,6 +63,13 @@ const nextConfig = {
 	sassOptions: {
 		loadPaths: [path.join(__dirname, 'app')],
 	},
+	// "Blog" was renamed to "Journal"; keep old links working
+	async redirects() {
+		return [
+			{ destination: '/journal', permanent: true, source: '/blog' },
+			{ destination: '/journal/:slug', permanent: true, source: '/blog/:slug' },
+		];
+	},
 	reactStrictMode: true,
 	images: {
 		unoptimized: true,

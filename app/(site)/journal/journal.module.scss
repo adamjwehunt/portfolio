@@ -1,0 +1,104 @@
+@use 'variables' as *;
+
+.header {
+	text-align: center;
+	color: #000;
+}
+
+.entry {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	color: #000;
+}
+
+.details {
+  opacity: 0.6;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.entry:hover .title,
+.entry:hover .details,
+.entry:hover .excerpt {
+	color: var(--accent-2);
+}
+
+@media only screen and (max-width: $mobile-breakpoint) {
+	.details {
+		flex-direction: column;
+		gap: 0;
+	}
+}
+
+.tag {
+	text-transform: capitalize;
+}
+
+.subtitle {
+	margin-top: -1rem;
+	text-align: center;
+	opacity: 0.6;
+	font-size: 0.9rem;
+}
+
+// Curated external articles and social posts
+
+.external {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.body {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+}
+
+.text {
+	min-width: 0;
+}
+
+.avatar {
+	flex-shrink: 0;
+	width: 3rem;
+	height: 3rem;
+	object-fit: cover;
+	border-radius: 6px;
+	box-shadow: 0 0 0 2px var(--image-border-edge);
+}
+
+.handle {
+	opacity: 0.6;
+	font-weight: 400;
+}
+
+.arrow {
+	opacity: 0.5;
+	font-weight: 400;
+	font-size: 0.7em;
+	vertical-align: 0.35em;
+	margin-left: 0.15em;
+}
+
+.excerpt {
+	color: #000;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow: hidden;
+}
+
+.postText {
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	white-space: pre-line;
+}
+
+.comment {
+	font-style: italic;
+	opacity: 0.85;
+}

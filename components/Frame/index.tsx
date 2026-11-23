@@ -16,7 +16,8 @@ interface FrameProps {
 }
 
 const Frame = ({ header, children }: FrameProps) => {
-	const { location, copyright } = content.components.frame.footer;
+	const { location, locationLink, copyrightName } = content.components.frame.footer;
+	const copyright = `© ${copyrightName} ${new Date().getFullYear()}`;
 	const { email } = content;
 
 	return (
@@ -40,8 +41,9 @@ const Frame = ({ header, children }: FrameProps) => {
 					<section className={classnames(styles.halfRow, styles.left)}>
 						<a
 							className={styles.location}
-							href={'https://www.flagstaff.az.gov/2445/Explore'}
+							href={locationLink}
 							target="_blank"
+							rel="noreferrer"
 						>
 							{location}
 						</a>

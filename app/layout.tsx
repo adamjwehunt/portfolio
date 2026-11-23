@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
 import { Analytics } from '@/components/Analytics';
-import StarField from '@/components/StarField/StarField';
 import { roboto } from '@/constants/fonts';
 import { content } from '@/content';
 import { generateWebsiteJsonLd } from '@/lib/seo';
@@ -36,7 +35,6 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 				/>
 			</head>
 			<body className={roboto.className}>
-				<StarField />
 				{children}
 				<Analytics />
 			</body>

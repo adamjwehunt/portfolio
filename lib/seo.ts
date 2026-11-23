@@ -17,7 +17,7 @@ export function generateBlogPostJsonLd({
   author?: string;
   slug: string;
 }) {
-  const canonicalUrl = `${content.metadata.siteUrl}/blog/${slug}`;
+  const canonicalUrl = `${content.metadata.siteUrl}/journal/${slug}`;
   
   return {
     "@context": "https://schema.org",
@@ -44,7 +44,7 @@ export function generatePersonJsonLd() {
     url: content.metadata.siteUrl,
     worksFor: {
       "@type": "Organization",
-      name: "Motortrend"
+      name: "Hearst Autos"
     }
   };
 }

@@ -3,9 +3,9 @@ import { getPost, getPostsMetadata } from '@/lib/mdx';
 import { generateBlogPostJsonLd } from '@/lib/seo';
 import { joinListItems } from '@/lib/util';
 
-import styles from './blog.module.scss';
+import styles from './journal.module.scss';
 
-interface BlogPageProps {
+interface JournalPostPageProps {
 	params: Promise<{ slug: string }>;
 }
 
@@ -16,19 +16,19 @@ export async function generateStaticParams() {
 	}));
 }
 
-export const generateMetadata = async ({ params }: BlogPageProps) => {
+export const generateMetadata = async ({ params }: JournalPostPageProps) => {
 	const { slug } = await params;
 	const { metadata } = await getPost(slug);
 
 	return {
 		alternates: {
-			canonical: `/blog/${slug}`,
+			canonical: `/journal/${slug}`,
 		},
 		title: `${content.metadata.titleBase} ${metadata.title}`,
 	};
 };
 
-const BlogPage = async ({ params }: BlogPageProps) => {
+const JournalPostPage = async ({ params }: JournalPostPageProps) => {
 	const { slug } = await params;
 	const {
 		content,
@@ -65,4 +65,4 @@ const BlogPage = async ({ params }: BlogPageProps) => {
 	);
 };
 
-export default BlogPage;
+export default JournalPostPage;
