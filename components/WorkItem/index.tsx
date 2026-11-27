@@ -19,6 +19,8 @@ export interface WorkItemProps {
 	image: ImageProps;
 	subtitle: string;
 	tasks: Task[];
+	/** Whether the task list starts expanded */
+	defaultOpen?: boolean;
 }
 
 const WorkItem = async ({
@@ -28,12 +30,14 @@ const WorkItem = async ({
 	image,
 	subtitle,
 	tasks,
+	defaultOpen = false,
 }: WorkItemProps) => {
 	const mdxTasks = await convertTasksToMdx(tasks);
 
 	return (
-		<div className={styles.container}>
-			<ProjectsItemHeader
+		<details className={styles.container} open={defaultOpen}>
+			<summary className={styles.summary}>
+				<ProjectsItemHeader
 				image={image}
 				title={
 					<>
@@ -48,7 +52,23 @@ const WorkItem = async ({
 					</>
 				}
 				subtitle={subtitle}
-			/>
+				/>
+				<svg
+					className={styles.caret}
+					viewBox="0 0 24 24"
+					width="24"
+					height="24"
+					aria-hidden
+				>
+					<path
+						d="M6 9l6 6 6-6"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2.5"
+						strokeLinecap="square"
+					/>
+				</svg>
+			</summary>
 			<div className={styles.tasks}>
 				{mdxTasks.map(({ image: taskImage, content }, index) => (
 					<div key={index} className={styles.taskContainer}>
@@ -61,7 +81,7 @@ const WorkItem = async ({
 					</div>
 				))}
 			</div>
-		</div>
+		</details>
 	);
 };
 

@@ -29,7 +29,7 @@ const ProjectPage = () => {
 			<section>
 				<h2>{workHeader}</h2>
 				{workItems.map((props, index) => (
-					<WorkItem key={index} {...props} />
+					<WorkItem key={index} defaultOpen={index === 0} {...props} />
 				))}
 			</section>
 			<section>
